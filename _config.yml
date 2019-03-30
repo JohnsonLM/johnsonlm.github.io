@@ -83,7 +83,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : regus12
+  username               : "regus12"
 facebook:
   username               :
   app_id                 :
@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "Johnson L Martin"
   avatar           : avatar.jpg
-  bio              : "I am an amazing person."
+  bio              : "Artist | Photographer | Sound Engineer | Student"
   location         : "Lexington, KY"
   email            : "johnsonmartin.contact@gmail.com"
   links:
@@ -120,7 +120,7 @@ author:
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: "https://twitter.com/Regus12"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
@@ -129,14 +129,14 @@ author:
       # url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://www.instagram.com/johnsonlmartin/"
 
 # Site Footer
 footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url:
+      url: "https://twitter.com/Regus12"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
@@ -151,7 +151,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      url: https://www.instagram.com/johnsonlmartin/
 
 
 # Reading Files
