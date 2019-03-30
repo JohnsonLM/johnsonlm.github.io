@@ -1,22 +1,22 @@
 If you're a 3d artist you've probably heard something like this on art websites like DeviantArt or ArtStation:
 
-“I almost thought this was a photo from the thumbnail”
+*“I almost thought this was a photo from the thumbnail”*
 -everyone
 
 And you're always wishing someone would say this:
 
-That’s a photo! Stop claiming its CGI!
+*"That’s a photo! Stop claiming its CGI!""*
 -Nobody
 
-So why are we so obsessed with making everything look so realistic? I mean, if we really wanted realism, wouldn't we would just take a photo?
+So why are we so obsessed with making everything look so realistic? I mean, **if we really wanted realism, wouldn't we would just take a photo?**
 
 Right?.. Right!
 
 The truth is, we don't want realism. We want what is called “Surrealism”, not Realism. Lets break down the meaning of Surreal, so we can get a grasp of why this is what we want. And why we don’t want total realism. Here is a quote from a dictionary describing what Surreal is:
 
-having the qualities of surrealism; bizarre.
-“a surreal mix of fact and fantasy”
-- Dictionary
+***Having the qualities of surrealism; bizarre.
+“a surreal mix of fact and fantasy”*** - Dictionary
+
 “A mix of Fact and fantasy.” Fact is realism, fantasy is the story we add to the realism.
 
 Starting to understand?

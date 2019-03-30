@@ -12,11 +12,11 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Thoughts"
+title                    : " Johnson Martin"
 title_separator          : "-"
 name                     : "Johnson L Martin"
 description              : "An amazing website."
@@ -106,7 +106,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Johnson L Martin"
+  name             : "Hi! I'm Johnson"
   avatar           : avatar.jpg
   bio              : "Artist | Photographer | Sound Engineer | Student"
   location         : "Lexington, KY"
@@ -121,9 +121,9 @@ author:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/Regus12"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+    - label: "Unsplash"
+      icon: "fab fa-fw fa-camera"
+      url: "https://unsplash.com/@johnsonm"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/"

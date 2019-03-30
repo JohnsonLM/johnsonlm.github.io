@@ -2,10 +2,10 @@
 main:
   - title: "Guides"
     url: https://topologyguides.com/
-  - title: "About"
-    url: /about
-  # - title: "Sample Posts"
-  #   url: /year-archive/
+  - title: "Résumé"
+    url: /resume
+  - title: "Blog"
+    url: /Blog
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
