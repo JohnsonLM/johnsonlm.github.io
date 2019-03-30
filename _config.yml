@@ -83,7 +83,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : regus12
 facebook:
   username               :
   app_id                 :
@@ -107,7 +107,7 @@ analytics:
 # Site Author
 author:
   name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : avatar.jpg
   bio              : "I am an amazing person."
   location         : "Lexington, KY"
   email            :
