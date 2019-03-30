@@ -1,8 +1,8 @@
 # main links
 main:
-  title: "Guides"
+  - title: "Guides"
     url: https://topologyguides.com/
-  title: "About"
+  - title: "About"
     url: /about
   # - title: "Sample Posts"
   #   url: /year-archive/
