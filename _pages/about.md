@@ -6,6 +6,7 @@ permalink: /about/
 toc: true
 toc_sticky: true
 ---
+# Work Exp
 
 ## ITS Creatives Team Lead - *Asbury University*
 >**November 2018 - Present**  
@@ -43,7 +44,7 @@ toc_sticky: true
 # Education
 
 >**Asbury University**
->### Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
+> -- Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
 
 ***
 
@@ -66,24 +67,23 @@ toc_sticky: true
 
 ## Volunteer Experience
 
-##### *The Asbury Collegian*
-### Web Editor -- January 2019 - Present
+### *The Asbury Collegian*
+>**Web Editor -- January 2019 - Present**  
 Works with editorial team to publish and manage the Asbury Collegian web-edition and social media pages.
 
-##### *Topology Guides*
-### Editor/Educational Content Writer -- June 2015 - Present
+### *Topology Guides*
+>**Editor/Educational Content Writer -- June 2015 - Present**  
 Founded and run a successful educational website teaching professional 3d modeling techniques with a sustained 4,000 visitor sessions a month.
-
 * Design and Implement a UX freindly experience for visitors.
 * Create a marketing plan and vision to grow the website and it's purpose.
 * Write consistent and professional educational content for over 2 years.
 
-##### *Jasper Bend Baptist Church*
-### 3D Visualization Artist -- August 2014
+### *Jasper Bend Baptist Church*
+>**3D Visualization Artist -- August 2014**  
 Designed and visualized a 3d architectural visualization for a church building/recovery project.
 
-#### *Wycliffe Bible Translators, USA*
-### Video Editor -- June 2016
+### *Wycliffe Bible Translators, USA*
+>**Video Editor -- June 2016**  
 Helped as part of a four person crew to edit 40+ short interviews utilizing an Adobe Creative Cloud workflow.
 
 ***
@@ -98,16 +98,16 @@ Helped as part of a four person crew to edit 40+ short interviews utilizing an 
 
 ## Film Credits
 
-#### Alein - Short Film -- November 2018
+- **Alein - Short Film** -- November 2018
 *Sound Engineer*
 
 
-#### Gods and Men - Short Film -- November 2018
+- **Gods and Men - Short Film** -- November 2018
 *Sound Engineer & Sound Designer*
 
 ---
 
-#Recommendations
+# Recommendations
 Just a list of random useful websites that I’ve found over the years.
 
 ## Training
