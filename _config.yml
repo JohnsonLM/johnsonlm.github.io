@@ -108,25 +108,25 @@ analytics:
 author:
   name             : "Hi! I'm Johnson"
   avatar           : avatar.jpg
-  bio              : "Artist | Photographer | Sound Engineer | Student"
+  bio              : "Digital Artist & Sound Engineer"
   location         : "Lexington, KY"
   email            : "johnsonmartin.contact@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
+      url: mailto:johnsonmartin.contact@gmail.com
+    - label: "ArtStation"
+      icon: "fab fa-artstation"
+      url: "https://www.artstation.com/johnson-martin"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/Regus12"
     - label: "Unsplash"
       icon: "fas fa fa-camera"
       url: "https://unsplash.com/@johnsonm"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+    - label: "Sketchfab"
+      icon: "fas fa-cube"
+      url: "https://sketchfab.com/Johnson-Martin"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/johnsonlmartin/"

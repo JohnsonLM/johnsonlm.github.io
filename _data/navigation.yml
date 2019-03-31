@@ -1,10 +1,12 @@
 # main links
 main:
-  - title: "Guides"
+  - title: "Tutorials"
     url: https://topologyguides.com/
   - title: "Recommendations"
     url: /recommendations/
-  - title: "Résumé"
-    url: /resume
   - title: "Projects"
     url: /projects
+  - title: "Products"
+    url: https://blendermarket.com/creators/johnson
+  - title: "About"
+    url: /resume
