@@ -7,9 +7,8 @@ permalink: /resume/
 
 ## Work experience
 
-### ITS Creatives Team Lead -- November 2018 - Present
-
-#### Asbury University ITS
+#### ITS Creatives Team Lead - Asbury University ITS
+**November 2018 - Present**
 
 Oversees Creatives Team and student workers in graphic design, PR, Development, Programming, and Media Archiving/Podcasting.
 
