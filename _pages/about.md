@@ -9,7 +9,7 @@ toc_sticky: true
 
 Hi! I'm Johnson. I'm a digital artist.
 
-# [Work Experience]{: .text-center}
+# Work Experience
 ## ITS Creatives Team Lead
 >***Asbury University*** - **November 2018 - Present**  
 >Oversees Creatives Team and student workers in graphic design, PR, Development, Programming, and Media Archiving/Podcasting.
@@ -43,14 +43,14 @@ Hi! I'm Johnson. I'm a digital artist.
 
 ***
 
-# [Education]{: .text-center}
+# Education
 
 >**Asbury University**
 > -- Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
 
 ***
 
-# [Volunteer Experience]{: .text-center}
+# Volunteer Experience
 
 ## *The Asbury Collegian*
 >**Web Editor -- January 2019 - Present**  
@@ -73,7 +73,7 @@ Helped as part of a four person crew to edit 40+ short interviews utilizing an 
 
 ***
 
-# [Recommendations]{: .text-center}
+# Recommendations
 Just a list of random useful websites that I’ve found over the years.
 
 ## Training
