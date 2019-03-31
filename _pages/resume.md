@@ -5,32 +5,32 @@ author_profile: true
 permalink: /resume/
 ---
 
-### ITS Creatives Team Lead - *Asbury University*
-**November 2018 - Present**  
+## ITS Creatives Team Lead - *Asbury University*
+>**November 2018 - Present**  
 >Oversees Creatives Team and student workers in graphic design, PR, Development, Programming, and Media Archiving/Podcasting.
 >* Designed and Implemented new digitization and audio processing hardware/software workflow.
 
-### 3D Artist & Animator - *Digital Life 3D*
-**August 2017 - Present**  
+## 3D Artist & Animator - *Digital Life 3D*
+>**August 2017 - Present**  
 >Working with Duncan Irschick and the Digital Life team to develop data-driven 3d animation for use by Scientists, Conservationists, Educators, and Animators.
 
 
-### ITS Support Generalist/Media Archivist - *Asbury University*
-**August 2018 - November 2018**  
+## ITS Support Generalist/Media Archivist - *Asbury University*
+>**August 2018 - November 2018**  
 >Student support for campus technology and websites and media achieving of campus events and recordings.
 >* Fulfilling interdepartmental and outside media order s of campus audio-visual recordings.
 * Handling phone and email student support ticketed using Freshservice ITSM system.
 * Moving and cataloging old archival media (DV, VHS, DVD, CD, Reel-to-reel)to network server databases.
 
 ## Content Writer/Support Specialist - *BlenderGrid*
-**Jan 2017 - May 2018**  
+>**Jan 2017 - May 2018**  
 >Provide educational article content for the BlenderGrid blog designed to engage potential customers while also providing one-on-one support to existing customers via email support.
 > Write Engaging 3D rendering related content and interviews on a regular basis.
 * Collaborate with company members via remote location utilizing Slack  and Skype for communication.
 * Work with company support team via ZenDesk to provide optimal support for customers.
 
 ## VFX Lead/Technical Director - *Martin Media*
-**May 2012 - 2017**  
+>**May 2012 - 2017**  
 >Work on and off-location overseeing  VFX and film production gear for commercial, corporate, and educational content productions for high profile clients including: Hendrickson Intl, RDPC, Berea College, EKU, and PBS.
 >* Work with a small production team to overcome technical and creative challenges.
 * Create professional quality graphics within a contained budget and time frame.
@@ -40,13 +40,13 @@ permalink: /resume/
 
 # Education
 
-**Asbury University**
-### Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
+>**Asbury University**
+>### Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
 
 ***
 
 ## Areas of Expertise
->* 3D Visualization
+* 3D Visualization
 * Educational Writing/Training
 * 3D Rendering/Shading (Cycles, Keyshot, Unity)
 * Hard Surface Modeling (Blender 3D)
@@ -65,13 +65,13 @@ permalink: /resume/
 ## Volunteer Experience
 
 ##### *The Asbury Collegian*
-#### Web Editor -- January 2019 - Present
+### Web Editor -- January 2019 - Present
 Works with editorial team to publish and manage the Asbury Collegian web-edition and social media pages.
 
 -
 
 ##### *Topology Guides*
-#### Editor/Educational Content Writer -- June 2015 - Present
+### Editor/Educational Content Writer -- June 2015 - Present
 Founded and run a successful educational website teaching professional 3d modeling techniques with a sustained 4,000 visitor sessions a month.
 
 * Design and Implement a UX freindly experience for visitors.
@@ -81,13 +81,13 @@ Founded and run a successful educational website teaching professional 3d modeli
 -
 
 ##### *Jasper Bend Baptist Church*
-#### 3D Visualization Artist -- August 2014
+### 3D Visualization Artist -- August 2014
 Designed and visualized a 3d architectural visualization for a church building/recovery project.
 
 -
 
 #### *Wycliffe Bible Translators, USA*
-##### Video Editor -- June 2016
+### Video Editor -- June 2016
 Helped as part of a four person crew to edit 40+ short interviews utilizing an Adobe Creative Cloud workflow.
 
 ***
