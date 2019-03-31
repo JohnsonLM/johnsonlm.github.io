@@ -1,39 +1,38 @@
 ---
-title: "Résumé"
 layout: single
 author_profile: true
 permalink: /about/
 toc: true
 toc_sticky: true
 ---
-# Work Exp
+# Work Experience
 
-## ITS Creatives Team Lead - *Asbury University*
->**November 2018 - Present**  
+## ITS Creatives Team Lead
+>***Asbury University*** - **November 2018 - Present**  
 >Oversees Creatives Team and student workers in graphic design, PR, Development, Programming, and Media Archiving/Podcasting.
 >* Designed and Implemented new digitization and audio processing hardware/software workflow.
 
-## 3D Artist & Animator - *Digital Life 3D*
->**August 2017 - Present**  
+## 3D Artist & Animator
+>***Digital Life 3D*** - **August 2017 - Present**  
 >Working with Duncan Irschick and the Digital Life team to develop data-driven 3d animation for use by Scientists, Conservationists, Educators, and Animators.
 
 
-## ITS Support Generalist/Media Archivist - *Asbury University*
->**August 2018 - November 2018**  
+## ITS Support Generalist/Media Archivist
+>***Asbury University*** - **August 2018 - November 2018**  
 >Student support for campus technology and websites and media achieving of campus events and recordings.
 >* Fulfilling interdepartmental and outside media order s of campus audio-visual recordings.
 * Handling phone and email student support ticketed using Freshservice ITSM system.
 * Moving and cataloging old archival media (DV, VHS, DVD, CD, Reel-to-reel)to network server databases.
 
-## Content Writer/Support Specialist - *BlenderGrid*
->**Jan 2017 - May 2018**  
+## Content Writer/Support Specialist
+>***BlenderGrid*** - **Jan 2017 - May 2018**  
 >Provide educational article content for the BlenderGrid blog designed to engage potential customers while also providing one-on-one support to existing customers via email support.
 > Write Engaging 3D rendering related content and interviews on a regular basis.
 * Collaborate with company members via remote location utilizing Slack  and Skype for communication.
 * Work with company support team via ZenDesk to provide optimal support for customers.
 
-## VFX Lead/Technical Director - *Martin Media*
->**May 2012 - 2017**  
+## VFX Lead/Technical Director
+>***Martin Media*** - **May 2012 - 2017**  
 >Work on and off-location overseeing  VFX and film production gear for commercial, corporate, and educational content productions for high profile clients including: Hendrickson Intl, RDPC, Berea College, EKU, and PBS.
 >* Work with a small production team to overcome technical and creative challenges.
 * Create professional quality graphics within a contained budget and time frame.
@@ -48,24 +47,7 @@ toc_sticky: true
 
 ***
 
-## Areas of Expertise
-* 3D Visualization
-* Educational Writing/Training
-* 3D Rendering/Shading (Cycles, Keyshot, Unity)
-* Hard Surface Modeling (Blender 3D)
-* Video Production (Panasonic and Sony camera systems)
-* Audio Production (Tascam, Rycote, Rode, Sennheiser, AT)
-* Adobe Creative Cloud
-* Windows, Linux, MacOS Systems
-* Git Version Control
-* Web Design/Development (HTML/CSS)
-* Game Development/Design (Unity 3D, C#)
-* Digital Signage and Interactive Media.
-* Media Archiving and Cataloging
-
-***
-
-## Volunteer Experience
+# Volunteer Experience
 
 ### *The Asbury Collegian*
 >**Web Editor -- January 2019 - Present**  
@@ -87,25 +69,6 @@ Designed and visualized a 3d architectural visualization for a church building/
 Helped as part of a four person crew to edit 40+ short interviews utilizing an Adobe Creative Cloud workflow.
 
 ***
-
-## Professional Affiliations
-
-- Sketchfab Masters Program (2015-17)
-
-- BlenderNation Volunteer Editors (2015-16)
-
-***
-
-## Film Credits
-
-- **Alein - Short Film** -- November 2018
-*Sound Engineer*
-
-
-- **Gods and Men - Short Film** -- November 2018
-*Sound Engineer & Sound Designer*
-
----
 
 # Recommendations
 Just a list of random useful websites that I’ve found over the years.
@@ -132,7 +95,7 @@ Just a list of random useful websites that I’ve found over the years.
 
 - [NoCopyrightSounds](https://www.youtube.com/channel/UC_aEa8K-EOJ3D6gOs7HcyNg)
 
-## Colors:
+## Colors
 
 - [ColorClaim](http://www.vanschneider.com/colors/)
 - [Adobe Color CC](http://color.adobe.com/)
@@ -249,7 +212,7 @@ Just a list of random useful websites that I’ve found over the years.
 - [Sketchfab](http://sketchfab.com/)
 - [Dribble](https://dribbble.com/)
 
-## PBR Theory:
+## PBR Theory
 
 - [Allegorithmic PBR Guide](https://www.allegorithmic.com/pbr-guide)
 - [Marmoset PBR Theory](https://www.marmoset.co/toolbag/learn/pbr-theory)
