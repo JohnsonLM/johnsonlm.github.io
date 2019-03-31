@@ -5,7 +5,7 @@ author_profile: true
 permalink: /resume/
 ---
 
-# Work experience
+## Work experience
 
 ### ITS Creatives Team Lead -- November 2018 - Present
 
@@ -15,7 +15,7 @@ Oversees Creatives Team and student workers in graphic design, PR, Development, 
 
 * Designed and Implemented new digitization and audio processing hardware/software workflow.
 
-
+-
 
 ### 3D Artist & Animator -- August 2017 - Present
 
@@ -23,6 +23,7 @@ Oversees Creatives Team and student workers in graphic design, PR, Development, 
 
 Working with Duncan Irschick and the Digital Life team to develop data-driven 3d animation for use by Scientists, Conservationists, Educators, and Animators.
 
+-
 
 ### ITS Support Generalist/Media Archivist -- August 2018 - November 2018
 #### Asbury University ITS
@@ -33,6 +34,8 @@ Student support for campus technology and websites and media achieving of campus
 * Handling phone and email student support ticketed using Freshservice ITSM system.
 * Moving and cataloging old archival media (DV, VHS, DVD, CD, Reel-to-reel)to network server databases.
 
+-
+
 ### Content Writer/Support Specialist -- Jan 2017 - May 2018
 #### BlenderGrid
 
@@ -42,6 +45,7 @@ Provide educational article content for the BlenderGrid blog designed to engage 
 * Collaborate with company members via remote location utilizing Slack  and Skype for communication.
 * Work with company support team via ZenDesk to provide optimal support for customers.
 
+-
 
 ### VFX Lead/Technical Director -- May 2012 - 2017
 
@@ -53,22 +57,15 @@ Work on and off-location overseeing  VFX and film production gear for commercia
 * Create professional quality graphics within a contained budget and time frame.
 * Manage Windows, MacOS, and legacy hardware/software systems to save time and expenditures.
 
+***
+
 # Education
 
-###### 2014 2018
-
-### High School -- 2014 - 2018
-
-#### Somerset Christian School
-
-Attended _Somerset Christian School, m_ _aintaining a 4.0 GPA average and #1 Class Rank._
-
-
-#### Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
-
 #### Asbury University
+### Bachelor of Arts - Media Communications and Philosophy -- Fall 2018 - Fall 2021
+***
 
-# Areas of Expertise
+## Areas of Expertise
 
 * 3D Visualization
 * Educational Writing/Training
@@ -83,59 +80,52 @@ Attended _Somerset Christian School, m_ _aintaining a 4.0 GPA average and #1 Cla
 * Game Development/Design (Unity 3D, C#)
 * Digital Signage and Interactive Media.
 * Media Archiving and Cataloging
+***
+## Volunteer Experience
 
-# Volunteer Experience
 
-###### January 2019 Present
-
-#### Web Editor
-
-##### The Asbury Collegian
-
+##### *The Asbury Collegian*
+#### Web Editor -- January 2019 - Present
 Works with editorial team to publish and manage the Asbury Collegian web-edition and social media pages.
 
-###### June 2015 Present
+-
 
-#### Editor/Educational Content Writer
-
-##### Topology Guides
-
+##### *Topology Guides*
+#### Editor/Educational Content Writer -- June 2015 - Present
 Founded and run a successful educational website teaching professional 3d modeling techniques with a sustained 4,000 visitor sessions a month.
 
 * Design and Implement a UX freindly experience for visitors.
 * Create a marketing plan and vision to grow the website and it's purpose.
 * Write consistent and professional educational content for over 2 years.
 
-###### August 2014
+-
 
-#### 3D Visualization Artist
-
-##### Jasper Bend Baptist Church
-
+##### *Jasper Bend Baptist Church*
+#### 3D Visualization Artist -- August 2014
 Designed and visualized a 3d architectural visualization for a church building/recovery project.
 
-###### June 2016
+-
 
-#### Video Editor
-
-##### Wycliffe Bible Translators, USA
-
+#### *Wycliffe Bible Translators, USA*
+##### Video Editor -- June 2016
 Helped as part of a four person crew to edit 40+ short interviews utilizing an Adobe Creative Cloud workflow.
 
-# Professional Affiliations
+***
+
+## Professional Affiliations
 
 - Sketchfab Masters Program (2015-17)
 
 - BlenderNation Volunteer Editors (2015-16)
-
-# Film Credits
-
-
-### Alein - Short Film -- November 2018
-
-##### Sound Engineer
+***
+## Film Credits
 
 
-### Gods and Men - Short Film -- November 2018
+#### Alein - Short Film -- November 2018
 
-##### Sound Engineer & Sound Designer
+###### Sound Engineer
+
+
+#### Gods and Men - Short Film -- November 2018
+
+###### Sound Engineer & Sound Designer

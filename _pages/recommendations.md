@@ -3,7 +3,6 @@ Title: Recommendations
 permalink: /recommendations/
 layout: single
 ---
-# Resources
 
 Just a list of random useful websites that I’ve found over the years.
 
