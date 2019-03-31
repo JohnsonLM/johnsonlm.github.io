@@ -1,11 +1,14 @@
 ---
-Title: "About Johnson"
 layout: single
 author_profile: true
 permalink: /about/
 toc: true
 toc_sticky: true
 ---
+# About johnson
+
+Hi! I'm Johnson. I'm a digital artist.
+
 # Work Experience
 ## ITS Creatives Team Lead
 >***Asbury University*** - **November 2018 - Present**  
@@ -167,7 +170,7 @@ Just a list of random useful websites that I’ve found over the years.
 - [Mitch Martinez](http://mitchmartinez.com/free-4k-red-epic-stock-footage/)
 - [Texture ninja](https://texture.ninja/)
 
-## References:
+## References
 
 - [Hard Surface Enthusiast](http://hardsurface.tumblr.com/)
 - [Photobash](http://www.photobash.org/)
