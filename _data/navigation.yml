@@ -2,11 +2,9 @@
 main:
   - title: "Guides"
     url: https://topologyguides.com/
-  - title: "Résumé"
-    url: /resume
-  - title: "Blog"
-    url: /blog
   - title: "Recommendations"
     url: /recommendations/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Résumé"
+    url: /resume
+  - title: "Projects"
+    url: /projects
