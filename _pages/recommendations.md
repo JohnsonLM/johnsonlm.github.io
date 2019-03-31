@@ -1,6 +1,7 @@
 ---
 Title: Recommendations
 permalink: /recommendations/
+layout: single
 ---
 # Resources
 
