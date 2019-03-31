@@ -1,7 +1,7 @@
 ---
 Title: "Blog"
 permalink: /blog/
-layout: archive-single
+layout: posts
 entries_layout: grid
 author_profile: true
 classes: wide
