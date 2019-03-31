@@ -5,7 +5,8 @@ author_profile: true
 permalink: /about/
 toc: true
 toc_sticky: true
-# .
+---
+# Work Experience
 ## ITS Creatives Team Lead
 >***Asbury University*** - **November 2018 - Present**  
 >Oversees Creatives Team and student workers in graphic design, PR, Development, Programming, and Media Archiving/Podcasting.

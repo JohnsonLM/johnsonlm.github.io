@@ -1,8 +1,6 @@
 ---
 classes: wide
 ---
-## 10 Epic Resources I use Everyday.
-
 I use a lot of tools as a creator and I know how hard it is to find quality tools and resources to bring projects to the next level of professionalism and creativity. As a result, I compiled this sampling of some of the tools I use on an almost everyday basis to make the stuff I create happen.
 
 ##### [Gratisography](http://gratisography.com/)
