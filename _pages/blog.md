@@ -1,6 +1,8 @@
 ---
-Title: Blog
+Title: "Blog"
 permalink: /blog/
-layout: archive
+layout: posts
 entries_layout: grid
+author_profile: true
+classes: wide
 ---
