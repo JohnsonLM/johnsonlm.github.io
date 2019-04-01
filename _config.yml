@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 
 # Site Settings
 locale                   : "en-US"
-title                    : " Johnson L Martin"
+title                    : " Johnson  Martin"
 title_separator          : "-"
-name                     : "Johnson L Martin"
-description              : "The site of Johnson Martin"
+name                     : "Johnson  Martin"
+description              : "Digital Artist & Sound Engineer"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "johnsonlm/johnsonlm.github.io" # GitHub username/repo-name

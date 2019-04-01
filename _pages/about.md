@@ -11,8 +11,6 @@ header:
   overlay_image: /assets/unsplash-image-1.jpg
 ---
 
-Hi! I'm Johnson. I'm a digital artist.
-
 # Work Experience
 ## ITS Creatives Team Lead
 >***Asbury University*** - **November 2018 - Present**  
