@@ -1,10 +1,10 @@
 ---
 classes: wide
+excerpt: "This spring, I had the pleasure of traveling through the Midwest for a production taking place in South Dakota. I ended up spending some extra time to see the sights. So here’s a few of the best images I got along the way."
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: https://source.unsplash.com/sKffuSeYuGk/1600x900
-  excerpt: "This spring, I had the pleasure of traveling through the Midwest for a production taking place in South Dakota. I ended up spending some extra time to see the sights. So here’s a few of the best images I got along the way."
 ---
 
 ![Badlands](https://source.unsplash.com/lMSyBuzVwzk/1600x900)
