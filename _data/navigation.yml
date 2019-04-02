@@ -2,8 +2,6 @@
 main:
   - title: "Posts"
     url: /posts
-  - title: "Projects"
-    url: /projects
   - title: "Products"
     url: https://blendermarket.com/creators/johnson
   - title: "About"
