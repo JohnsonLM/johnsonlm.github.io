@@ -88,7 +88,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : /assets/site-logo.jpg # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -117,7 +117,7 @@ author:
       # url: mailto:johnsonmartin.contact@gmail.com
     - label: "Twitter"
       icon: "fab fa-twitter"
-      url: "https://twitter.com/Regus12"
+      url: "https://twitter.com/johnsonlmCG"
     - label: "ArtStation"
       icon: "fab fa-artstation"
       url: "https://www.artstation.com/johnson-martin"
@@ -136,7 +136,7 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/Regus12"
+      url: "https://twitter.com/johnsonlmCG"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
