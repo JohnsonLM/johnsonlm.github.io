@@ -1,3 +1,7 @@
+---
+title: "Case Study: Using Physically Correct Brightness In Cycles"
+---
+
 If you're a 3d artist you've probably heard something like this on art websites like DeviantArt or ArtStation:
 
 *“I almost thought this was a photo from the thumbnail”*
