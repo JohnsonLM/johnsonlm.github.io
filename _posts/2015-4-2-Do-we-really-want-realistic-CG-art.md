@@ -1,5 +1,5 @@
 ---
-title: "Case Study: Using Physically Correct Brightness In Cycles"
+title: "Do We Really Want Realistic CG Art?"
 ---
 
 If you're a 3d artist you've probably heard something like this on art websites like DeviantArt or ArtStation:
