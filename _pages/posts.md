@@ -2,7 +2,7 @@
 title: "Posts"
 permalink: /posts/
 layout: posts
-entries_layout: grid
+entries_layout: list
 author_profile: true
 classes: wide
 header:
