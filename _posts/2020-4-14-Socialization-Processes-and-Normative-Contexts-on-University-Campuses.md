@@ -1,5 +1,5 @@
 ---
-classes: wide
+classes: single
 excerpt: "Weidman and university structures."
 header:
   overlay_color: "#000"
