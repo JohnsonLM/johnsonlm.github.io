@@ -1,5 +1,5 @@
 ---
-classes: wide
+classes: single
 excerpt: "third places & social dynamics."
 header:
   overlay_color: "#000"
