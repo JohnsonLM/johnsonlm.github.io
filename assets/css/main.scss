@@ -11,17 +11,17 @@ p {
  font-family: 'EB Garamond', serif;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+}
+
 @charset "utf-8";
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
 /* system typefaces */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 $serif      : 'EB Garamond', serif;
 $sans-serif : -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 $monospace  : Monaco, Consolas, "Lucida Console", monospace;
-
-@media .wide .page {
-    padding-right: 150px;
-    padding-left: 150px;
-  }
