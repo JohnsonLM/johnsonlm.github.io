@@ -240,6 +240,49 @@ function item_10() {
 	};
 }
 
-const myPortfolio = [item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10];
+function item_11() {
+	return {
+		date: "7 May 2023",
+		title: "Shopping Cart",
+		background: "./shoppingcart/image1.jpg",
+		subtitle: "Crafted in 2019 | Personal Project",
+		link: "#",
+		type: '3D',
+		description:
+			"",
+		images: [
+			"./shoppingcart/image1.jpg",
+			"./shoppingcart/image2.jpg",
+			"./shoppingcart/image3.jpg",
+		],
+		videos: [],
+		style: ``,
+		keywords: [],
+	};
+}
+
+function item_12() {
+	return {
+		date: "7 May 2023",
+		title: "Payphone",
+		background: "./payphone/image1.jpg",
+		subtitle: "Crafted in 2018",
+		link: "#",
+		type: '3D',
+		description:
+			"",
+		images: [
+			"./payphone/image1.jpg",
+			"./payphone/image2.jpg",
+			"./payphone/image3.jpg",
+		],
+		videos: [],
+		style: ``,
+		keywords: [],
+	};
+}
+
+
+const myPortfolio = [item_1, item_10, item_11, item_2, item_3, item_4, item_5, item_12, item_6, item_7, item_8, item_9];
 
 export default myPortfolio;
