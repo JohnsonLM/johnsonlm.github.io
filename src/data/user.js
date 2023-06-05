@@ -3,7 +3,7 @@ const INFO = {
 		title: "Johnson Martin",
 		name: "Johnson Martin",
 		email: "jlm@johnsonlm.com",
-		logo: "../profile.png",
+		logo: "../profile.webp",
 	},
 
 	socials: {
@@ -36,7 +36,7 @@ const INFO = {
 		{
 			title: "Living Library 3D",
 			description: "The Living Library is focused on create accurate and beautiful 3d models of animals.",
-			logo: "./livinglibrary-logo.png",
+			logo: "./livinglibrary-logo.webp",
 			linkText: "View Project",
 			link: "https://LivingLibrary3D.org",
 		},
@@ -44,7 +44,7 @@ const INFO = {
 		{
 			title: "TopologyGuides.com",
 			description: "Topoolgy Guides is a website built for teaching better 3d modeling.",
-			logo: "./tg-logo.png",
+			logo: "./tg-logo.webp",
 			linkText: "View Project",
 			link: "https://topologyguides.com",
 		},
@@ -62,7 +62,7 @@ const INFO = {
 			title: "Digital Life 3D",
 			description:
 				"The Digital Life project at UMass Amherest",
-			logo: "./digitallife-logo.png",
+			logo: "./digitallife-logo.webp",
 			linkText: "View Project",
 			link: "digitallife3d.org",
 		},
