@@ -1,13 +1,14 @@
 {
-	"name": "reactfolio",
+	"name": "Johnson Martin",
 	"version": "1.1.0",
-	"description": "Personal portfolio template built using Reactjs",
+	"description": "Personal website for Johnson Martin",
+  "homepage": "http://johnsonlm.github.io/",
 	"author": {
-		"name": "Tharindu N. Madhusanka",
-		"email": "mail@tharindu.dev",
-		"url": "https://tharindu.dev"
+		"name": "Johnson Martin",
+		"email": "jlm@johnsonlm.com",
+		"url": "https://johnsonlm.com"
 	},
-	"license": "MIT",
+	"license": "",
 	"private": true,
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -29,6 +30,8 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
@@ -54,5 +57,8 @@
 	"prettier": {
 		"useTabs": true,
 		"tabWidth": 4
+	},
+	"devDependencies": {
+		"gh-pages": "^5.0.0"
 	}
 }
