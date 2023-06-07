@@ -47,17 +47,33 @@
 	width: 370px;
 }
 
-.about-image-wrapper {
-	display: inline-block;
-	overflow: hidden;
-	width: 100%;
-	border-radius: 10%;
-	transform: rotate(3deg);
-}
-
 .about-image-wrapper img {
 	display: block;
 	width: 100%;
+}
+
+.about-image-wrapper {
+	overflow: hidden;
+	border-radius: 10%;
+	animation-name: cardrotationout;
+  	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+
+.about-image-wrapper:hover {
+	animation-name: cardrotationin;
+  	animation-duration: 1s;
+	animation-fill-mode: forwards;
+} 
+
+@keyframes cardrotationin {
+	0% {transform: rotate(5deg);}
+	100% {transform: rotate(0deg);}
+  }
+
+@keyframes cardrotationout {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(5deg);}
 }
 
 .about-socials {

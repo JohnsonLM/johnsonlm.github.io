@@ -7,10 +7,9 @@ function article_1() {
 		description:
 			"Third places & social dynamics.",
 		keywords: [
-			"The Benefits of Cloud Computing",
-			"Tharindu",
-			"Tharindu N",	
-			"Tharindu Nayanajith",
+			"sociology",
+			"culture",
+			"thoughts",	
 		],
 		style: `
 				.article-content {

@@ -23,8 +23,7 @@ const INFO = {
 	about: {
 		title: "I’m Johnson.",
 		description:
-			"Text",
-	},
+			"I'm a US based creative professional with a passion for technology, science, and art. For the past six years, I've worked in both technical and creative industries providing solutions for organizations of all types.",	},
 
 	articles: {
 		title: "Here's what's been on my mind, from technical notes, to philosophical rabbit trails.",
@@ -65,6 +64,15 @@ const INFO = {
 			logo: "./digitallife-logo.webp",
 			linkText: "View Project",
 			link: "digitallife3d.org",
+		},
+
+		{
+			title: "Photography",
+			description:
+				"Photography is one of my favoirite hobbies. I release all of my photos for free on Unsplash.",
+			logo: "./camera-solid.svg",
+			linkText: "View Photos",
+			link: "https://unsplash.com/@johnsonm",
 		},
 	],
 };

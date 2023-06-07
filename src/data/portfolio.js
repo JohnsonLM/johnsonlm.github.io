@@ -42,16 +42,16 @@ function item_2() {
 	return {
 		date: "7 May 2023",
 		title: "Realtime Forest Environment",
-		background: "./forest/image1.jpg",
+		background: "./forest/image1.webp",
 		subtitle: "Crafted in 2020 | Personal Project",
 		link: "#",
 		type: '3D',
 		description:
 			"",
 		images: [
-			"./forest/image1.jpg",
-			"./forest/image2.jpg",
-			"./forest/image3.jpg",
+			"./forest/image1.webp",
+			"./forest/image2.webp",
+			"./forest/image3.webp",
 		],
 		videos: [
 			"./forest/video1.mp4",
@@ -65,16 +65,16 @@ function item_3() {
 	return {
 		date: "7 May 2023",
 		title: "Leaderback Sea Turtle",
-		background: "./adultleatherback/imagecard.png",
+		background: "./adultleatherback/imagecard.webp",
 		subtitle: "Crafted in 2022 | Digital Life 3D",
 		link: "#",
 		type: '3D',
 		description:
-			"A 3d game-ready model of an Adult Leatherback Sea turtle.",
+			"A 3d game-ready model of an Adult Leatherback Sea turtle. This model was created using scientifically accurate methods for use in research applications.",
 		images: [
-			"./adultleatherback/image1.jpg",
-			"./adultleatherback/image2.jpg",
-			"./adultleatherback/image3.jpg",
+			"./adultleatherback/image1.webp",
+			"./adultleatherback/image2.webp",
+			"./adultleatherback/image3.webp",
 		],
 		videos: [],
 		style: ``,
@@ -115,12 +115,13 @@ function item_5() {
 		type: '3D',
 		description:
 			"",
-			images: [
-				"./hand/image1.jpg",
-				"./hand/image2.jpg",
-				"./hand/image3.jpg",
-				"./hand/image4.jpg",
-			],
+		images: [
+			"./hand/image1.jpg",
+			"./hand/image2.jpg",
+			"./hand/image3.jpg",
+			"./hand/image4.jpg",
+		],
+		videos: [],
 		style: ``,
 		keywords: [],
 	};
@@ -130,7 +131,7 @@ function item_6() {
 	return {
 		date: "7 May 2023",
 		title: "Juvenile Leatherback Sea Turtle ",
-		background: "./juvleatherback/imagecard.png",
+		background: "./juvleatherback/imagecard.webp",
 		subtitle: "Crafted in 2022 | Client Project",
 		link: "#",
 		type: '3D',
@@ -172,26 +173,29 @@ function item_7() {
 	};
 }
 
-
 function item_8() {
 	return {
 		date: "7 May 2023",
 		title: "Living Library Branding Kit",
-		background: "./livinglibrary/titlecard.png",
+		background: "./livinglibrary/titlecard.webp",
 		subtitle: "Crafted in 2023",
 		link: "#",
 		type: 'Design',
 		description:
 			"",
 		images: [
-			"./livinglibrary/image1.png",
-			"./livinglibrary/image2.png",
-			"./livinglibrary/image3.png",
-			"./livinglibrary/image4.png",
+			"./livinglibrary/image1.webp",
+			"./livinglibrary/image2.webp",
+			"./livinglibrary/image3.webp",
 		],
 		videos: [],
 		style: ``,
-		keywords: [],
+		keywords: [
+			"Design",
+			"brand kit",
+			"graphic design",
+
+		],
 	};
 }
 
@@ -199,7 +203,7 @@ function item_9() {
 	return {
 		date: "7 May 2023",
 		title: "Manta Ray",
-		background: "./manta/imagecard.png",
+		background: "./manta/imagecard.webp",
 		subtitle: "Crafted in 2023",
 		link: "#",
 		type: '3D',
@@ -213,7 +217,17 @@ function item_9() {
 		],
 		videos: [],
 		style: ``,
-		keywords: [],
+		keywords: [
+			"3d art",
+			"3d model",
+			"topology",
+			"modeling",
+			"3d artist",
+			"science",
+			"visualization",
+			"data",
+			"3d scanning"
+		],
 	};
 }
 
@@ -221,22 +235,29 @@ function item_10() {
 	return {
 		date: "7 May 2023",
 		title: "Panzer Tank",
-		background: "./tank/imagecard.png",
+		background: "./tank/imagecard.webp",
 		subtitle: "Crafted in 2019 | Personal Project",
 		link: "#",
 		type: '3D',
 		description:
-			"",
+			"A game-ready textured 3d tank with low and high-poly versions.",
 		images: [
-			"./tank/image1.jpg",
-			"./tank/image2.jpg",
-			"./tank/image3.jpg",
-			"./tank/image4.jpg",
-			"./tank/image5.jpg",
+			"./tank/image1.webp",
+			"./tank/image2.webp",
+			"./tank/image3.webp",
+			"./tank/image4.webp",
+			"./tank/image5.webp",
 		],
 		videos: [],
 		style: ``,
-		keywords: [],
+		keywords: [
+			"3d art",
+			"3d model",
+			"topology",
+			"hard surface modeling",
+			"3d artist",
+			"tank 3d model",
+		],
 	};
 }
 
@@ -257,7 +278,13 @@ function item_11() {
 		],
 		videos: [],
 		style: ``,
-		keywords: [],
+		keywords: [
+			"3d art",
+			"3d model",
+			"topology",
+			"hard surface modeling",
+			"3d artist"
+		],
 	};
 }
 
@@ -278,7 +305,13 @@ function item_12() {
 		],
 		videos: [],
 		style: ``,
-		keywords: [],
+		keywords: [
+			"3d art",
+			"3d model",
+			"topology",
+			"hard surface modeling",
+			"3d artist"
+	],
 	};
 }
 
