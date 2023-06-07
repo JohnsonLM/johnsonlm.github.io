@@ -41,7 +41,7 @@ const INFO = {
 		},
 
 		{
-			title: "TopologyGuides.com",
+			title: "Topology Guides",
 			description: "Topoolgy Guides is a website built for teaching better 3d modeling.",
 			logo: "./tg-logo.webp",
 			linkText: "View Project",
@@ -61,9 +61,9 @@ const INFO = {
 			title: "Digital Life 3D",
 			description:
 				"The Digital Life project at UMass Amherest",
-			logo: "./digitallife-logo.webp",
+			logo: "./dl_logo.webp",
 			linkText: "View Project",
-			link: "digitallife3d.org",
+			link: "https://digitallife3d.org",
 		},
 
 		{

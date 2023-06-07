@@ -113,7 +113,7 @@ const Homepage = () => {
 							<div className="homepage-first-area-right-side">
 								<div className="homepage-image-container">
 									<div class="sketchfab-embed-wrapper">
-										<iframe title="Shark Photogrammetry Test" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/035b49a19c254f14ac42c5deaf9e4564/embed?autostart=1&camera=0&dnt=1"> </iframe>
+										<iframe title="Shark Photogrammetry Test" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/035b49a19c254f14ac42c5deaf9e4564/embed"> </iframe>
 									</div>									
 								</div>	
 							</div>
