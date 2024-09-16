@@ -7,7 +7,7 @@ const Footer = () => {
 		<React.Fragment>
 			<div className="footer">
 				<div className="footer-credits-text">
-					© 2023 Johnson Martin. All Rights Reserved.
+					© 2024 Johnson Martin. All Rights Reserved.
 				</div>
 			</div>
 		</React.Fragment>

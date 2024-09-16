@@ -2,8 +2,8 @@ const INFO = {
 	main: {
 		title: "Johnson Martin",
 		name: "Johnson Martin",
-		email: "jlm@johnsonlm.com",
-		logo: "../profile.webp",
+		email: "contact@johnsonlm.com",
+		logo: "../avatar.jpeg",
 	},
 
 	socials: {
@@ -15,52 +15,61 @@ const INFO = {
 	},
 
 	homepage: {
-		title: "3D Artist, Developer, and Creative.",
+		title: "3D Artist, Developer, Creative",
 		description:
-			"I am a creative with a passion for new technologies. As a 3d artist, I've created hundreds of 3d projects being used all over the world. As a developer, I've worked on many small to medium sized projects and  web applciations using a number of tools and frameworks, including Python, React, Flask, and JavaScript.",
+			"I am a creative with a passion for technology, artistry and science. As a 3d artist, I've created hundreds of 3d projects being used all over the world. As a developer, I've worked on a variety of projects, from full-stack web applications to Blender add-ons.",
 	},
 
 	about: {
-		title: "I’m Johnson.",
+		title: "Hey, I'm Johnson.",
 		description:
-			"I'm a US based creative professional with a passion for technology, science, and art. For the past six years, I've worked in both technical and creative industries providing solutions for organizations of all types.",	},
+			"I am a creative with a passion for new technologies. As a 3d artist, I've created hundreds of 3d projects being used all over the world. As a developer, I've worked on a variety of projects, from full-stack web applications, to Blender add-ons and DevOps projects.",
+	},
 
 	articles: {
 		title: "Here's what's been on my mind, from technical notes, to philosophical rabbit trails.",
-		description:	
+		description:
 			"I regularly write on topics in computer graphics, software development, and random other genres here and across the web.",
 	},
-
 	projects: [
 		{
 			title: "Living Library 3D",
-			description: "The Living Library is focused on create accurate and beautiful 3d models of animals.",
+			description:
+				"The Living Library is focused on create accurate and beautiful 3d models of animals.",
 			logo: "./livinglibrary-logo.webp",
-			linkText: "View Project",
+			linkText: "Coming Soon",
 			link: "https://LivingLibrary3D.org",
 		},
 
 		{
 			title: "Topology Guides",
-			description: "Topoolgy Guides is a website built for teaching better 3d modeling.",
+			description:
+				"Topoolgy Guides is a website built for teaching better 3d modeling.",
 			logo: "./tg-logo.webp",
 			linkText: "View Project",
 			link: "https://topologyguides.com",
 		},
 
 		{
-			title: "SignControl",
+			title: "Research",
 			description:
-				"SignControl is a new digital signage management platform built from the ground up with Flask and React.",
-			logo: "./signcontrol-logo.png",
-			linkText: "Coming Soon",
-			link: "#",
+				"Take a look at what research I've been working on in 3d data reconstruction and scientific communication.",
+			logo: "./Google_Scholar_logo.png",
+			linkText: "View Project",
+			link: "https://scholar.google.com/citations?user=tk3o41IAAAAJ",
+		},
+		{
+			title: "ParkYard",
+			description:
+				"ParkYard is a powerful, modern, and open-source platform built for users and managers alike.",
+			logo: "./parkyard.png",
+			linkText: "View Project",
+			link: "https://parkyard.app/",
 		},
 
 		{
 			title: "Digital Life 3D",
-			description:
-				"The Digital Life project at UMass Amherest",
+			description: "The Digital Life project at UMass Amherest",
 			logo: "./dl_logo.webp",
 			linkText: "View Project",
 			link: "https://digitallife3d.org",

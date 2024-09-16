@@ -1,20 +1,44 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import React, { useEffect } from "react";
+import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import ReactGA from "react-ga4";
+import Homepage from "./pages/homepage";
+import About from "./pages/about";
+import Projects from "./pages/projects";
+import Portfolio from "./pages/portfolio";
+import Articles from "./pages/articles";
+import ReadArticle from "./pages/readArticle";
+import SeePortfolio from "./pages/seePortfolio";
+import Contact from "./pages/contact";
+import Notfound from "./pages/404";
+import { TRACKING_ID } from "./data/tracking";
+import "./app.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-	<React.StrictMode>
-		<HashRouter>
-			<App />
-		</HashRouter>
-	</React.StrictMode>
-);
+function App() {
+	useEffect(() => {
+		if (TRACKING_ID !== "") {
+			ReactGA.initialize(TRACKING_ID);
+		}
+	}, []);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+	return (
+		<React.StrictMode>
+			<HashRouter>
+				<Routes>
+					<Route path="/" element={<Homepage />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/projects" element={<Projects />} />
+					<Route path="/portfolio" element={<Portfolio />} />
+					<Route path="/articles" element={<Articles />} />
+					<Route path="/article/:slug" element={<ReadArticle />} />
+					<Route path="/portfolio/:slug" element={<SeePortfolio />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="*" element={<Notfound />} />
+				</Routes>
+			</HashRouter>
+		</React.StrictMode>
+	);
+}
+
+createRoot(document.getElementById("root")).render(<App />);
