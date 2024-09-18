@@ -70,7 +70,6 @@ const Socials = () => {
 					<div className="social-text">Follow on Instagram</div>
 				</a>
 			</div>
-
 			<div className="email">
 				<div className="email-wrapper">
 					<a

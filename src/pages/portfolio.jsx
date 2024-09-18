@@ -12,11 +12,7 @@ import myPortfolio from "../data/portfolio";
 
 import "./styles/portfolio.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faCube, 
-	faGlobe, 
-	faPenRuler
-} from "@fortawesome/free-solid-svg-icons";
+import { faCube, faGlobe, faPenRuler } from "@fortawesome/free-solid-svg-icons";
 
 const Portfolio = () => {
 	useEffect(() => {
@@ -45,29 +41,51 @@ const Portfolio = () => {
 						</div>
 					</div>
 					<div className="portfolio-container">
-							<div className="portfolio-title">
-								Portfolio
-							</div>
+						<div className="portfolio-title">Portfolio</div>
 
-							<div className="portfolio-items">
-								{myPortfolio.map((item, index) => (
-									<Link to={"/portfolio/" + (index + 1)} className="portfolio-link">
-										<div className="portfolio-item" style={{ backgroundImage: `url(${item().background})` }}>	
-											<div className="portfolio-item-title">
-												{item().type === "3D" && <FontAwesomeIcon icon={faCube}/>}
-												{item().type === "Design" && <FontAwesomeIcon icon={faPenRuler}/>}
-												{item().type === "Web" && <FontAwesomeIcon icon={faGlobe}/>}
-												&nbsp;
-												{item().title}
-											</div>
-											<div className="portfolio-item-subtitle">{item().subtitle}</div>
+						<div className="portfolio-items">
+							{myPortfolio.map((item, index) => (
+								<Link
+									to={"/portfolio/" + (index + 1)}
+									className="portfolio-link"
+								>
+									<div
+										className="portfolio-item"
+										style={{
+											backgroundImage: `url(${
+												item().background
+											})`,
+										}}
+									>
+										<div className="portfolio-item-title">
+											{item().type === "3D" && (
+												<FontAwesomeIcon
+													icon={faCube}
+													id="icon"
+												/>
+											)}
+											{item().type === "Design" && (
+												<FontAwesomeIcon
+													icon={faPenRuler}
+												/>
+											)}
+											{item().type === "Web" && (
+												<FontAwesomeIcon
+													icon={faGlobe}
+												/>
+											)}
+											&nbsp;
+											{item().title}
 										</div>
-									</Link>
-								))}
-							</div>
-									
+										<div className="portfolio-item-subtitle">
+											{item().subtitle}
+										</div>
+									</div>
+								</Link>
+							))}
+						</div>
 					</div>
-					
+
 					<div className="page-footer">
 						<Footer />
 					</div>

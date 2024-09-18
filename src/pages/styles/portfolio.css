@@ -3,7 +3,7 @@
 	flex-direction: column;
 	height: 100%;
 	margin: 0;
-	padding-top: 120px;
+	padding-top: 75px;
 }
 
 .about-main {
@@ -14,7 +14,7 @@
 	text-align: center;
 	color: var(--primary-color);
 	font-family: var(--secondary-font);
-	font-size: 45px;
+	font-size: 30px;
 	font-weight: 700;
 	width: 100%;
 }
@@ -27,15 +27,18 @@
 	font-weight: bolder;
 	font-size: 1.3em;
 	font-family: monospace;
-	text-shadow: 0 0 6px black;
+	text-shadow: 0 0 5px rgba(39, 39, 39, 1);
 }
 
+.fa-cube{filter:drop-shadow(0 0 3px rgba(39, 39, 39, 0.8))}
+
 .portfolio-item-subtitle {
-	color: grey;
+	color: white;
 	padding-left: 2em;
 	padding-bottom: 1em;
 	font-size: 1em;
 	font-family: monospace;
+	text-shadow: 0 0 2px black;
 }
 
 .portfolio-item {
@@ -50,6 +53,7 @@
 	animation-name: cardrotationin;
   	animation-duration: 1s;
 	animation-fill-mode: forwards;
+	
 	
 }
 

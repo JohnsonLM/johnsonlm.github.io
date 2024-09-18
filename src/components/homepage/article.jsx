@@ -11,26 +11,25 @@ const Article = (props) => {
 
 	return (
 		<React.Fragment>
+			<Link to={link}>
 			<div className="homepage-article">
 				<div className="homepage-article-content">
-					<div className="homepage-article-date">
-						|&nbsp;&nbsp;&nbsp;{date}
+				
+					<div style={{ float: "left" }}>
+						<div className="homepage-article-date">|&nbsp;&nbsp;&nbsp;{date}</div>
+						<div className="homepage-article-title">{title}</div>
+						<div className="homepage-article-description">{description}</div>
 					</div>
-					<div className="homepage-article-title">{title}</div>
-					<div className="homepage-article-description">
-						{description}
-					</div>
-					<div className="homepage-article-link">
+					<div className="homepage-article-link" style={{ float: "right" }}>
 						<Link to={link}>
-							Read article{" "}
-							<FontAwesomeIcon
-								style={{ fontSize: "10px" }}
-								icon={faChevronRight}
-							/>
+							<FontAwesomeIcon style={{ fontSize: "20px" }} icon={faChevronRight}/>
 						</Link>
 					</div>
+					
 				</div>
+				
 			</div>
+			</Link>
 		</React.Fragment>
 	);
 };
