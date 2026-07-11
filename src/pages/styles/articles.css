@@ -43,10 +43,10 @@
 
 @media (max-width: 1024px) {
 	.articles-title {
-		width: 100% !important;
+		width: 100%;
 	}
 
 	.articles-subtitle {
-		width: 100% !important;
+		width: 100%;
 	}
 }

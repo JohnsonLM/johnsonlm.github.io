@@ -1,31 +1,21 @@
-@import "/src/data/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Roboto:wght@500&display=swap");
-@import "./data/styles.css";
 
-/* light theme colors */
-.light-theme {
-	/* ------- colors ------- */
+:root.light-theme {
 	--primary-color: #1c1c1e;
 	--secondary-color: #65656d;
 	--tertiary-color: #acacb4;
 	--quaternary-color: #e4e4e7;
 	--link-color: #14b8a6;
-	/* --border-color: #e9e6e6; */
 	--border-color: #f4f4f5;
 	--background: #fff;
 	--hover-background: #f8f8f8;
 	--secondary-background: #fbfdfd;
-	/* ---------------------- */
-
-	/* ------- fonts ------- */
+	--card-color: #fff;
 	--primary-font: "Heebo", sans-serif;
 	--secondary-font: "Roboto", sans-serif;
-	/* --------------------- */
 }
 
-/* dark theme colors */
-.dark-theme {
-	/* ------- colors ------- */
+:root.dark-theme {
 	--primary-color: #d5d5df;
 	--secondary-color: #a1a1a1;
 	--tertiary-color: #9c9c9c;
@@ -36,6 +26,16 @@
 	--border-color: #131313;
 	--background: #131313;
 	--secondary-background: #131313;
+	--primary-font: "Heebo", sans-serif;
+	--secondary-font: "Roboto", sans-serif;
+}
+
+:root {
+	color-scheme: light;
+}
+
+:root.dark-theme {
+	color-scheme: dark;
 }
 
 body {
@@ -47,8 +47,7 @@ body {
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 
@@ -106,9 +105,11 @@ code {
 	font-size: 45px;
 	font-weight: 700;
 	width: 70%;
+	letter-spacing: 0;
 }
 
 .image {
+	display: block;
 	width: 100%;
 }
 
@@ -132,7 +133,7 @@ code {
 }
 
 .page-footer {
-	position: block;
+	position: relative;
 }
 
 .page-footer::before {
@@ -157,13 +158,10 @@ code {
 }
 
 @media (max-width: 1024px) {
-	.page-content:before,
-	.page-content:after {
-		width: calc((100% - 950px) / 2);
-	}
-
 	.content-wrapper {
-		max-width: 980px;
+		max-width: 90%;
+		padding-left: 5%;
+		padding-right: 5%;
 	}
 }
 
@@ -181,6 +179,7 @@ code {
 
 	.title {
 		width: 100%;
+		font-size: 36px;
 	}
 
 	.subtitle {

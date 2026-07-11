@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+import INFO from "../../data/user";
+import "./styles/socials.css";
+
+const socials = [
+	["simple-icons:x", INFO.socials.twitter, "Follow on Twitter"],
+	["simple-icons:github", INFO.socials.github, "Follow on GitHub"],
+	["simple-icons:linkedin", INFO.socials.linkedin, "Follow on LinkedIn"],
+	["simple-icons:instagram", INFO.socials.instagram, "Follow on Instagram"],
+];
+---
+
+<div class="socials">
+	{
+		socials.map(([name, href, label]) => (
+			<div class="social">
+				<a href={href} target="_blank" rel="noreferrer">
+					<Icon class="social-icon" name={name} aria-hidden="true" />
+					<div class="social-text">{label}</div>
+				</a>
+			</div>
+		))
+	}
+	<div class="email">
+		<div class="email-wrapper">
+			<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer">
+				<Icon class="social-icon" name="lucide:mail" aria-hidden="true" />
+				<div class="social-text">{INFO.main.email}</div>
+			</a>
+		</div>
+	</div>
+</div>

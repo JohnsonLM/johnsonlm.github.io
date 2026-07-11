@@ -1,0 +1,13 @@
+{
+	"order": 3,
+	"date": "7 May 2023",
+	"title": "Shopping Cart",
+	"background": "/shoppingcart/image1.jpg",
+	"link": "#",
+	"subtitle": "Crafted in 2019 | Personal Project",
+	"type": "3D",
+	"description": "",
+	"images": ["/shoppingcart/image1.jpg", "/shoppingcart/image2.jpg", "/shoppingcart/image3.jpg"],
+	"videos": [],
+	"keywords": ["3d art", "3d model", "topology", "hard surface modeling", "3d artist"]
+}

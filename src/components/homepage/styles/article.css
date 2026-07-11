@@ -1,59 +1,87 @@
-@import "../../../data/styles.css";
-
-.homepage-article {
-	width: 90%;
-	mix-blend-mode: normal;
-	border-radius: 20px;
-	opacity: 0.8;
-	min-height: 125px;
+.homepage-article-card {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	min-height: 118px;
+	padding: 22px 0;
+	border-top: 1px solid var(--border-color);
+	transition: padding 0.2s ease, border-color 0.2s ease;
 }
 
-.homepage-article:hover {
-	background: var(--hover-background);
-	opacity: 1;
-	transition: background-color 0.3s ease-in-out;
+.homepage-articles-list > a:last-child .homepage-article-card {
+	border-bottom: 1px solid var(--border-color);
 }
 
-.homepage-article-content {
-	padding: 30px;
+.homepage-article-card:hover {
+	padding-right: 10px;
+	padding-left: 10px;
+	border-color: var(--tertiary-color);
+}
+
+.homepage-article-index {
+	width: 34px;
+	flex: 0 0 auto;
+	color: var(--link-color);
+	font-family: var(--secondary-font);
+	font-size: 13px;
+}
+
+.homepage-article-copy {
+	min-width: 0;
+	flex: 1;
 }
 
 .homepage-article-date {
-	opacity: 1;
-	color: var(--tertiary-color);
+	color: var(--secondary-color);
 	font-size: 12px;
-	margin-bottom: 1em;
+	letter-spacing: 0.03em;
 }
 
 .homepage-article-title {
-	opacity: 1;
+	margin: 7px 0 8px;
 	color: var(--primary-color);
-	font-size: 16px;
-	margin-bottom: 1em;
-	font-weight: 700;
+	font-family: var(--secondary-font);
+	font-size: 22px;
+	line-height: 1.2;
 }
 
 .homepage-article-description {
-	opacity: 1;
 	color: var(--secondary-color);
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 1.5;
 }
 
 .homepage-article-link {
-	opacity: 1;
-	padding-top: 20px;
-	font-size: 15px;
-	font-weight: 700;
+	display: grid;
+	place-items: center;
+	color: var(--link-color);
+	font-size: 22px;
+	flex: 0 0 auto;
 }
 
-.homepage-article-link a {
-	color: var(--link-color);
-	text-decoration: none;
+.homepage-article-link svg {
+	width: 18px;
+	height: 18px;
 }
 
 @media (max-width: 600px) {
-	.homepage-article {
-		width: 100%;
+	.homepage-article-card {
+		align-items: flex-start;
+		gap: 14px;
+		min-height: 0;
+		padding: 20px 0;
+	}
+
+	.homepage-article-index {
+		width: 25px;
+		font-size: 11px;
+	}
+
+	.homepage-article-title {
+		font-size: 19px;
+	}
+
+	.homepage-article-description {
+		font-size: 13px;
 	}
 }

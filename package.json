@@ -2,7 +2,8 @@
 	"name": "johnsonlm.github.io",
 	"version": "1.1.0",
 	"description": "Personal website for Johnson Martin",
-  	"homepage": "https://johnsonlm.github.io/",
+	"homepage": "https://johnsonlm.com/",
+	"packageManager": "pnpm@11.3.0",
 	"author": {
 		"name": "Johnson Martin",
 		"email": "contact@johnsonlm.com",
@@ -11,54 +12,26 @@
 	"license": "",
 	"private": true,
 	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^6.4.0",
-		"@fortawesome/free-brands-svg-icons": "^6.4.0",
-		"@fortawesome/free-regular-svg-icons": "^6.4.0",
-		"@fortawesome/free-solid-svg-icons": "^6.4.0",
-		"@fortawesome/react-fontawesome": "^0.2.0",
-		"@testing-library/jest-dom": "^5.16.5",
-		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "^13.5.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-ga4": "^2.1.0",
-		"react-helmet": "^6.1.0",
-		"react-router-dom": "^6.11.1",
-		"react-scripts": "5.0.1",
-		"styled-components": "^5.3.10",
-		"web-vitals": "^2.1.4"
+		"@astrojs/sitemap": "^3.7.3",
+		"@iconify-json/lucide": "^1.2.116",
+		"@iconify-json/simple-icons": "^1.2.89",
+		"astro": "^7.0.0",
+		"astro-icon": "^1.1.5",
+		"zod": "^4.4.3"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-    	"predeploy" : "npm run build",
-    	"deploy" : "gh-pages -d build",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"check": "astro check",
+		"preview": "astro preview"
 	},
 	"prettier": {
 		"useTabs": true,
 		"tabWidth": 4
 	},
 	"devDependencies": {
-		"gh-pages": "^5.0.0"
+		"@astrojs/check": "^0.9.9",
+		"typescript": "^6.0.3"
 	}
 }

@@ -1,3 +1,17 @@
 # Johnsonlm.com
 
-<a href="https://tharindu.dev/portfolio/reactfolio/" target="_blank">Build on Reactfolio</a>
+Personal website for Johnson Martin, migrated from Create React App to Astro.
+
+## Development
+
+```sh
+pnpm install
+pnpm dev
+```
+
+## Build
+
+```sh
+pnpm build
+pnpm preview
+```

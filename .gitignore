@@ -1,5 +1,8 @@
 .DS_STORE
 node_modules
+dist
+.astro
+.pnpm-store
 scripts/flow/*/.flowconfig
 .flowconfig
 *~
@@ -36,3 +39,5 @@ packages/react-devtools-inline/dist
 packages/react-devtools-shell/dist
 packages/react-devtools-timeline/dist
 node_modules
+dist
+.pnpm-store

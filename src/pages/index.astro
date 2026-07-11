@@ -1,0 +1,192 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import NavBar from "../components/common/NavBar.astro";
+import Footer from "../components/common/Footer.astro";
+import AllProjects from "../components/projects/AllProjects.astro";
+import HomeArticle from "../components/homepage/HomeArticle.astro";
+import PointCloudBackground from "../components/homepage/PointCloudBackground.astro";
+import INFO from "../data/user";
+import pages from "../data/pages";
+import { getCollection } from "astro:content";
+import "./styles/homepage.css";
+
+const page = pages.home;
+const articles = (await getCollection("articles")).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+const portfolio = (await getCollection("portfolio")).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+const featuredWork = portfolio
+	.filter((item) => item.data.background)
+	.slice(-4)
+	.reverse();
+---
+
+<BaseLayout {...page}>
+	<div class="page-content">
+		<NavBar active="home" />
+		<div class="content-wrapper">
+			<div class="homepage-container">
+				<section class="homepage-immersive-hero">
+					<PointCloudBackground />
+					<div class="homepage-hero-content">
+						<div id="homepage-profile" class="homepage-profile">
+							<img
+								id="homepage-profile-image"
+								src={INFO.main.logo}
+								alt={`${INFO.main.name} profile`}
+							/>
+							<span id="homepage-profile-name"
+								>{INFO.main.name}</span
+							>
+						</div>
+						<div class="homepage-hero-copy">
+							<h1>{INFO.homepage.title}</h1>
+							<p>{INFO.homepage.description}</p>
+							<div
+								class="homepage-hero-socials"
+								aria-label="Social links"
+							>
+								<a
+									href={INFO.socials.mastodon}
+									target="_blank"
+									rel="noreferrer"
+									aria-label="Mastodon"
+									><Icon
+										name="simple-icons:mastodon"
+										aria-hidden="true"
+									/></a
+								>
+								<a
+									href={INFO.socials.twitter}
+									target="_blank"
+									rel="noreferrer"
+									aria-label="Twitter"
+									><Icon
+										name="simple-icons:twitter"
+										aria-hidden="true"
+									/></a
+								>
+								<a
+									href={INFO.socials.github}
+									target="_blank"
+									rel="noreferrer"
+									aria-label="GitHub"
+									><Icon
+										name="simple-icons:github"
+										aria-hidden="true"
+									/></a
+								>
+								<a
+									href={INFO.socials.instagram}
+									target="_blank"
+									rel="noreferrer"
+									aria-label="Instagram"
+									><Icon
+										name="simple-icons:instagram"
+										aria-hidden="true"
+									/></a
+								>
+								<a
+									href={`mailto:${INFO.main.email}`}
+									aria-label="Email"
+									><Icon
+										name="lucide:mail"
+										aria-hidden="true"
+									/></a
+								>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="homepage-portfolio" aria-labelledby="homepage-portfolio-title">
+					<header class="homepage-portfolio-header">
+						<div>
+							<p class="homepage-eyebrow homepage-eyebrow-dark">Selected work</p>
+							<h2 id="homepage-portfolio-title">Portfolio</h2>
+						</div>
+						<a href="/portfolio">View all portfolio <span>↗</span></a>
+					</header>
+					<div class="homepage-portfolio-grid">
+						{featuredWork.map((item) => (
+							<a class="homepage-portfolio-card" href={`/portfolio/${item.id}`}>
+								<div
+									class="homepage-portfolio-image"
+									style={`background-image: url(${item.data.background})`}
+								/>
+								<div class="homepage-portfolio-card-copy">
+									<span>Portfolio · {item.data.type}</span>
+									<strong>{item.data.title}</strong>
+									<em>{item.data.subtitle}</em>
+								</div>
+							</a>
+						))}
+					</div>
+				</section>
+
+				<section class="homepage-projects">
+					<div class="homepage-projects-content">
+						<header class="homepage-projects-heading">
+							<h2>Projects</h2>
+						</header>
+						<AllProjects />
+					</div>
+				</section>
+
+				<section
+					class="homepage-articles-section"
+					aria-labelledby="homepage-articles-title"
+				>
+					<header class="homepage-articles-header">
+						<div>
+							<p class="homepage-eyebrow homepage-eyebrow-dark">
+								Notes &amp; essays
+							</p>
+							<h2 id="homepage-articles-title">Articles</h2>
+						</div>
+						<a href="/articles">View all articles <span>↗</span></a>
+					</header>
+					<div class="homepage-articles-list">
+						{
+							articles.map((article, index) => (
+								<HomeArticle
+									date={article.data.date}
+									title={article.data.title}
+									description={article.data.description}
+									href={`/article/${article.id}`}
+									index={index + 1}
+								/>
+							))
+						}
+					</div>
+				</section>
+
+				<div class="page-footer">
+					<Footer />
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	const profile = document.getElementById("homepage-profile");
+	const profileImage = document.getElementById(
+		"homepage-profile-image",
+	) as HTMLImageElement | null;
+	const profileName = document.getElementById("homepage-profile-name");
+
+	const updateProfile = () => {
+		if (!profile || !profileImage || !profileName) return;
+		const compact = window.scrollY > 80;
+		profile.classList.toggle("is-compact", compact);
+		profileImage.width = compact ? 42 : 78;
+		profileName.hidden = compact;
+	};
+
+	window.addEventListener("scroll", updateProfile, { passive: true });
+	updateProfile();
+</script>

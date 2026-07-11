@@ -1,4 +1,3 @@
-@import "../../../data/styles.css";
 .social,
 .email-wrapper {
 	display: flex;
@@ -7,23 +6,35 @@
 
 .social a,
 .email-wrapper a {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
 	text-decoration: none;
 }
 
 .social-icon {
-	font-size: 15px;
+	width: 26px;
+	height: 26px;
+	padding: 5px;
+	border: 1px solid var(--border-color);
+	border-radius: 50%;
 	color: var(--secondary-color);
+	box-sizing: border-box;
 }
 
 .social-text {
 	color: var(--secondary-color);
-	padding-left: 30px;
-	margin-top: -20px;
 	font-weight: 600;
 	font-size: 14px;
 }
 
-
+.social a:hover .social-icon,
+.email-wrapper a:hover .social-icon,
+.social a:hover .social-text,
+.email-wrapper a:hover .social-text {
+	color: var(--link-color);
+	border-color: var(--link-color);
+}
 
 .email-wrapper .social-text {
 	text-decoration: underline;

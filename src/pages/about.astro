@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/common/NavBar.astro";
+import Footer from "../components/common/Footer.astro";
+import Logo from "../components/common/Logo.astro";
+import Socials from "../components/about/Socials.astro";
+import INFO from "../data/user";
+import pages from "../data/pages";
+import "./styles/about.css";
+---
+
+<BaseLayout {...pages.about} image="/about.webp">
+	<div class="page-content">
+		<NavBar active="about" />
+		<div class="content-wrapper">
+			<div class="about-logo-container">
+				<div class="about-logo"><Logo width={46} /></div>
+			</div>
+			<div class="about-container">
+				<div class="about-main">
+					<div class="about-right-side">
+						<div class="title about-title">{INFO.about.title}</div>
+						<div class="subtitle about-subtitle">{INFO.about.description}</div>
+					</div>
+					<div class="about-left-side">
+						<div class="about-image-container">
+							<div class="about-image-wrapper">
+								<img src="/about.webp" alt="about" class="about-image" />
+							</div>
+						</div>
+						<div class="about-socials"><Socials /></div>
+					</div>
+				</div>
+				<div class="about-socials-mobile"><Socials /></div>
+			</div>
+			<div class="page-footer"><Footer /></div>
+		</div>
+	</div>
+</BaseLayout>

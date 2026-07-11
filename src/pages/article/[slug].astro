@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/common/NavBar.astro";
+import Footer from "../../components/common/Footer.astro";
+import Logo from "../../components/common/Logo.astro";
+import { getCollection, render } from "astro:content";
+import "../styles/readArticle.css";
+
+export async function getStaticPaths() {
+	const articles = await getCollection("articles");
+
+	return articles.map((article) => ({
+		params: { slug: article.id },
+		props: { article },
+	}));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const articlePath = `/article/${article.id}`;
+const articleJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Article",
+	headline: article.data.title,
+	description: article.data.description,
+	url: new URL(articlePath, Astro.site).toString(),
+	author: {
+		"@type": "Person",
+		name: "Johnson Martin",
+		url: new URL("/", Astro.site).toString(),
+	},
+};
+---
+
+<BaseLayout
+	title={article.data.title}
+	description={article.data.description}
+	keywords={article.data.keywords}
+	path={articlePath}
+	type="article"
+	jsonLd={articleJsonLd}
+>
+	<div class="page-content">
+		<NavBar />
+		<div class="content-wrapper">
+			<div class="read-article-logo-container">
+				<div class="read-article-logo"><Logo width={46} /></div>
+			</div>
+			<div class="read-article-container">
+				<div class="read-article-back">
+					<a href="/articles">
+						<img src="/back-button.png" alt="back" class="read-article-back-button" />
+					</a>
+				</div>
+				<div class="read-article-wrapper">
+					<div class="read-article-date-container">
+						<div class="read-article-date">{article.data.date}</div>
+					</div>
+					<div class="title read-article-title">{article.data.title}</div>
+					<div class="read-article-body">
+						<Content />
+					</div>
+				</div>
+			</div>
+			<div class="page-footer"><Footer /></div>
+		</div>
+	</div>
+</BaseLayout>

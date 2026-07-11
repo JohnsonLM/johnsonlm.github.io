@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/common/NavBar.astro";
+import Footer from "../components/common/Footer.astro";
+import Logo from "../components/common/Logo.astro";
+import Socials from "../components/about/Socials.astro";
+import INFO from "../data/user";
+import pages from "../data/pages";
+import "./styles/contact.css";
+---
+
+<BaseLayout {...pages.contact}>
+	<div class="page-content">
+		<NavBar active="contact" />
+		<div class="content-wrapper">
+			<div class="contact-logo-container">
+				<div class="contact-logo"><Logo width={46} /></div>
+			</div>
+			<div class="contact-container">
+				<div class="title contact-title">Contact Me</div>
+				<div class="subtitle contact-subtitle">
+					Need to get in contact me, or just want to chat? Feel free to email me directly at
+					<a href={`mailto:${INFO.main.email}`}>{INFO.main.email}</a>.
+					I will usually respond quickly unless I am out of the office.
+				</div>
+			</div>
+			<div class="socials-container">
+				<div class="contact-socials"><Socials /></div>
+			</div>
+			<div class="page-footer"><Footer /></div>
+		</div>
+	</div>
+</BaseLayout>

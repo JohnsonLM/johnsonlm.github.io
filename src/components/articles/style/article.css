@@ -1,7 +1,6 @@
-@import "../../../data/styles.css";
-
 .article {
 	display: flex;
+	gap: 28px;
 }
 
 .article a {
@@ -9,21 +8,22 @@
 }
 
 .article-left-side {
-	min-width: 20%;
-	max-width: 20%;
+	flex: 0 0 150px;
 }
 
 .article-right-side {
 	flex-basis: 80%;
-	min-width: 700px;
+	min-width: 0;
 	mix-blend-mode: normal;
-	border-radius: 20px;
-	opacity: 0.8;
+	border-radius: 8px;
+	opacity: 1;
 	padding: 30px;
+	border: 1px solid transparent;
 }
 
 .article-right-side:hover {
 	background: var(--hover-background);
+	border-color: var(--border-color);
 	opacity: 1;
 	transition: background-color 0.3s ease-in-out;
 }
@@ -49,21 +49,46 @@
 }
 
 .article-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
 	padding-top: 10px;
 	font-size: 14px;
 	color: var(--link-color);
 	font-weight: 700;
 }
 
+.article-link-icon {
+	width: 14px;
+	height: 14px;
+}
+
 @media (max-width: 1024px) {
+	.article {
+		gap: 18px;
+	}
+
 	.article-left-side {
-		min-width: 10%;
-		max-width: 10%;
+		flex: 0 0 95px;
 	}
 
 	.article-right-side {
 		flex-basis: 90%;
-		min-width: 85%;
-		max-width: 85%;
+		min-width: 0;
+		max-width: none;
+	}
+}
+
+@media (max-width: 650px) {
+	.article {
+		display: block;
+	}
+
+	.article-date {
+		padding: 18px 0 6px;
+	}
+
+	.article-right-side {
+		padding: 22px;
 	}
 }

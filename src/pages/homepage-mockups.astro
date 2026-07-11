@@ -1,0 +1,297 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import INFO from "../data/user";
+import { getCollection } from "astro:content";
+import "./styles/homepage-mockups.css";
+
+const portfolio = (await getCollection("portfolio")).sort((a, b) => a.data.order - b.data.order);
+const articles = (await getCollection("articles")).sort((a, b) => a.data.order - b.data.order);
+const featuredWork = portfolio.filter((item) => item.data.background).slice(-4).reverse();
+const firstArticle = articles[0];
+const directions = [
+	{
+		label: "Direction 01",
+		name: "Studio portfolio",
+		note: "Best for making the 3D work the immediate reason to stay.",
+	},
+	{
+		label: "Direction 01B",
+		name: "Studio mosaic",
+		note: "Best for showing range quickly while keeping Projects visible.",
+	},
+	{
+		label: "Direction 01C",
+		name: "Studio project-led",
+		note: "Best for balancing active projects with the portfolio archive.",
+	},
+	{
+		label: "Direction 03",
+		name: "Immersive field note",
+		note: "Best for a memorable, image-led introduction with editorial tone.",
+	},
+	{
+		label: "Direction 03B",
+		name: "Immersive editorial",
+		note: "Best for a centered, cinematic first impression.",
+	},
+	{
+		label: "Direction 03C",
+		name: "Immersive split",
+		note: "Best for pairing a strong image with a clear work-together path.",
+	},
+];
+const socialLinks = [
+	["Mastodon", INFO.socials.mastodon],
+	["GitHub", INFO.socials.github],
+	["Instagram", INFO.socials.instagram],
+	["Email", `mailto:${INFO.main.email}`],
+];
+---
+
+<BaseLayout title="Homepage Mockups" description="Alternate homepage UI directions for Johnson Martin." noindex>
+	<main class="mockups-shell">
+		<header class="mockups-header">
+			<a class="mockups-back" href="/">
+				<Icon name="lucide:arrow-left" aria-hidden="true" />
+				Current homepage
+			</a>
+			<div class="mockups-header-copy">
+				<p class="mockups-kicker">Homepage UI Review</p>
+				<h1>Six alternate directions for a portfolio-and-projects homepage.</h1>
+				<p>
+					The current page has strong material, but the hierarchy is quiet: the title, model embed,
+					social links, projects, and articles arrive with similar emphasis. These mockups test clearer
+					entry points for portfolio review, active projects, professional context, and visual impact.
+				</p>
+			</div>
+			<div class="direction-index" aria-label="Mockup directions">
+				{directions.map((direction) => (
+					<div class="direction-index-item">
+						<span>{direction.label}</span>
+						<strong>{direction.name}</strong>
+						<p>{direction.note}</p>
+					</div>
+				))}
+			</div>
+		</header>
+
+		<section class="mockup mockup-studio" aria-labelledby="studio-title">
+			<div class="mockup-label">
+				<span>Direction 01</span>
+				<strong>Studio portfolio</strong>
+				<em>Lead with selected work</em>
+			</div>
+			<div class="mockup-nav">
+				<a href="/">Johnson Martin</a>
+				<div>
+					<a href="/portfolio">Portfolio</a>
+					<a href="/projects">Projects</a>
+					<a href="/contact">Contact</a>
+				</div>
+			</div>
+			<div class="studio-hero">
+				<div class="studio-copy">
+					<p class="eyebrow">3D Art / Development / Scientific Visualization</p>
+					<h2 id="studio-title">3D artist and developer building precise visual systems.</h2>
+					<p>{INFO.homepage.description}</p>
+					<div class="button-row">
+						<a class="primary-action" href="/portfolio">
+							<Icon name="lucide:images" aria-hidden="true" />
+							View Portfolio
+						</a>
+						<a class="secondary-action" href="/projects">Projects</a>
+					</div>
+				</div>
+				<div class="studio-feature" style={`background-image: url(${featuredWork[0].data.background})`}>
+					<div class="studio-feature-caption">
+						<span>{featuredWork[0].data.type}</span>
+						<strong>{featuredWork[0].data.title}</strong>
+					</div>
+				</div>
+			</div>
+			<div class="studio-grid">
+				{
+					featuredWork.slice(1).map((item) => (
+						<a href={`/portfolio/${item.id}`} class="studio-tile">
+							<img src={item.data.background} alt="" />
+							<span>{item.data.title}</span>
+						</a>
+					))
+				}
+				<a href="/projects" class="studio-project-card">
+					<span>Projects &amp; collaborations</span>
+					<strong>{INFO.projects[0].title}</strong>
+					<p>{INFO.projects[0].description}</p>
+					<em>Explore all projects →</em>
+				</a>
+			</div>
+		</section>
+
+		<section class="mockup mockup-studio studio-mosaic" aria-labelledby="studio-mosaic-title">
+			<div class="mockup-label">
+				<span>Direction 01B</span>
+				<strong>Studio mosaic</strong>
+				<em>Let the work speak first</em>
+			</div>
+			<div class="mosaic-layout">
+				<div class="mosaic-copy">
+					<p class="eyebrow">3D art / development / science</p>
+					<h2 id="studio-mosaic-title">A visual archive of making, research, and useful tools.</h2>
+					<p>{INFO.homepage.description}</p>
+					<div class="button-row">
+						<a class="primary-action" href="/portfolio">Browse Portfolio</a>
+						<a class="secondary-action" href="/projects">See Projects</a>
+					</div>
+				</div>
+				<div class="mosaic-images">
+					<a href="/portfolio/12-manta-ray"><img src="/manta/imagecard.webp" alt="Manta Ray portfolio piece" /></a>
+					<a href="/portfolio/4-realtime-forest-environment"><img src="/forest/image1.webp" alt="Realtime forest portfolio piece" /></a>
+					<a href="/portfolio/10-jumping-spider"><img src="/spider/image1.jpg" alt="Jumping spider portfolio piece" /></a>
+					<a class="mosaic-project" href="/projects">
+						<span>Project spotlight</span>
+						<strong>{INFO.projects[1].title}</strong>
+						<em>Teaching better 3D modeling →</em>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="mockup mockup-studio studio-project-led" aria-labelledby="studio-project-title">
+			<div class="mockup-label">
+				<span>Direction 01C</span>
+				<strong>Studio project-led</strong>
+				<em>Balance practice and portfolio</em>
+			</div>
+			<div class="project-led-layout">
+				<div class="project-led-image" style={`background-image: url(${featuredWork[1].data.background})`}>
+					<span>Selected portfolio</span>
+					<strong>{featuredWork[1].data.title}</strong>
+				</div>
+				<div class="project-led-copy">
+					<p class="eyebrow">Johnson Martin</p>
+					<h2 id="studio-project-title">I build visual work and the projects around it.</h2>
+					<p>{INFO.homepage.description}</p>
+					<div class="project-led-list">
+						<a href="/projects"><span>Projects</span><strong>{INFO.projects[0].title}</strong><em>Explore the work →</em></a>
+						<a href="/portfolio"><span>Portfolio</span><strong>12 selected pieces</strong><em>View the archive →</em></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mockup mockup-desk" aria-labelledby="desk-title">
+			<div class="mockup-label">
+				<span>Direction 02</span>
+				<strong>Creative desk</strong>
+				<em>Organize the full practice</em>
+			</div>
+			<div class="desk-layout">
+				<aside class="desk-sidebar">
+					<img src="/avatar.jpeg" alt="" />
+					<strong>{INFO.main.name}</strong>
+					<span>3D Artist / Developer</span>
+					<nav>
+						<a href="/portfolio"><Icon name="lucide:cuboid" aria-hidden="true" />Portfolio</a>
+						<a href="/projects"><Icon name="lucide:folder-kanban" aria-hidden="true" />Projects</a>
+						<a href="/articles"><Icon name="lucide:file-text" aria-hidden="true" />Articles</a>
+						<a href="/contact"><Icon name="lucide:mail" aria-hidden="true" />Contact</a>
+					</nav>
+				</aside>
+				<div class="desk-main">
+					<div class="desk-intro">
+						<p class="eyebrow">Available for 3D, web, and visualization work</p>
+						<h2 id="desk-title">Creative technical work with a portfolio-first path.</h2>
+						<p>{INFO.homepage.description}</p>
+					</div>
+					<div class="desk-panels">
+						<a class="desk-panel desk-panel-wide" href="/portfolio">
+							<img src="/manta/imagecard.webp" alt="" />
+							<div>
+								<span>Featured Portfolio</span>
+								<strong>Manta Ray</strong>
+							</div>
+						</a>
+						{
+							INFO.projects.slice(0, 4).map((project) => (
+								<a class="desk-panel" href={project.link}>
+									<img src={project.logo} alt="" />
+									<div>
+										<span>{project.linkText}</span>
+										<strong>{project.title}</strong>
+									</div>
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mockup mockup-hero" aria-labelledby="hero-title">
+			<div class="mockup-label mockup-label-light">
+				<span>Direction 03</span>
+				<strong>Immersive field note</strong>
+				<em>Make the visual identity unforgettable</em>
+			</div>
+			<div class="hero-background" style="background-image: url('/forest/image1.webp')"></div>
+			<div class="hero-overlay">
+				<nav class="hero-nav">
+					<a href="/">{INFO.main.name}</a>
+					<div>
+						{socialLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+					</div>
+				</nav>
+				<div class="hero-copy">
+					<p class="eyebrow">Computer graphics, ecology, and tools</p>
+					<h2 id="hero-title">Building objects, environments, and software for visual understanding.</h2>
+					<div class="button-row">
+						<a class="primary-action" href="/portfolio">
+							<Icon name="lucide:arrow-up-right" aria-hidden="true" />
+							Explore Work
+						</a>
+						<a class="secondary-action hero-secondary" href="/articles">Read Articles</a>
+					</div>
+				</div>
+			</div>
+			<div class="hero-lower">
+				<a href={`/article/${firstArticle.id}`}>
+					<span>Latest Article</span>
+					<strong>{firstArticle.data.title}</strong>
+				</a>
+				<a href="/projects">
+					<span>Projects</span>
+					<strong>{INFO.projects[0].title}</strong>
+				</a>
+				<a href="/portfolio">
+					<span>Portfolio</span>
+					<strong>{featuredWork[2].data.title}</strong>
+				</a>
+			</div>
+		</section>
+
+		<section class="mockup mockup-hero immersive-editorial" aria-labelledby="editorial-title">
+			<div class="hero-background" style="background-image: url('/manta/image1.jpg')"></div>
+			<div class="mockup-label mockup-label-light"><span>Direction 03B</span><strong>Immersive editorial</strong><em>Center the story</em></div>
+			<div class="hero-overlay">
+				<nav class="hero-nav"><a href="/">Johnson Martin</a><div><a href="/projects">Projects</a><a href="/portfolio">Portfolio</a><a href="/articles">Notes</a></div></nav>
+				<div class="hero-copy hero-copy-centered">
+					<p class="eyebrow">Field notes from a digital studio</p>
+					<h2 id="editorial-title">Objects, organisms, and software made easier to understand.</h2>
+					<div class="button-row"><a class="primary-action" href="/portfolio">Enter the portfolio</a><a class="secondary-action hero-secondary" href="/projects">View projects</a></div>
+				</div>
+			</div>
+			<div class="hero-lower"><a href="/portfolio"><span>Portfolio</span><strong>Manta Ray</strong></a><a href="/projects"><span>Project</span><strong>{INFO.projects[1].title}</strong></a><a href="/articles"><span>Latest note</span><strong>{firstArticle.data.title}</strong></a></div>
+		</section>
+
+		<section class="mockup mockup-hero immersive-split" aria-labelledby="split-title">
+			<div class="hero-background" style="background-image: url('/spider/image1.jpg')"></div>
+			<div class="mockup-label mockup-label-light"><span>Direction 03C</span><strong>Immersive split</strong><em>Pair image with action</em></div>
+			<div class="hero-overlay">
+				<nav class="hero-nav"><a href="/">JM / Studio</a><div><a href="/portfolio">Portfolio</a><a href="/projects">Projects</a></div></nav>
+				<div class="hero-copy"><p class="eyebrow">3D artist &amp; developer</p><h2 id="split-title">A closer look at the systems behind the image.</h2><p>Explore the finished work, then follow the tools and collaborations that made it possible.</p><div class="button-row"><a class="primary-action" href="/portfolio">Explore work</a><a class="secondary-action hero-secondary" href="/projects">Explore projects</a></div></div>
+			</div>
+			<div class="hero-lower"><a href="/portfolio"><span>Featured work</span><strong>Jumping Spider</strong></a><a href="/projects"><span>Building now</span><strong>{INFO.projects[0].title}</strong></a><a href="/contact"><span>Work together</span><strong>Start a conversation</strong></a></div>
+		</section>
+	</main>
+</BaseLayout>

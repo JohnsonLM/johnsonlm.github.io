@@ -30,11 +30,11 @@
 }
 
 .about-title {
-	width: 100% !important;
+	width: 100%;
 }
 
 .about-subtitle {
-	width: 80% !important;
+	width: 80%;
 }
 
 .about-left-side {
@@ -54,26 +54,13 @@
 
 .about-image-wrapper {
 	overflow: hidden;
-	border-radius: 10%;
-	animation-name: cardrotationout;
-  	animation-duration: 1s;
-	animation-fill-mode: forwards;
+	border-radius: 8px;
+	transform: rotate(2deg);
+	transition: transform 0.25s ease;
 }
 
 .about-image-wrapper:hover {
-	animation-name: cardrotationin;
-  	animation-duration: 1s;
-	animation-fill-mode: forwards;
-} 
-
-@keyframes cardrotationin {
-	0% {transform: rotate(5deg);}
-	100% {transform: rotate(0deg);}
-  }
-
-@keyframes cardrotationout {
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(5deg);}
+	transform: rotate(0deg);
 }
 
 .about-socials {
@@ -95,7 +82,7 @@
 	}
 
 	.about-subtitle {
-		padding-top: 20px !important;
+		padding-top: 20px;
 	}
 
 	.about-left-side {

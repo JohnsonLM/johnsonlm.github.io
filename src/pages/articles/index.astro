@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/common/NavBar.astro";
+import Footer from "../../components/common/Footer.astro";
+import Logo from "../../components/common/Logo.astro";
+import ArticleListItem from "../../components/articles/ArticleListItem.astro";
+import INFO from "../../data/user";
+import pages from "../../data/pages";
+import { getCollection } from "astro:content";
+import "../styles/articles.css";
+
+const articles = (await getCollection("articles")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout {...pages.articles}>
+	<div class="page-content">
+		<NavBar active="articles" />
+		<div class="content-wrapper">
+			<div class="articles-logo-container">
+				<div class="articles-logo"><Logo width={46} /></div>
+			</div>
+			<div class="articles-main-container">
+				<div class="title articles-title">{INFO.articles.title}</div>
+				<div class="subtitle articles-subtitle">{INFO.articles.description}</div>
+				<div class="articles-container">
+					<div class="articles-wrapper">
+						{
+							articles.map((article) => (
+								<div class="articles-article">
+									<ArticleListItem
+										date={article.data.date}
+										title={article.data.title}
+										description={article.data.description}
+										href={`/article/${article.id}`}
+									/>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</div>
+			<div class="page-footer"><Footer /></div>
+		</div>
+	</div>
+</BaseLayout>

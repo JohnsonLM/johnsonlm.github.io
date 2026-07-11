@@ -1,0 +1,17 @@
+---
+import INFO from "../../data/user";
+import "./styles/logo.css";
+
+const { width = 46, link = true } = Astro.props;
+const logoSrc = INFO.main.logo.replace("..", "");
+---
+
+{
+	link ? (
+		<a href="/">
+			<img src={logoSrc} alt="logo" class="logo" width={width} />
+		</a>
+	) : (
+		<img src={logoSrc} alt="logo" class="logo" width={width} />
+	)
+}

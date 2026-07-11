@@ -1,5 +1,3 @@
-@import "../../data/styles.css";
-
 .read-article-logo-container {
 	display: flex;
 	justify-content: left;
@@ -43,7 +41,7 @@
 .read-article-date-container {
 	border-left: 2px solid var(--quaternary-color);
 	color: var(--tertiary-color);
-	font-size: 16 px;
+	font-size: 16px;
 	align-items: center;
 	height: 22px;
 }
@@ -56,7 +54,7 @@
 .read-article-title {
 	padding-top: 50px;
 	padding-bottom: 50px;
-	width: 100% !important;
+	width: 100%;
 }
 
 .read-article-body {
@@ -64,5 +62,27 @@
 	font-size: 16px;
 	line-height: 30px;
 	font-family: system-ui;
-	color: #52525b;
+	color: var(--secondary-color);
+}
+
+.read-article-title .portfolio-type-icon {
+	color: var(--primary-color);
+	margin-right: 12px;
+	vertical-align: 3px;
+}
+
+@media (max-width: 700px) {
+	.read-article-container {
+		display: block;
+		padding-top: 90px;
+	}
+
+	.read-article-back {
+		padding-top: 0;
+		padding-right: 0;
+	}
+
+	.read-article-wrapper {
+		width: 100%;
+	}
 }

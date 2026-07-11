@@ -1,11 +1,10 @@
-@import "../../../data/styles.css";
-
 .project {
 	mix-blend-mode: normal;
-	border-radius: 20px;
-	opacity: 0.8;
+	border-radius: 8px;
+	opacity: 1;
 	height: 100%;
 	background: var(--card-color);
+	border: 1px solid var(--border-color);
 }
 
 .project a {
@@ -24,7 +23,10 @@
 }
 
 .project-container {
-	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	min-height: 210px;
+	padding: 24px;
 }
 
 .project-logo {
@@ -46,28 +48,31 @@
 
 .project-description {
 	color: var(--secondary-color);
+	line-height: 1.55;
 }
 
 .project-link {
 	display: flex;
 	align-items: center;
+	gap: 10px;
 	color: var(--secondary-color);
 	font-size: 12px;
 	padding-top: 20px;
+	margin-top: auto;
 }
 
 .project-link-icon {
-	padding-left: 5px;
-	font-size: 13px;
+	width: 14px;
+	height: 14px;
+	flex: 0 0 auto;
 }
 
 .project-link-text {
-	padding-left: 20px;
 	font-weight: 700;
 }
 
 @media (max-width: 600px) {
 	.project {
-		height: 300px;
+		height: 100%;
 	}
 }

@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+import "./styles/project.css";
+
+const { logo, title, description, linkText, link } = Astro.props;
+---
+
+<div class="project">
+	<a href={link}>
+		<div class="project-container">
+			<div class="project-logo">
+				<img src={logo.replace(/^\.\//, "/")} alt="" />
+			</div>
+			<div class="project-title">{title}</div>
+			<div class="project-description">{description}</div>
+			<div class="project-link">
+				<Icon class="project-link-icon" name="lucide:link" aria-hidden="true" />
+				<div class="project-link-text">{linkText}</div>
+			</div>
+		</div>
+	</a>
+</div>

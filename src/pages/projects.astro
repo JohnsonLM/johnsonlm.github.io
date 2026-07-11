@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/common/NavBar.astro";
+import Footer from "../components/common/Footer.astro";
+import Logo from "../components/common/Logo.astro";
+import AllProjects from "../components/projects/AllProjects.astro";
+import pages from "../data/pages";
+import "./styles/projects.css";
+---
+
+<BaseLayout {...pages.projects}>
+	<div class="page-content">
+		<NavBar active="projects" />
+		<div class="content-wrapper">
+			<div class="projects-logo-container">
+				<div class="projects-logo"><Logo width={46} /></div>
+			</div>
+			<div class="projects-container">
+				<div class="title projects-title">What I'm working on.</div>
+				<div class="subtitle projects-subtitle">
+					I pride myself on developing and releasing new projects and resources for the online community.
+					These are the projects I've had the pleasure to build, work on, and contribute to.
+				</div>
+				<div class="projects-list"><AllProjects /></div>
+			</div>
+			<div class="page-footer"><Footer /></div>
+		</div>
+	</div>
+</BaseLayout>

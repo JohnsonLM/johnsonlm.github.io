@@ -1,0 +1,21 @@
+---
+import INFO from "../../data/user";
+import Project from "./Project.astro";
+import "./styles/allProjects.css";
+---
+
+<div class="all-projects-container">
+	{
+		INFO.projects.map((project) => (
+			<div class="all-projects-project">
+				<Project
+					logo={project.logo}
+					title={project.title}
+					description={project.description}
+					linkText={project.linkText}
+					link={project.link}
+				/>
+			</div>
+		))
+	}
+</div>

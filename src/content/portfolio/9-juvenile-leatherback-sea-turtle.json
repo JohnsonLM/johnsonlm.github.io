@@ -1,0 +1,13 @@
+{
+	"order": 9,
+	"date": "7 May 2023",
+	"title": "Juvenile Leatherback Sea Turtle",
+	"background": "/juvleatherback/imagecard.webp",
+	"link": "#",
+	"subtitle": "Crafted in 2022 | Client Project",
+	"type": "3D",
+	"description": "Recently in partnership with Digital Life 3D, I created this model of a juvenile sea turtle based on images of a living specimen. The model was sculpted, textured, baked, and animated in Blender for use in real-time render engines. The images above were rendered in Eevee.",
+	"images": ["/juvleatherback/image1.jpg", "/juvleatherback/image2.jpg", "/juvleatherback/image3.gif", "/juvleatherback/image4.jpg", "/juvleatherback/image5.jpg"],
+	"videos": [],
+	"keywords": []
+}

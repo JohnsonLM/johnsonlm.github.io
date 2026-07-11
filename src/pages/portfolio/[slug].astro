@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/common/NavBar.astro";
+import Footer from "../../components/common/Footer.astro";
+import Logo from "../../components/common/Logo.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import "../styles/readArticle.css";
+
+export async function getStaticPaths() {
+	const portfolio = await getCollection("portfolio");
+
+	return portfolio.map((item) => ({
+		params: { slug: item.id },
+		props: { item },
+	}));
+}
+
+const { item } = Astro.props;
+type PortfolioType = "3D" | "Design" | "Web";
+const iconFor = (type: PortfolioType) => {
+	if (type === "3D") return "lucide:cuboid";
+	if (type === "Design") return "lucide:pen-tool";
+	return "lucide:globe";
+};
+const itemPath = `/portfolio/${item.id}`;
+---
+
+<BaseLayout
+	title={item.data.title}
+	description={item.data.description}
+	keywords={item.data.keywords}
+	path={itemPath}
+	image={item.data.background}
+>
+	<div class="page-content">
+		<NavBar />
+		<div class="content-wrapper">
+			<div class="read-article-logo-container">
+				<div class="read-article-logo"><Logo width={46} /></div>
+			</div>
+			<div class="read-article-container">
+				<div class="read-article-back">
+					<a href="/portfolio">
+						<img src="/back-button.png" alt="back" class="read-article-back-button" />
+					</a>
+				</div>
+				<div class="read-article-wrapper">
+					<div class="title read-article-title">
+						<Icon class="portfolio-type-icon" name={iconFor(item.data.type)} aria-hidden="true" />
+						{item.data.title}
+					</div>
+					<div class="read-article-body">
+						<p>{item.data.description}</p>
+						{
+							item.data.videos.map((video) => (
+								<video class="image" controls>
+									<source src={video} type="video/mp4" />
+								</video>
+							))
+						}
+						{
+							item.data.images.map((image) => (
+								<img class="image" src={image} alt={item.data.title} />
+							))
+						}
+					</div>
+				</div>
+			</div>
+			<div class="page-footer"><Footer /></div>
+		</div>
+	</div>
+</BaseLayout>

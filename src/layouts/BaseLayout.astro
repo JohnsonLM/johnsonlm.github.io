@@ -1,0 +1,69 @@
+---
+import "../app.css";
+import INFO from "../data/user";
+
+const {
+	title = INFO.main.title,
+	description = "",
+	keywords = [],
+	path = Astro.url.pathname,
+	image = "/avatar.jpeg",
+	type = "website",
+	noindex = false,
+	jsonLd,
+} = Astro.props;
+
+const pageTitle = title === INFO.main.title ? title : `${title} | ${INFO.main.title}`;
+const site = Astro.site ?? new URL("https://johnsonlm.com");
+const canonicalUrl = new URL(path, site).toString();
+const imageUrl = new URL(image, site).toString();
+const structuredData =
+	jsonLd ??
+	{
+		"@context": "https://schema.org",
+		"@type": type === "article" ? "Article" : "WebPage",
+		name: pageTitle,
+		headline: pageTitle,
+		description,
+		url: canonicalUrl,
+		image: imageUrl,
+		author: {
+			"@type": "Person",
+			name: INFO.main.name,
+			url: site.toString(),
+		},
+	};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonicalUrl} />
+		<title>{pageTitle}</title>
+		{description && <meta name="description" content={description} />}
+		{keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+		{noindex && <meta name="robots" content="noindex" />}
+		<meta property="og:site_name" content={INFO.main.title} />
+		<meta property="og:type" content={type} />
+		<meta property="og:title" content={pageTitle} />
+		{description && <meta property="og:description" content={description} />}
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={imageUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		{description && <meta name="twitter:description" content={description} />}
+		<meta name="twitter:image" content={imageUrl} />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+		<script is:inline>
+			const storedTheme = localStorage.getItem("theme") === "dark-theme" ? "dark-theme" : "light-theme";
+			document.documentElement.classList.remove("light-theme", "dark-theme");
+			document.documentElement.classList.add(storedTheme);
+		</script>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
