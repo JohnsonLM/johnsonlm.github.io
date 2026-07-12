@@ -1,45 +1,38 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NavBar from "../../components/common/NavBar.astro";
-import Footer from "../../components/common/Footer.astro";
-import Logo from "../../components/common/Logo.astro";
-import ArticleListItem from "../../components/articles/ArticleListItem.astro";
 import INFO from "../../data/user";
 import pages from "../../data/pages";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
-import "../styles/articles.css";
 
 const articles = (await getCollection("articles")).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout {...pages.articles}>
+<BaseLayout activeNav="articles" {...pages.articles}>
 	<div class="page-content">
-		<NavBar active="articles" />
 		<div class="content-wrapper">
-			<div class="articles-logo-container">
-				<div class="articles-logo"><Logo width={46} /></div>
-			</div>
-			<div class="articles-main-container">
-				<div class="title articles-title">{INFO.articles.title}</div>
-				<div class="subtitle articles-subtitle">{INFO.articles.description}</div>
-				<div class="articles-container">
-					<div class="articles-wrapper">
+			<div class="flex flex-col h-full m-0 pt-[120px]">
+				<div class="title articles-title w-full lg:w-full">{INFO.articles.title}</div>
+				<div class="subtitle articles-subtitle w-full lg:w-full">{INFO.articles.description}</div>
+				<div class="flex flex-col">
+					<div class="pt-[50px] pb-[50px] flex flex-col">
 						{
 							articles.map((article) => (
-								<div class="articles-article">
-									<ArticleListItem
-										date={article.data.date}
-										title={article.data.title}
-										description={article.data.description}
-										href={`/article/${article.id}`}
-									/>
+								<div class="pt-0 pl-[35px] pb-5 border-l-2 border-[#f4f4f5] w-full">
+<a href={`/articles/${article.id}`} class="no-underline flex-[0_0_80%] min-w-0 mix-blend-normal rounded-lg opacity-100 p-[30px] border border-transparent hover:bg-[var(--color-hover-bg)] hover:border-[var(--color-border)] hover:opacity-100 transition-colors duration-300 lg:flex-[0_0_90%] lg:min-w-0 lg:max-w-none md:p-[22px]">
+									<div class="text-[var(--color-secondary)] text-base font-semibold">{article.data.title}</div>
+									<div class="pt-[10px] text-xs text-[var(--color-secondary)] font-medium leading-[25px]">{article.data.description}</div>
+									<div class="inline-flex items-center gap-1 pt-[10px] text-sm text-[var(--color-link)] font-bold">
+										Read Article
+										<Icon class="w-[14px] h-[14px]" name="lucide:chevron-right" aria-hidden="true" />
+									</div>
+								</a>
 								</div>
 							))
 						}
 					</div>
 				</div>
 			</div>
-			<div class="page-footer"><Footer /></div>
-		</div>
+					</div>
 	</div>
 </BaseLayout>

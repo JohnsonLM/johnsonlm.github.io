@@ -1,29 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import NavBar from "../components/common/NavBar.astro";
-import Logo from "../components/common/Logo.astro";
 import pages from "../data/pages";
-import "./styles/404.css";
 ---
 
 <BaseLayout {...pages.notFound}>
-	<div class="not-found page-content">
-		<NavBar />
-		<div class="content-wrapper">
-			<div class="notfound-logo-container">
-				<div class="projects-logo"><Logo width={46} /></div>
-			</div>
-			<div class="notfound-container">
-				<div class="notfound-message">
-					<div class="notfound-title">Oops!</div>
-					<div class="not-found-message">
-						We can't seem to find the page you're looking for.
-						<br />
-						The requested URL was not found on this server.
-					</div>
-					<a href="/" class="not-found-link">Go back to the home page</a>
-				</div>
-			</div>
-		</div>
+	<div class="w-full min-h-[calc(100vh-8rem)] flex flex-col justify-center items-center">
+		<p class="text-[var(--color-secondary)] text-2xl my-8 text-center">
+			Oh no.... I can't seem to find the page you're looking for.
+		</p>
 	</div>
 </BaseLayout>

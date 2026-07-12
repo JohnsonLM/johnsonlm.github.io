@@ -1,5 +1,6 @@
 ---
 import "../app.css";
+import { Icon } from "astro-icon/components";
 import INFO from "../data/user";
 
 const {
@@ -11,6 +12,7 @@ const {
 	type = "website",
 	noindex = false,
 	jsonLd,
+	activeNav = "",
 } = Astro.props;
 
 const pageTitle = title === INFO.main.title ? title : `${title} | ${INFO.main.title}`;
@@ -33,6 +35,14 @@ const structuredData =
 			url: site.toString(),
 		},
 	};
+
+const navLinks = [
+	["home", "/", "Home"],
+	["about", "/about", "About"],
+	["projects", "/projects", "Projects"],
+	["portfolio", "/portfolio", "Portfolio"],
+	["articles", "/articles", "Articles"]
+];
 ---
 
 <!doctype html>
@@ -64,6 +74,66 @@ const structuredData =
 		</script>
 	</head>
 	<body>
+		<header class="flex justify-center items-center m-0">
+			<nav class="fixed top-[3vh] z-999 left-1/2 -translate-x-1/2 sm:top-3">
+				<div class="w-auto min-h-[42px] px-4 bg-[var(--color-background)]/70 shadow-sm border border-[var(--color-border)]/80 rounded-full backdrop-blur-lg">
+					<ul class="flex justify-center gap-[18px] list-none items-center m-0 py-[10px] sm:gap-[10px]">
+						{
+							navLinks.map(([key, href, label]) => (
+								<li class={`font-bold text-[13px] leading-none whitespace-nowrap ${activeNav === key ? "[&>a]:text-[var(--color-link)]" : ""} sm:text-[12px]`}>
+									<a href={href} class="no-underline text-primary hover:text-[var(--color-link)] transition-colors duration-300">{label}</a>
+								</li>
+							))
+						}
+						<li class="cursor-pointer font-bold">
+							<button id="theme-toggle" type="button" aria-label="Toggle theme" class="grid place-items-center w-6 h-6 p-0 border-0 cursor-pointer bg-transparent">
+								<Icon class="w-4 h-4 theme-icon-light" name="lucide:moon" aria-hidden="true" />
+								<Icon class="w-4 h-4 theme-icon-dark hidden" name="lucide:sun" aria-hidden="true" />
+							</button>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<style>
+			:root.light-theme .theme-icon-dark { display: none; }
+			:root.dark-theme .theme-icon-light { display: none; }
+			.theme-icon-light svg,
+			.theme-icon-light svg path,
+			.theme-icon-light svg circle,
+			.theme-icon-light svg g { stroke: #1c1c1e; fill: none !important; }
+			:root.dark-theme .theme-icon-light svg,
+			:root.dark-theme .theme-icon-light svg path,
+			:root.dark-theme .theme-icon-light svg circle,
+			:root.dark-theme .theme-icon-light svg g { stroke: #d5d5df; }
+			.theme-icon-dark svg,
+			.theme-icon-dark svg path,
+			.theme-icon-dark svg circle,
+			.theme-icon-dark svg g { stroke: #d5d5df; fill: none !important; }
+			:root.light-theme .theme-icon-dark svg,
+			:root.light-theme .theme-icon-dark svg path,
+			:root.light-theme .theme-icon-dark svg circle,
+			:root.light-theme .theme-icon-dark svg g { stroke: #1c1c1e; }
+		</style>
 		<slot />
+		<footer class="page-footer">
+			<div class="flex p-5 items-center">
+				<div class="justify-end text-tertiary text-sm text-right sm:w-full sm:flex sm:justify-center">
+					© 2026 Johnson Martin. All Rights Reserved.
+				</div>
+			</div>
+		</footer>
+		<script>
+			const toggle = document.getElementById("theme-toggle");
+			const applyTheme = (theme) => {
+				document.documentElement.classList.remove("light-theme", "dark-theme");
+				document.documentElement.classList.add(theme);
+				localStorage.setItem("theme", theme);
+			};
+			toggle?.addEventListener("click", () => {
+				const currentTheme = document.documentElement.classList.contains("dark-theme") ? "dark-theme" : "light-theme";
+				applyTheme(currentTheme === "light-theme" ? "dark-theme" : "light-theme");
+			});
+		</script>
 	</body>
 </html>

@@ -1,10 +1,10 @@
-<div class="homepage-pointcloud-background">
-	<canvas class="homepage-pointcloud-canvas" aria-hidden="true"></canvas>
+<div class="absolute inset-0 z-0 [&[data-unsupported="true"]]:hidden">
+	<canvas class="absolute inset-[-24px_0] w-full h-[calc(100%+48px)] opacity-100 saturate-150 brightness-125 translate-y-[100px]" aria-hidden="true"></canvas>
 </div>
 
 <script>
-	const background = document.querySelector<HTMLElement>(".homepage-pointcloud-background");
-	const canvas = background?.querySelector<HTMLCanvasElement>(".homepage-pointcloud-canvas");
+	const background = document.querySelector<HTMLElement>("[class*='absolute'][class*='inset-0']");
+	const canvas = background?.querySelector<HTMLCanvasElement>("canvas");
 
 	if (background && canvas) {
 		const gl = canvas.getContext("webgl", { alpha: true, antialias: false });

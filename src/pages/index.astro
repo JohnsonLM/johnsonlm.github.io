@@ -1,174 +1,295 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
-import NavBar from "../components/common/NavBar.astro";
-import Footer from "../components/common/Footer.astro";
-import AllProjects from "../components/projects/AllProjects.astro";
-import HomeArticle from "../components/homepage/HomeArticle.astro";
-import PointCloudBackground from "../components/homepage/PointCloudBackground.astro";
+import PointCloudBackground from "../components/PointCloudBackground.astro";
 import INFO from "../data/user";
 import pages from "../data/pages";
 import { getCollection } from "astro:content";
-import "./styles/homepage.css";
 
 const page = pages.home;
-const articles = (await getCollection("articles")).sort(
-	(a, b) => a.data.order - b.data.order,
-);
-const portfolio = (await getCollection("portfolio")).sort(
-	(a, b) => a.data.order - b.data.order,
-);
-const featuredWork = portfolio
-	.filter((item) => item.data.background)
-	.slice(-4)
-	.reverse();
+const articles = (await getCollection("articles")).sort((a, b) => a.data.order - b.data.order);
+const portfolio = (await getCollection("portfolio")).sort((a, b) => a.data.order - b.data.order);
+const featuredWork = portfolio.filter((item) => item.data.background).slice(-4).reverse();
+const iconFor = (type: "3D" | "Design" | "Web") => {
+	if (type === "3D") return "lucide:cuboid";
+	if (type === "Design") return "lucide:pen-tool";
+	return "lucide:globe";
+};
 ---
 
-<BaseLayout {...page}>
-	<div class="page-content">
-		<NavBar active="home" />
-		<div class="content-wrapper">
-			<div class="homepage-container">
-				<section class="homepage-immersive-hero">
-					<PointCloudBackground />
-					<div class="homepage-hero-content">
-						<div id="homepage-profile" class="homepage-profile">
-							<img
-								id="homepage-profile-image"
-								src={INFO.main.logo}
-								alt={`${INFO.main.name} profile`}
-							/>
-							<span id="homepage-profile-name"
-								>{INFO.main.name}</span
-							>
-						</div>
-						<div class="homepage-hero-copy">
-							<h1>{INFO.homepage.title}</h1>
-							<p>{INFO.homepage.description}</p>
-							<div
-								class="homepage-hero-socials"
-								aria-label="Social links"
-							>
-								<a
-									href={INFO.socials.mastodon}
-									target="_blank"
-									rel="noreferrer"
-									aria-label="Mastodon"
-									><Icon
-										name="simple-icons:mastodon"
-										aria-hidden="true"
-									/></a
-								>
-								<a
-									href={INFO.socials.twitter}
-									target="_blank"
-									rel="noreferrer"
-									aria-label="Twitter"
-									><Icon
-										name="simple-icons:twitter"
-										aria-hidden="true"
-									/></a
-								>
-								<a
-									href={INFO.socials.github}
-									target="_blank"
-									rel="noreferrer"
-									aria-label="GitHub"
-									><Icon
-										name="simple-icons:github"
-										aria-hidden="true"
-									/></a
-								>
-								<a
-									href={INFO.socials.instagram}
-									target="_blank"
-									rel="noreferrer"
-									aria-label="Instagram"
-									><Icon
-										name="simple-icons:instagram"
-										aria-hidden="true"
-									/></a
-								>
-								<a
-									href={`mailto:${INFO.main.email}`}
-									aria-label="Email"
-									><Icon
-										name="lucide:mail"
-										aria-hidden="true"
-									/></a
-								>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section class="homepage-portfolio" aria-labelledby="homepage-portfolio-title">
-					<header class="homepage-portfolio-header">
-						<div>
-							<p class="homepage-eyebrow homepage-eyebrow-dark">Selected work</p>
-							<h2 id="homepage-portfolio-title">Portfolio</h2>
-						</div>
-						<a href="/portfolio">View all portfolio <span>↗</span></a>
-					</header>
-					<div class="homepage-portfolio-grid">
-						{featuredWork.map((item) => (
-							<a class="homepage-portfolio-card" href={`/portfolio/${item.id}`}>
-								<div
-									class="homepage-portfolio-image"
-									style={`background-image: url(${item.data.background})`}
-								/>
-								<div class="homepage-portfolio-card-copy">
-									<span>Portfolio · {item.data.type}</span>
-									<strong>{item.data.title}</strong>
-									<em>{item.data.subtitle}</em>
-								</div>
-							</a>
-						))}
-					</div>
-				</section>
-
-				<section class="homepage-projects">
-					<div class="homepage-projects-content">
-						<header class="homepage-projects-heading">
-							<h2>Projects</h2>
-						</header>
-						<AllProjects />
-					</div>
-				</section>
-
-				<section
-					class="homepage-articles-section"
-					aria-labelledby="homepage-articles-title"
+<BaseLayout activeNav="home" {...page}>
+	<div class="w-full pt-0 relative z-2">
+		<!-- Hero Section -->
+		<section class="relative w-screen ml-[calc(50%-50vw)] min-h-[700px] overflow-hidden rounded-none bg-[#111] text-white dark:bg-[var(--color-background)] sm:min-h-[620px]">
+			<PointCloudBackground />
+			<div
+				class="relative z-2 flex flex-col justify-end items-start box-border w-full max-w-[50%] mx-auto min-h-[575px] p-[42px] sm:min-h-[500px] sm:p-[28px_20px] sm:max-w-[90%]"
+			>
+				<div
+					id="homepage-profile"
+					class="relative z-2 flex items-center font-secondary text-sm font-bold mb-[22px] transition-all duration-250 [&.is-compact]:fixed [&.is-compact]:top-[22px] [&.is-compact]:left-[28px] [&.is-compact]:mb-0"
 				>
-					<header class="homepage-articles-header">
-						<div>
-							<p class="homepage-eyebrow homepage-eyebrow-dark">
-								Notes &amp; essays
-							</p>
-							<h2 id="homepage-articles-title">Articles</h2>
-						</div>
-						<a href="/articles">View all articles <span>↗</span></a>
-					</header>
-					<div class="homepage-articles-list">
-						{
-							articles.map((article, index) => (
-								<HomeArticle
-									date={article.data.date}
-									title={article.data.title}
-									description={article.data.description}
-									href={`/article/${article.id}`}
-									index={index + 1}
-								/>
-							))
-						}
+					<img
+						id="homepage-profile-image"
+						src={INFO.main.logo}
+						alt={`${INFO.main.name} profile`}
+						class="w-[78px] h-[78px] border border-white/60 rounded-full mr-5 object-cover shadow-[0_8px_24px_rgba(0,0,0,0.28)] transition-[width,height,box-shadow] duration-250 ease [&.is-compact]:w-[42px] [&.is-compact]:h-[42px] [&.is-compact]:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:border-[rgba(28,28,30,0.35)]"
+					/>
+					<span
+						id="homepage-profile-name"
+						class="text-white dark:text-primary"
+						>{INFO.main.name}</span
+					>
+				</div>
+				<div
+					class="max-w-[680px] text-shadow-[0_2px_18px_rgba(0,0,0,0.28)] dark:text-shadow-[0_2px_18px_rgba(255,255,255,0.7)]"
+				>
+					<h1
+						class="mt-3 font-secondary text-[clamp(42px,6vw,78px)] leading-[0.98] text-white dark:text-[var(--color-primary)]"
+					>
+						{INFO.homepage.title}
+					</h1>
+					<p
+						class="max-w-[650px] text-[#d6e7e2] text-base leading-relaxed dark:text-[var(--color-secondary)]"
+					>
+						{INFO.homepage.description}
+					</p>
+					<div
+						class="flex flex-wrap gap-[14px] mt-5"
+						aria-label="Social links"
+					>
+						<a
+							href={INFO.socials.mastodon}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="Mastodon"
+							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
+							><Icon
+								name="simple-icons:mastodon"
+								aria-hidden="true"
+							/></a
+						>
+						<a
+							href={INFO.socials.twitter}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="Twitter"
+							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
+							><Icon
+								name="simple-icons:twitter"
+								aria-hidden="true"
+							/></a
+						>
+						<a
+							href={INFO.socials.github}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="GitHub"
+							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
+							><Icon
+								name="simple-icons:github"
+								aria-hidden="true"
+							/></a
+						>
+						<a
+							href={INFO.socials.instagram}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="Instagram"
+							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
+							><Icon
+								name="simple-icons:instagram"
+								aria-hidden="true"
+							/></a
+						>
+						<a
+							href={`mailto:${INFO.main.email}`}
+							aria-label="Email"
+							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
+							><Icon name="lucide:mail" aria-hidden="true" /></a
+						>
 					</div>
-				</section>
-
-				<div class="page-footer">
-					<Footer />
 				</div>
 			</div>
-		</div>
+		</section>
+
+		<!-- Portfolio Section -->
+		<section
+			class="max-w-[1000px] mx-auto py-[72px_0_80px] sm:py-[56px_18px_64px]"
+			aria-labelledby="homepage-portfolio-title"
+		>
+			<header
+				class="flex items-end justify-between sm:flex-col sm:items-start"
+			>
+				<div>
+					<a
+						href="/portfolio"
+						class="text-[var(--color-link)] font-secondary text-sm font-bold no-underline [&>span]:pl-[6px] [&>span]:text-base"
+						>View all portfolio <span>↗</span></a
+					>
+					<h2
+						id="homepage-portfolio-title"
+						class="text-[var(--color-primary)] font-secondary text-[clamp(34px,4vw,52px)] leading-none"
+					>
+						Portfolio
+					</h2>
+				</div>
+			</header>
+			<div class="grid grid-cols-2 gap-[22px] sm:grid-cols-1">
+				{
+					featuredWork.map((item) => (
+						<a
+							href={`/portfolio/${item.id}`}
+							class="no-underline group"
+						>
+							<div
+								class="rounded-lg bg-cover bg-center overflow-hidden shadow-[inset_0_-160px_120px_rgba(0,0,0,0.35)] mt-[1.2em] min-h-[230px] animate-[cardrotationin_1s_forwards] hover:animate-[cardrotationout_1s_forwards]"
+								style={`background-image: url(${item.data.background})`}
+							>
+								<div class="flex items-start gap-[10px] w-full text-white p-[2em] font-extrabold text-[1.3em] font-secondary text-shadow-[0_0_5px_rgba(39,39,39,1)] box-border">
+									<Icon
+										class="w-[18px] h-[18px] mt-[2px] drop-shadow-[0_0_3px_rgba(39,39,39,0.8)] flex-none"
+										name={iconFor(item.data.type)}
+										aria-hidden="true"
+									/>
+									{item.data.title}
+								</div>
+								<div class="text-white pl-[2em] pb-[1em] text-[1em] font-primary text-shadow-[0_0_2px_black]">
+									{item.data.subtitle}
+								</div>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section class="max-w-[1000px] mx-auto mb-[70px] py-[64px_0_72px]">
+			<header
+				class="flex items-end justify-between gap-6 pb-6 sm:items-start sm:flex-col sm:gap-[14px]"
+			>
+				<div>
+					<p
+						class="m-0 text-[var(--link-color)] font-secondary text-xs font-bold tracking-widest uppercase"
+					>
+						What I'm building
+					</p>
+					<h2
+						class="mt-[10px] text-[var(--color-primary)] font-secondary text-[clamp(34px,4vw,52px)] leading-none"
+					>
+						Projects
+					</h2>
+				</div>
+			</header>
+			<div
+				class="grid grid-cols-3 gap-4 items-stretch py-[30px] lg:grid-cols-2 md:grid-cols-1"
+			>
+				{
+					INFO.projects.map((project) => (
+						<div class="box-border overflow-hidden">
+							<div class="mix-blend-normal rounded-lg opacity-100 h-full bg-[var(--color-card)] border border-[var(--color-border)] hover:bg-[var(--color-hover-bg)] hover:opacity-100 transition-colors duration-300 [&:hover_.project-link]:text-[var(--color-link)] [&:hover_.project-link]:transition-colors [&:hover_.project-link]:duration-300 sm:h-full">
+								<a href={project.link} class="no-underline">
+									<div class="flex flex-col min-h-[210px] p-6">
+										<div class="w-[30px]">
+											<img
+												src={project.logo.replace(
+													/^\.\//,
+													"/",
+												)}
+												alt=""
+												class="w-full"
+											/>
+										</div>
+										<div class="font-secondary text-[var(--color-primary)] text-base pt-[15px] mb-[1em] font-bold">
+											{project.title}
+										</div>
+										<div class="text-[var(--color-secondary)] leading-relaxed">
+											{project.description}
+										</div>
+										<div class="project-link flex items-center gap-[10px] text-[var(--color-secondary)] text-xs pt-5 mt-auto">
+											<Icon
+												class="w-[14px] h-[14px] flex-none"
+												name="lucide:link"
+												aria-hidden="true"
+											/>
+											<div class="font-bold">
+												{project.linkText}
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</section>
+
+		<!-- Articles Section -->
+		<section
+			class="max-w-[1000px] mx-auto py-[10px_0_80px] sm:px-[10px]"
+			aria-labelledby="homepage-articles-title"
+		>
+			<header
+				class="flex items-end justify-between gap-6 pb-[18px] sm:items-start sm:flex-col sm:gap-[14px]"
+			>
+				<div>
+					<p
+						class="m-0 text-[#d6e7e2] font-secondary text-xs font-bold tracking-widest uppercase dark:text-[var(--color-secondary)] sm:text-[#37605d] dark:sm:text-[#5a9e9b]"
+					>
+						Notes &amp; essays
+					</p>
+					<h2
+						id="homepage-articles-title"
+						class="mt-[10px] text-[var(--color-primary)] font-secondary text-[clamp(34px,4vw,52px)] leading-none"
+					>
+						Articles
+					</h2>
+				</div>
+				<a
+					href="/articles"
+					class="text-[var(--color-link)] font-secondary text-sm font-bold no-underline [&>span]:pl-[6px] [&>span]:text-base"
+					>View all articles <span>↗</span></a
+				>
+			</header>
+			<div class="[&>a]:block [&>a]:text-inherit [&>a]:no-underline">
+				{
+					articles.map((article, index) => (
+						<a
+							href={`/articles/${article.id}`}
+							class="block text-inherit no-underline group"
+						>
+							<div class="flex items-center gap-6 min-h-[118px] py-[22px] border-t border-[var(--color-border)] transition-[padding,border-color] duration-200 hover:pr-[10px] hover:pl-[10px] hover:border-[var(--color-tertiary)] last:border-b sm:items-start sm:gap-[14px] sm:min-h-0 sm:py-5">
+								<div class="w-[34px] flex-none text-[var(--color-link)] font-secondary text-sm sm:w-[25px] sm:text-[11px]">
+									{String(index + 1).padStart(2, "0")}
+								</div>
+								<div class="min-w-0 flex-1">
+									<div class="text-[var(--color-secondary)] text-xs tracking-wider">
+										{article.data.date}
+									</div>
+									<div class="mt-[7px] mb-2 text-[var(--color-primary)] font-secondary text-[22px] leading-tight sm:text-[19px]">
+										{article.data.title}
+									</div>
+									<div class="text-[var(--color-secondary)] text-sm leading-relaxed sm:text-[13px]">
+										{article.data.description}
+									</div>
+								</div>
+								<div
+									class="grid place-items-center text-[var(--color-link)] text-[22px] flex-none"
+									aria-hidden="true"
+								>
+									<Icon
+										name="lucide:chevron-right"
+										class="w-[18px] h-[18px]"
+									/>
+								</div>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
 	</div>
 </BaseLayout>
 

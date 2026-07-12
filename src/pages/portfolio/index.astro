@@ -1,12 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NavBar from "../../components/common/NavBar.astro";
-import Footer from "../../components/common/Footer.astro";
-import Logo from "../../components/common/Logo.astro";
 import { Icon } from "astro-icon/components";
 import pages from "../../data/pages";
 import { getCollection } from "astro:content";
-import "../styles/portfolio.css";
 
 const portfolio = (await getCollection("portfolio")).sort((a, b) => a.data.order - b.data.order);
 type PortfolioType = "3D" | "Design" | "Web";
@@ -17,32 +13,39 @@ const iconFor = (type: PortfolioType) => {
 };
 ---
 
-<BaseLayout {...pages.portfolio}>
+<BaseLayout activeNav="portfolio" {...pages.portfolio}>
 	<div class="page-content">
-		<NavBar active="portfolio" />
 		<div class="content-wrapper">
-			<div class="about-logo-container">
-				<div class="about-logo"><Logo width={46} /></div>
-			</div>
-			<div class="portfolio-container">
-				<div class="portfolio-title">Portfolio</div>
+			<div class="flex flex-col h-full m-0 pt-[75px]">
+				<div class="text-center text-[var(--color-primary)] font-secondary text-3xl font-bold w-full">Portfolio</div>
 				<div class="portfolio-items">
 					{
 						portfolio.map((item) => (
-							<a href={`/portfolio/${item.id}`} class="portfolio-link">
-								<div class="portfolio-item" style={`background-image: url(${item.data.background})`}>
-									<div class="portfolio-item-title">
-										<Icon class="portfolio-type-icon" name={iconFor(item.data.type)} aria-hidden="true" />
+							<a href={`/portfolio/${item.id}`} class="no-underline">
+								<div class="rounded-lg bg-cover bg-grey mt-[1.2em] bg-center overflow-hidden shadow-[inset_0_-160px_120px_rgba(0,0,0,0.35)] animate-[cardrotationin_1s_forwards] hover:animate-[cardrotationout_1s_forwards]" style={`background-image: url(${item.data.background})`}>
+									<div class="flex items-start gap-[10px] w-full min-h-[230px] text-white p-[2em] font-extrabold text-[1.3em] font-secondary text-shadow-[0_0_5px_rgba(39,39,39,1)] box-border">
+										<Icon class="w-[18px] h-[18px] mt-[2px] drop-shadow-[0_0_3px_rgba(39,39,39,0.8)] flex-none" name={iconFor(item.data.type)} aria-hidden="true" />
 										{item.data.title}
 									</div>
-									<div class="portfolio-item-subtitle">{item.data.subtitle}</div>
+									<div class="text-white pl-[2em] pb-[1em] text-[1em] font-primary text-shadow-[0_0_2px_black]">{item.data.subtitle}</div>
 								</div>
 							</a>
 						))
 					}
 				</div>
 			</div>
-			<div class="page-footer"><Footer /></div>
-		</div>
+					</div>
 	</div>
 </BaseLayout>
+
+<style>
+@keyframes cardrotationin {
+	0% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);}
+}
+
+@keyframes cardrotationout {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(1deg);}
+}
+</style>

@@ -1,39 +1,77 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import NavBar from "../components/common/NavBar.astro";
-import Footer from "../components/common/Footer.astro";
-import Logo from "../components/common/Logo.astro";
-import Socials from "../components/about/Socials.astro";
+import { Icon } from "astro-icon/components";
 import INFO from "../data/user";
 import pages from "../data/pages";
-import "./styles/about.css";
+
+const socials = [
+	["simple-icons:x", INFO.socials.twitter, "Follow on Twitter"],
+	["simple-icons:github", INFO.socials.github, "Follow on GitHub"],
+	["simple-icons:linkedin", INFO.socials.linkedin, "Follow on LinkedIn"],
+	["simple-icons:instagram", INFO.socials.instagram, "Follow on Instagram"],
+];
 ---
 
-<BaseLayout {...pages.about} image="/about.webp">
+<BaseLayout activeNav="about" {...pages.about} image="/about.webp">
 	<div class="page-content">
-		<NavBar active="about" />
 		<div class="content-wrapper">
-			<div class="about-logo-container">
-				<div class="about-logo"><Logo width={46} /></div>
-			</div>
-			<div class="about-container">
-				<div class="about-main">
-					<div class="about-right-side">
-						<div class="title about-title">{INFO.about.title}</div>
-						<div class="subtitle about-subtitle">{INFO.about.description}</div>
+			<div class="flex flex-col h-full m-0 pt-[120px] lg:flex-row sm:pt-[60px]">
+				<div class="flex lg:flex-col lg:basis-full lg:order-1">
+					<div class="w-[370px] pb-0 lg:w-[80%] lg:pb-10">
+						<div class="overflow-hidden rounded-lg rotate-[2deg] transition-transform duration-250 hover:rotate-0">
+							<img src="/about.webp" alt="about" class="block w-full" />
+						</div>
 					</div>
-					<div class="about-left-side">
-						<div class="about-image-container">
-							<div class="about-image-wrapper">
-								<img src="/about.webp" alt="about" class="about-image" />
+					<div class="pt-[50px] pb-[50px] lg:hidden">
+						<div class="flex flex-col">
+							{
+								socials.map(([name, href, label]) => (
+									<div class="flex pb-5">
+										<a href={href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
+											<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name={name} aria-hidden="true" />
+											<div class="text-[var(--color-secondary)] font-semibold text-sm group-hover:text-[var(--color-link)]">{label}</div>
+										</a>
+									</div>
+								))
+							}
+							<div class="flex pb-5">
+								<div>
+									<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
+										<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name="lucide:mail" aria-hidden="true" />
+										<div class="text-[var(--color-secondary)] font-semibold text-sm underline group-hover:text-[var(--color-link)]">{INFO.main.email}</div>
+									</a>
+								</div>
 							</div>
 						</div>
-						<div class="about-socials"><Socials /></div>
 					</div>
 				</div>
-				<div class="about-socials-mobile"><Socials /></div>
+				<div class="basis-[900px] lg:basis-full lg:order-2">
+					<div class="title w-full">{INFO.about.title}</div>
+					<div class="subtitle w-[80%] pt-0 lg:pt-5">{INFO.about.description}</div>
+				</div>
 			</div>
-			<div class="page-footer"><Footer /></div>
-		</div>
+			<div class="pt-[30px] flex hidden lg:block">
+				<div class="flex flex-col">
+					{
+						socials.map(([name, href, label]) => (
+							<div class="flex pb-5">
+								<a href={href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
+									<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name={name} aria-hidden="true" />
+									<div class="text-[var(--color-secondary)] font-semibold text-sm group-hover:text-[var(--color-link)]">{label}</div>
+								</a>
+							</div>
+						))
+					}
+					<div class="flex pb-5">
+						<div>
+							<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
+								<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name="lucide:mail" aria-hidden="true" />
+								<div class="text-[var(--color-secondary)] font-semibold text-sm underline group-hover:text-[var(--color-link)]">{INFO.main.email}</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+					</div>
 	</div>
 </BaseLayout>
