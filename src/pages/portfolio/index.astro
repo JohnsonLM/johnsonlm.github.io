@@ -1,51 +1,45 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import pages from "../../data/pages";
 import { getCollection } from "astro:content";
-
 const portfolio = (await getCollection("portfolio")).sort((a, b) => a.data.order - b.data.order);
-type PortfolioType = "3D" | "Design" | "Web";
-const iconFor = (type: PortfolioType) => {
-	if (type === "3D") return "lucide:cuboid";
-	if (type === "Design") return "lucide:pen-tool";
-	return "lucide:globe";
-};
 ---
 
 <BaseLayout activeNav="portfolio" {...pages.portfolio}>
 	<div class="page-content">
-		<div class="content-wrapper">
-			<div class="flex flex-col h-full m-0 pt-[75px]">
-				<div class="text-center text-[var(--color-primary)] font-secondary text-3xl font-bold w-full">Portfolio</div>
-				<div class="portfolio-items">
-					{
-						portfolio.map((item) => (
-							<a href={`/portfolio/${item.id}`} class="no-underline">
-								<div class="rounded-lg bg-cover bg-grey mt-[1.2em] bg-center overflow-hidden shadow-[inset_0_-160px_120px_rgba(0,0,0,0.35)] animate-[cardrotationin_1s_forwards] hover:animate-[cardrotationout_1s_forwards]" style={`background-image: url(${item.data.background})`}>
-									<div class="flex items-start gap-[10px] w-full min-h-[230px] text-white p-[2em] font-extrabold text-[1.3em] font-secondary text-shadow-[0_0_5px_rgba(39,39,39,1)] box-border">
-										<Icon class="w-[18px] h-[18px] mt-[2px] drop-shadow-[0_0_3px_rgba(39,39,39,0.8)] flex-none" name={iconFor(item.data.type)} aria-hidden="true" />
-										{item.data.title}
+		<div class="page-container">
+			<div class="flex h-full flex-col px-5 pt-28 pb-20 sm:px-8 sm:pt-36">
+				<header class="mb-12 max-w-175">
+					<p class="section-kicker">Selected work</p>
+					<h1 class="section-title">Portfolio</h1>
+					<p class="mt-5 max-w-150 font-serif text-lg leading-relaxed text-secondary">A collection of 3D art, scientific visualization, design, and digital experiments.</p>
+				</header>
+				<div>
+					{portfolio.map((item, index) => {
+						const iconName = { "3D": "lucide:cuboid", Design: "lucide:pen-tool", Web: "lucide:globe" }[item.data.type];
+						const reversed = index % 2 === 1;
+						const slug = item.id.split("/")[0];
+						return (
+							<a href={`/portfolio/${slug}`} class="group grid grid-cols-1 gap-5 border-t border-border py-6 no-underline motion-safe:animate-[cardrotationin_1s_forwards] motion-safe:hover:animate-[cardrotationout_1s_forwards] md:grid-cols-12 md:items-center md:gap-8">
+								<div class:list={["overflow-hidden bg-card md:col-span-8", reversed && "md:order-2"]}>
+									<Image src={item.data.background} alt={item.data.title} loading={index < 4 ? "eager" : "lazy"} class="block aspect-video size-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+								</div>
+								<div class:list={["md:col-span-4", reversed && "md:order-1"]}>
+									<div class="mb-3 flex justify-end text-tertiary">
+										<Icon class="size-4" name={iconName} aria-hidden="true" />
 									</div>
-									<div class="text-white pl-[2em] pb-[1em] text-[1em] font-primary text-shadow-[0_0_2px_black]">{item.data.subtitle}</div>
+									<h2 class="m-0 max-w-100 font-secondary text-[clamp(25px,3vw,40px)] leading-[1.05] tracking-[-0.03em] text-primary transition-colors group-hover:text-link">{item.data.title}</h2>
+									<p class="mt-4 mb-0 text-sm leading-6 text-secondary">{item.data.subtitle}</p>
+									<span class="mt-5 inline-flex items-center gap-2 font-secondary text-xs font-bold uppercase tracking-[0.12em] text-link">View project <Icon name="lucide:arrow-up-right" class="size-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
 								</div>
 							</a>
-						))
-					}
+						);
+					})}
 				</div>
 			</div>
-					</div>
+		</div>
 	</div>
 </BaseLayout>
 
-<style>
-@keyframes cardrotationin {
-	0% {transform: rotate(1deg);}
-	100% {transform: rotate(0deg);}
-}
-
-@keyframes cardrotationout {
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(1deg);}
-}
-</style>

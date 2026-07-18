@@ -1,10 +1,10 @@
 ---
 import "../app.css";
 import { Icon } from "astro-icon/components";
-import INFO from "../data/user";
+import siteInfo from "../data/site";
 
 const {
-	title = INFO.main.title,
+	title = siteInfo.main.name,
 	description = "",
 	keywords = [],
 	path = Astro.url.pathname,
@@ -15,7 +15,7 @@ const {
 	activeNav = "",
 } = Astro.props;
 
-const pageTitle = title === INFO.main.title ? title : `${title} | ${INFO.main.title}`;
+const pageTitle = title === siteInfo.main.name ? title : `${title} | ${siteInfo.main.name}`;
 const site = Astro.site ?? new URL("https://johnsonlm.com");
 const canonicalUrl = new URL(path, site).toString();
 const imageUrl = new URL(image, site).toString();
@@ -31,7 +31,7 @@ const structuredData =
 		image: imageUrl,
 		author: {
 			"@type": "Person",
-			name: INFO.main.name,
+			name: siteInfo.main.name,
 			url: site.toString(),
 		},
 	};
@@ -39,9 +39,8 @@ const structuredData =
 const navLinks = [
 	["home", "/", "Home"],
 	["about", "/about", "About"],
-	["projects", "/projects", "Projects"],
 	["portfolio", "/portfolio", "Portfolio"],
-	["articles", "/articles", "Articles"]
+	["articles", "/articles", "Articles"],
 ];
 ---
 
@@ -56,7 +55,7 @@ const navLinks = [
 		{description && <meta name="description" content={description} />}
 		{keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
 		{noindex && <meta name="robots" content="noindex" />}
-		<meta property="og:site_name" content={INFO.main.title} />
+		<meta property="og:site_name" content={siteInfo.main.name} />
 		<meta property="og:type" content={type} />
 		<meta property="og:title" content={pageTitle} />
 		{description && <meta property="og:description" content={description} />}
@@ -74,58 +73,47 @@ const navLinks = [
 		</script>
 	</head>
 	<body>
-		<header class="flex justify-center items-center m-0">
-			<nav class="fixed top-[3vh] z-999 left-1/2 -translate-x-1/2 sm:top-3">
-				<div class="w-auto min-h-[42px] px-4 bg-[var(--color-background)]/70 shadow-sm border border-[var(--color-border)]/80 rounded-full backdrop-blur-lg">
-					<ul class="flex justify-center gap-[18px] list-none items-center m-0 py-[10px] sm:gap-[10px]">
+		<header class="flex items-center justify-center">
+			<nav class="fixed top-[3vh] left-1/2 z-999 -translate-x-1/2 sm:top-3">
+				<div id="nav-pill" class="nav-pill flex min-h-10 w-auto items-center rounded-full border border-border/80 bg-background/70 px-4 shadow-sm backdrop-blur-lg">
+					{activeNav === "home" && (
+						<a href="/" class="nav-profile" aria-label={`${siteInfo.main.name}, home`}>
+							<img src={siteInfo.main.logo} alt="" />
+							<span>{siteInfo.main.name}</span>
+						</a>
+					)}
+					<ul class="m-0 flex list-none items-center justify-center gap-4 p-0">
 						{
 							navLinks.map(([key, href, label]) => (
-								<li class={`font-bold text-[13px] leading-none whitespace-nowrap ${activeNav === key ? "[&>a]:text-[var(--color-link)]" : ""} sm:text-[12px]`}>
-									<a href={href} class="no-underline text-primary hover:text-[var(--color-link)] transition-colors duration-300">{label}</a>
+								<li class="font-bold sm:text-xs">
+									<a class:list={[key === "home" ? "grid size-6 place-items-center" : "inline-flex items-center", "text-primary no-underline transition-colors duration-300 hover:text-link", activeNav === key && "!text-link"]} href={href} aria-label={key === "home" ? label : undefined}>
+										{key === "home" ? <Icon name="lucide:home" class="size-4" aria-hidden="true" /> : label}
+									</a>
 								</li>
 							))
 						}
-						<li class="cursor-pointer font-bold">
-							<button id="theme-toggle" type="button" aria-label="Toggle theme" class="grid place-items-center w-6 h-6 p-0 border-0 cursor-pointer bg-transparent">
-								<Icon class="w-4 h-4 theme-icon-light" name="lucide:moon" aria-hidden="true" />
-								<Icon class="w-4 h-4 theme-icon-dark hidden" name="lucide:sun" aria-hidden="true" />
+						<li class="font-bold">
+							<button id="theme-toggle" type="button" aria-label="Toggle color theme" class="theme-toggle grid size-6 cursor-pointer place-items-center border-0 bg-transparent p-0 text-primary">
+								<Icon class="theme-icon-light size-4 text-primary" name="lucide:moon" aria-hidden="true" />
+								<Icon class="theme-icon-dark size-4 text-primary" name="lucide:sun" aria-hidden="true" />
 							</button>
 						</li>
 					</ul>
 				</div>
 			</nav>
 		</header>
-		<style>
-			:root.light-theme .theme-icon-dark { display: none; }
-			:root.dark-theme .theme-icon-light { display: none; }
-			.theme-icon-light svg,
-			.theme-icon-light svg path,
-			.theme-icon-light svg circle,
-			.theme-icon-light svg g { stroke: #1c1c1e; fill: none !important; }
-			:root.dark-theme .theme-icon-light svg,
-			:root.dark-theme .theme-icon-light svg path,
-			:root.dark-theme .theme-icon-light svg circle,
-			:root.dark-theme .theme-icon-light svg g { stroke: #d5d5df; }
-			.theme-icon-dark svg,
-			.theme-icon-dark svg path,
-			.theme-icon-dark svg circle,
-			.theme-icon-dark svg g { stroke: #d5d5df; fill: none !important; }
-			:root.light-theme .theme-icon-dark svg,
-			:root.light-theme .theme-icon-dark svg path,
-			:root.light-theme .theme-icon-dark svg circle,
-			:root.light-theme .theme-icon-dark svg g { stroke: #1c1c1e; }
-		</style>
 		<slot />
 		<footer class="page-footer">
-			<div class="flex p-5 items-center">
-				<div class="justify-end text-tertiary text-sm text-right sm:w-full sm:flex sm:justify-center">
-					© 2026 Johnson Martin. All Rights Reserved.
+			<div class="flex items-center p-5">
+				<div class="text-right text-sm text-tertiary sm:flex sm:w-full sm:justify-center">
+					© {new Date().getFullYear()} Johnson Martin. All Rights Reserved.
 				</div>
 			</div>
 		</footer>
 		<script>
 			const toggle = document.getElementById("theme-toggle");
-			const applyTheme = (theme) => {
+			const navPill = document.getElementById("nav-pill");
+			const applyTheme = (theme: "light-theme" | "dark-theme") => {
 				document.documentElement.classList.remove("light-theme", "dark-theme");
 				document.documentElement.classList.add(theme);
 				localStorage.setItem("theme", theme);
@@ -134,6 +122,12 @@ const navLinks = [
 				const currentTheme = document.documentElement.classList.contains("dark-theme") ? "dark-theme" : "light-theme";
 				applyTheme(currentTheme === "light-theme" ? "dark-theme" : "light-theme");
 			});
+			const updateNavPill = () => {
+				navPill?.classList.toggle("is-scrolled", window.scrollY > 24);
+				document.documentElement.classList.toggle("show-nav-profile", window.scrollY > 80);
+			};
+			window.addEventListener("scroll", updateNavPill, { passive: true });
+			updateNavPill();
 		</script>
 	</body>
 </html>

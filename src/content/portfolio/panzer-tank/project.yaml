@@ -1,0 +1,25 @@
+order: 2
+date: 7 May 2023
+title: Panzer Tank
+background: "./imagecard.webp"
+link: "#"
+subtitle: Crafted in 2019 | Personal Project
+type: 3D
+description: A game-ready textured 3d tank with low and high-poly versions.
+images:
+- "./image1.webp"
+- "./image2.webp"
+- "./image3.webp"
+- "./image4.webp"
+- "./image5.webp"
+videos: []
+keywords:
+- 3d art
+- 3d model
+- topology
+- hard surface modeling
+- 3d artist
+- tank 3d model
+sketchfabIds:
+- edf12b7e7d77459bb4efdaf954279348
+- 0b0dd38872854a97b97d678c907bdfa2

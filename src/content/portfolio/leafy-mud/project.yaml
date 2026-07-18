@@ -1,0 +1,15 @@
+order: 16
+date: '2025'
+title: Leafy Mud
+background: "./16-artstation-leafy-mud-01.jpg"
+link: https://www.artstation.com/artwork/OGPlmy
+subtitle: 3D project
+type: 3D
+description: This PBR material was created from a photogrammery scan captured in a
+  local forest. The scan was processed in Meshroom before processing the material
+  using Blender, Unity ArtEngine, and Affinity Photo. The material is also fully tillable.
+images:
+- "./16-artstation-leafy-mud-01.jpg"
+- "./16-artstation-leafy-mud-02.jpg"
+videos: []
+keywords: []

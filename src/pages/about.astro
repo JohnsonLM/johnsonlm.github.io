@@ -1,77 +1,27 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
-import INFO from "../data/user";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import site from "../data/site";
 import pages from "../data/pages";
-
-const socials = [
-	["simple-icons:x", INFO.socials.twitter, "Follow on Twitter"],
-	["simple-icons:github", INFO.socials.github, "Follow on GitHub"],
-	["simple-icons:linkedin", INFO.socials.linkedin, "Follow on LinkedIn"],
-	["simple-icons:instagram", INFO.socials.instagram, "Follow on Instagram"],
-];
+import socials from "../data/socials";
 ---
 
 <BaseLayout activeNav="about" {...pages.about} image="/about.webp">
-	<div class="page-content">
-		<div class="content-wrapper">
-			<div class="flex flex-col h-full m-0 pt-[120px] lg:flex-row sm:pt-[60px]">
-				<div class="flex lg:flex-col lg:basis-full lg:order-1">
-					<div class="w-[370px] pb-0 lg:w-[80%] lg:pb-10">
-						<div class="overflow-hidden rounded-lg rotate-[2deg] transition-transform duration-250 hover:rotate-0">
-							<img src="/about.webp" alt="about" class="block w-full" />
-						</div>
-					</div>
-					<div class="pt-[50px] pb-[50px] lg:hidden">
-						<div class="flex flex-col">
-							{
-								socials.map(([name, href, label]) => (
-									<div class="flex pb-5">
-										<a href={href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
-											<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name={name} aria-hidden="true" />
-											<div class="text-[var(--color-secondary)] font-semibold text-sm group-hover:text-[var(--color-link)]">{label}</div>
-										</a>
-									</div>
-								))
-							}
-							<div class="flex pb-5">
-								<div>
-									<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
-										<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name="lucide:mail" aria-hidden="true" />
-										<div class="text-[var(--color-secondary)] font-semibold text-sm underline group-hover:text-[var(--color-link)]">{INFO.main.email}</div>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+	<main class="content-page px-5 pt-26 sm:px-8">
+		<div class="page-container">
+			<div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+				<div class="max-w-96 rotate-2 overflow-hidden rounded-lg transition-transform duration-300 hover:rotate-0">
+					<img src="/about.webp" alt="about" class="block w-full" />
 				</div>
-				<div class="basis-[900px] lg:basis-full lg:order-2">
-					<div class="title w-full">{INFO.about.title}</div>
-					<div class="subtitle w-[80%] pt-0 lg:pt-5">{INFO.about.description}</div>
+				<div>
+					<h1 class="page-title text-[clamp(38px,5vw,52px)]">{site.about.title}</h1>
+					<p class="page-description mt-6 max-w-145">{site.about.description}</p>
 				</div>
 			</div>
-			<div class="pt-[30px] flex hidden lg:block">
-				<div class="flex flex-col">
-					{
-						socials.map(([name, href, label]) => (
-							<div class="flex pb-5">
-								<a href={href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
-									<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name={name} aria-hidden="true" />
-									<div class="text-[var(--color-secondary)] font-semibold text-sm group-hover:text-[var(--color-link)]">{label}</div>
-								</a>
-							</div>
-						))
-					}
-					<div class="flex pb-5">
-						<div>
-							<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer" class="inline-flex items-center gap-[14px] no-underline group">
-								<Icon class="w-[26px] h-[26px] p-[5px] border border-[var(--color-border)] rounded-full text-[var(--color-secondary)] box-border group-hover:text-[var(--color-link)] group-hover:border-[var(--color-link)]" name="lucide:mail" aria-hidden="true" />
-								<div class="text-[var(--color-secondary)] font-semibold text-sm underline group-hover:text-[var(--color-link)]">{INFO.main.email}</div>
-							</a>
-						</div>
-					</div>
-				</div>
+			<div class="pt-8 flex flex-col gap-5">
+				{socials.map((link) => <a href={link.href} target="_blank" rel="noreferrer" class="group inline-flex items-center gap-3.5 text-sm font-semibold text-secondary no-underline hover:text-link"><Icon class="box-border size-6.5 rounded-full border border-border p-1.25 text-secondary group-hover:border-link group-hover:text-link" name={link.icon} aria-hidden="true" /><span>{link.label}</span></a>)}
+				<a href={`mailto:${site.main.email}`} class="group inline-flex items-center gap-3.5 text-sm font-semibold text-secondary underline hover:text-link"><Icon class="box-border size-6.5 rounded-full border border-border p-1.25 text-secondary group-hover:border-link group-hover:text-link" name="lucide:mail" aria-hidden="true" /><span>{site.main.email}</span></a>
 			</div>
-					</div>
-	</div>
+		</div>
+	</main>
 </BaseLayout>

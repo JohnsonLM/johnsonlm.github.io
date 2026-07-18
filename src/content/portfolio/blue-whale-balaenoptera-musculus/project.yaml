@@ -1,0 +1,25 @@
+order: 19
+date: '2025'
+title: Blue Whale (Balaenoptera musculus)
+background: "./19-artstation-blue-whale-balaenoptera-musculus-01.jpg"
+link: https://www.artstation.com/artwork/b5rN6g
+subtitle: 3D project
+type: 3D
+description: This is a model of an adult female blue whale (Balaenoptera musculus)
+  reconstructed from photographs and videos of a live individual taken aerially, underwater,
+  and from a tagging boat. Aerial photos were taken by the Duke Marine Robotics and
+  Remote Sensing Lab (https://marineuas.net/), and underwater videos were taken by
+  Hugh Pearson. Additional references from other blue whales, including data from
+  historical measurements, were also used to refine details and ensure accurate proportions.
+  This work was completed in collaboration with Paolo Segre and Jeremy Goldbogen of
+  Stanford University. To learn more, see Segre et al. (2023) in Mar. Mammal Science.
+images:
+- "./19-artstation-blue-whale-balaenoptera-musculus-01.jpg"
+- "./19-artstation-blue-whale-balaenoptera-musculus-02.jpg"
+- "./19-artstation-blue-whale-balaenoptera-musculus-03.jpg"
+- "./19-artstation-blue-whale-balaenoptera-musculus-04.jpg"
+- "./19-artstation-blue-whale-balaenoptera-musculus-05.jpg"
+videos: []
+keywords: []
+sketchfabIds:
+- 51a1e06a393b4817bf5cdbc484a4cddc

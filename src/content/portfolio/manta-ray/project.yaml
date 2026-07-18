@@ -1,0 +1,28 @@
+order: 12
+date: 7 May 2023
+title: Manta Ray
+background: "./imagecard.webp"
+link: "#"
+subtitle: Crafted in 2023
+type: 3D
+description: ''
+images:
+- "./image1.jpg"
+- "./image2.jpg"
+- "./image3.jpg"
+- "./image4.jpg"
+videos: []
+keywords:
+- 3d art
+- 3d model
+- topology
+- modeling
+- 3d artist
+- science
+- visualization
+- data
+- 3d scanning
+sketchfabIds:
+- 73e539c7ac5940e5aad4c58257df9725
+- 7dfe925693d24f7395ea8166c3de042c
+- 38fa168e96944e518fe15e702ad79ee0

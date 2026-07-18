@@ -1,0 +1,21 @@
+order: 8
+date: 7 May 2023
+title: Payphone
+background: "./image1.jpg"
+link: "#"
+subtitle: Crafted in 2018
+type: 3D
+description: ''
+images:
+- "./image1.jpg"
+- "./image2.jpg"
+- "./image3.jpg"
+videos: []
+keywords:
+- 3d art
+- 3d model
+- topology
+- hard surface modeling
+- 3d artist
+sketchfabIds:
+- db77c86edab5441ea27043f20244e0d6

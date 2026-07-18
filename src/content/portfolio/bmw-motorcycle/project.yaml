@@ -1,0 +1,24 @@
+order: 1
+date: 7 May 2023
+title: BMW Motorcycle
+background: "./image1.jpg"
+link: https://LivingLibrary3D.org
+subtitle: Crafted in 2020 | Personal Project
+type: 3D
+description: A 3d game-ready 3d model of a motorcycle. This model is based on a modified
+  version of the BMW R90/6 produced in the 1970s. The goal of this project was to
+  create a highly accurate high-res subdivision model of a motorcycle that could be
+  used as a base for texturing or low-poly asset creation.
+images:
+- "./image1.jpg"
+- "./image3.jpg"
+- "./image4.jpg"
+- "./image5.jpg"
+videos: []
+keywords:
+- The Benefits of Cloud Computing
+- Tharindu
+- Tharindu N
+- Tharindu Nayanajith
+sketchfabIds:
+- 47a2086278af4f8d9b8414ee42cd6938

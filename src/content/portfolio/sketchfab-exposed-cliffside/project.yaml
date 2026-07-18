@@ -1,0 +1,24 @@
+order: 41
+date: Jun 10, 2020
+title: Exposed Cliffside
+background: "./41-sketchfab-exposed-cliffside-01.jpeg"
+link: https://sketchfab.com/3d-models/exposed-cliffside-d9869dbcdd56492d844663a896f050c3
+subtitle: 3D project
+type: 3D
+description: 3d scan of a blasted rock face from 90 smartphone images and proccesed
+  in Meshroom, Agisoft DeLighter, and Blender. This was mostly done to find a good
+  workflow and isn't a perfect scan because of it. Next time I'll go out with my Sony
+  to try and grab some higher fidelity scans.
+images:
+- "./41-sketchfab-exposed-cliffside-01.jpeg"
+videos: []
+keywords:
+- cliff
+- nature
+- cliffside
+- photogrammetry
+- rock
+- construction
+- wall
+sketchfabIds:
+- d9869dbcdd56492d844663a896f050c3

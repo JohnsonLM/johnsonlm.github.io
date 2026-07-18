@@ -30,13 +30,6 @@ const pages = {
 		keywords: defaultKeywords,
 		path: "/about",
 	},
-	projects: {
-		title: "Projects",
-		description:
-			"Explore projects by Johnson Martin, including 3D resources, research, web products, and creative technology work.",
-		keywords: defaultKeywords,
-		path: "/projects",
-	},
 	portfolio: {
 		title: "Portfolio",
 		description: "Selected 3D, design, and web portfolio work by Johnson Martin.",
@@ -49,13 +42,6 @@ const pages = {
 			"Articles and notes from Johnson Martin on computer graphics, software development, culture, and related ideas.",
 		keywords: defaultKeywords,
 		path: "/articles",
-	},
-	contact: {
-		title: "Contact",
-		description:
-			"Contact Johnson Martin about collaborations, 3D art, software projects, or creative technology work.",
-		keywords: defaultKeywords,
-		path: "/contact",
 	},
 	notFound: {
 		title: "404",

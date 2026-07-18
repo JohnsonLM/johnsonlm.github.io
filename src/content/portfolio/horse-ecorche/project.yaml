@@ -1,0 +1,21 @@
+order: 6
+date: 7 May 2023
+title: Horse Écorché
+background: "./image1.jpg"
+link: "#"
+subtitle: Crafted in 2022 | Personal Project
+type: 3D
+description: An anatomy exercise using image/drawing reference and select photogrammetry
+  reference (Thanks Jer). The goal of the project was to develop a model that could
+  be used as a baseline for creating specific equine creature models.
+images:
+- "./image1.jpg"
+- "./image2.jpg"
+- "./image3.jpg"
+- "./image4.jpg"
+- "./image5.jpg"
+videos: []
+keywords: []
+sketchfabIds:
+- 51c4b54812844bf6bb5f6ed176e12e4e
+- f6e30ea20f844a868b5c215ede53327d

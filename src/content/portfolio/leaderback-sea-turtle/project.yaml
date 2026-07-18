@@ -1,0 +1,18 @@
+order: 5
+date: 7 May 2023
+title: Leaderback Sea Turtle
+background: "./imagecard.webp"
+link: "#"
+subtitle: Crafted in 2022 | Digital Life 3D
+type: 3D
+description: A 3d game-ready model of an Adult Leatherback Sea turtle. This model
+  was created using scientifically accurate methods for use in research applications.
+images:
+- "./image1.webp"
+- "./image2.webp"
+- "./image3.webp"
+videos: []
+keywords: []
+sketchfabIds:
+- ad44a173db8e4be4903f84bf73c237f4
+- 4974c93644a24da280fde68cba74a12d

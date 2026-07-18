@@ -1,0 +1,14 @@
+order: 32
+date: '2025'
+title: STAR NYX - Game Title
+background: "./32-artstation-star-nyx-game-title-01.jpg"
+link: https://www.artstation.com/artwork/8DXyq
+subtitle: 3D project
+type: 3D
+description: I made this for a game project I was working on a few years ago. Sadly,
+  the game never went past the prototype stage. But it was still a great chance to
+  learn Unity 3d and the game art workflow.
+images:
+- "./32-artstation-star-nyx-game-title-01.jpg"
+videos: []
+keywords: []

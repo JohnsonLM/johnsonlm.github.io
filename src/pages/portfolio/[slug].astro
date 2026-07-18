@@ -1,25 +1,25 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
 	const portfolio = await getCollection("portfolio");
-
 	return portfolio.map((item) => ({
-		params: { slug: item.id },
+		params: { slug: item.id.split("/")[0] },
 		props: { item },
 	}));
 }
 
 const { item } = Astro.props;
-type PortfolioType = "3D" | "Design" | "Web";
-const iconFor = (type: PortfolioType) => {
-	if (type === "3D") return "lucide:cuboid";
-	if (type === "Design") return "lucide:pen-tool";
-	return "lucide:globe";
-};
-const itemPath = `/portfolio/${item.id}`;
+const itemPath = `/portfolio/${item.id.split("/")[0]}`;
+const sourceLabel = item.data.link.includes("artstation")
+	? "View on ArtStation"
+	: item.data.link.includes("sketchfab")
+		? "View on Sketchfab"
+		: "View the original project";
+const { images, videos, sketchfabIds } = item.data;
 ---
 
 <BaseLayout
@@ -29,36 +29,48 @@ const itemPath = `/portfolio/${item.id}`;
 	path={itemPath}
 	image={item.data.background}
 >
-	<div class="page-content">
-		<div class="content-wrapper">
-			<div class="flex h-full m-0 pt-[120px] lg:block lg:pt-[90px]">
-				<div class="pt-[68px] pr-[50px] w-[40px] h-[40px] lg:pt-0 lg:pr-0">
-					<a href="/portfolio">
-						<img src="/back-button.png" alt="back" class="w-[50px] rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.25)]" />
+	<main class="detail-page sm:px-8 sm:pt-36">
+		<article class="page-container">
+			<a href="/portfolio" class="back-link mb-10">← <span>Back to portfolio</span></a>
+
+			<header class="mb-12 max-w-190">
+				<h1 class="m-0 font-secondary text-[clamp(40px,6vw,58px)] leading-none tracking-[-0.04em]">{item.data.title}</h1>
+				<p class="mt-6 mb-0 max-w-170 font-serif text-lg leading-relaxed text-secondary">{item.data.description}</p>
+				{item.data.link !== "#" && (
+					<a href={item.data.link} target="_blank" rel="noreferrer" class="mt-6 inline-flex items-center gap-1.5 font-secondary text-sm font-bold text-link underline underline-offset-4">
+						{sourceLabel} <Icon name="lucide:arrow-up-right" class="size-4" />
 					</a>
-				</div>
-				<div class="w-[80%] pt-[30px] lg:w-full">
-					<div class="title read-article-title [&_.portfolio-type-icon]:text-[var(--color-primary)] [&_.portfolio-type-icon]:mr-3 [&_.portfolio-type-icon]:align-[3px]">
-						<Icon class="portfolio-type-icon" name={iconFor(item.data.type)} aria-hidden="true" />
-						{item.data.title}
-					</div>
-					<div class="pb-[50px] text-base leading-[30px] font-sans text-[var(--color-secondary)]">
-						<p>{item.data.description}</p>
-						{
-							item.data.videos.map((video) => (
-								<video class="block w-full" controls>
-									<source src={video} type="video/mp4" />
-								</video>
-							))
-						}
-						{
-							item.data.images.map((image) => (
-								<img class="block w-full" src={image} alt={item.data.title} />
-							))
-						}
-					</div>
-				</div>
-			</div>
-					</div>
-	</div>
+				)}
+			</header>
+
+			{(images.length > 0 || videos.length > 0 || sketchfabIds.length > 0) && (
+				<section aria-label="Project media" class="flex flex-col gap-5">
+					{videos.map((video) => (
+						<video class="max-h-[78vh] w-full border border-border bg-black object-contain" controls preload="metadata">
+							<source src={video} type="video/mp4" />
+						</video>
+					))}
+					{images[0] && (
+						<figure class="m-0 overflow-hidden border border-border bg-card">
+							<Image src={images[0]} alt={`${item.data.title} — image 1`} loading="eager" class="block h-auto w-full max-w-none" />
+						</figure>
+					)}
+					{(images.length > 1 || sketchfabIds.length > 0) && (
+						<div class="grid grid-cols-1 items-start gap-5 sm:grid-cols-2">
+							{images.slice(1).map((image, index) => (
+								<figure class="m-0 overflow-hidden border border-border bg-card">
+									<Image src={image} alt={`${item.data.title} — image ${index + 2}`} loading="lazy" class="block h-auto w-full max-w-none" />
+								</figure>
+							))}
+							{sketchfabIds.map((id) => (
+								<div class="overflow-hidden border border-border bg-[#101014]">
+									<iframe title={`Interactive 3D model: ${item.data.title}`} class="aspect-video w-full border-0" src={`https://sketchfab.com/models/${id}/embed?autostart=0&ui_theme=dark`} loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen />
+								</div>
+							))}
+						</div>
+					)}
+				</section>
+			)}
+		</article>
+	</main>
 </BaseLayout>

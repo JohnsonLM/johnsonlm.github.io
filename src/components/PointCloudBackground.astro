@@ -1,244 +1,113 @@
-<div class="absolute inset-0 z-0 [&[data-unsupported="true"]]:hidden">
-	<canvas class="absolute inset-[-24px_0] w-full h-[calc(100%+48px)] opacity-100 saturate-150 brightness-125 translate-y-[100px]" aria-hidden="true"></canvas>
+---
+import { pointCloudConfig } from "./point-cloud/config";
+---
+
+<div
+	data-point-cloud
+	class="pointer-events-none absolute inset-x-0 top-0 z-0 [&[data-unsupported='true']]:hidden"
+	style={`height: calc(100% + ${pointCloudConfig.bleedBelow}px)`}
+>
+	<canvas class="absolute inset-[-24px_0] h-[calc(100%+48px)] w-full translate-y-[100px] opacity-100 saturate-150 brightness-125" aria-hidden="true"></canvas>
 </div>
 
 <script>
-	const background = document.querySelector<HTMLElement>("[class*='absolute'][class*='inset-0']");
+	import { pointCloudConfig } from "./point-cloud/config";
+	import { loadPointCloud } from "./point-cloud/plyLoader";
+	import { PointCloudRenderer } from "./point-cloud/renderer";
+
+	const background = document.querySelector<HTMLElement>("[data-point-cloud]");
 	const canvas = background?.querySelector<HTMLCanvasElement>("canvas");
 
 	if (background && canvas) {
-		const gl = canvas.getContext("webgl", { alpha: true, antialias: false });
-		if (!gl) {
-			background.dataset.unsupported = "true";
-		} else {
-			const vertexShader = `
-				attribute vec3 aPosition;
-				attribute vec3 aColor;
-				uniform mat4 uProjection;
-				uniform vec2 uPointer;
-				varying vec3 vColor;
-				void main() {
-					float c = cos(uPointer.x * 0.14);
-					float s = sin(uPointer.x * 0.14);
-					vec3 point = aPosition * 15.0;
-					point.x += 3.2;
-					point.y += uPointer.y * 0.35;
-					vec3 rotated = vec3(c * point.x + s * point.z, point.y, -s * point.x + c * point.z - 15.0);
-					gl_Position = uProjection * vec4(rotated, 1.0);
-					gl_PointSize = 4.2;
-					vColor = aColor;
-				}
-			`;
-			const fragmentShader = `
-				precision mediump float;
-				varying vec3 vColor;
-				void main() {
-					vec2 point = gl_PointCoord - vec2(0.5);
-					if (dot(point, point) > 0.25) discard;
-					gl_FragColor = vec4(min(vColor * 1.8 + vec3(0.08), vec3(1.0)), 0.58);
-				}
-			`;
+		try {
+			const renderer = new PointCloudRenderer(canvas, pointCloudConfig);
+			const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+			let pointerX = 0;
+			let pointerY = 0;
+			let targetX = 0;
+			let targetY = 0;
+			let frameId = 0;
+			let isIntersecting = true;
+			let destroyed = false;
 
-			const compile = (type: number, source: string) => {
-				const shader = gl.createShader(type);
-				if (!shader) return null;
-				gl.shaderSource(shader, source);
-				gl.compileShader(shader);
-				if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-					console.warn("Point-cloud shader compilation failed:", gl.getShaderInfoLog(shader));
-					gl.deleteShader(shader);
-					return null;
-				}
-				return shader;
-			};
-			const program = gl.createProgram();
-			const vertex = compile(gl.VERTEX_SHADER, vertexShader);
-			const fragment = compile(gl.FRAGMENT_SHADER, fragmentShader);
-			if (!program || !vertex || !fragment) {
-				background.dataset.unsupported = "true";
-			} else {
-				gl.attachShader(program, vertex);
-				gl.attachShader(program, fragment);
-				gl.linkProgram(program);
-				if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-					console.warn("Point-cloud program linking failed:", gl.getProgramInfoLog(program));
-					gl.deleteProgram(program);
-					gl.deleteShader(vertex);
-					gl.deleteShader(fragment);
-					background.dataset.unsupported = "true";
-				} else {
-				gl.useProgram(program);
-				gl.enable(gl.BLEND);
-				gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-
-				const positionLocation = gl.getAttribLocation(program, "aPosition");
-				const colorLocation = gl.getAttribLocation(program, "aColor");
-				const projectionLocation = gl.getUniformLocation(program, "uProjection");
-				const pointerLocation = gl.getUniformLocation(program, "uPointer");
-				const positionBuffer = gl.createBuffer();
-				const colorBuffer = gl.createBuffer();
-				if (positionLocation < 0 || colorLocation < 0 || !projectionLocation || !pointerLocation || !positionBuffer || !colorBuffer) {
-					gl.deleteProgram(program);
-					background.dataset.unsupported = "true";
-				} else {
-				let pointCount = 0;
-				let positionData = new Float32Array();
-				let colorData = new Float32Array();
-				let pointerX = 0;
-				let pointerY = 0;
-				let targetX = 0;
-				let targetY = 0;
-				let frameId = 0;
-				let pointCloudLoaded = false;
-				let isIntersecting = true;
-				let projection = new Float32Array(16);
-				let lastWidth = 0;
-				let lastHeight = 0;
-				const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-			const loadPointCloud = async () => {
-					const response = await fetch("/sharks.0.ply");
-					if (!response.ok) throw new Error(`PLY request failed: ${response.status}`);
-					const buffer = await response.arrayBuffer();
-					const bytes = new Uint8Array(buffer);
-					const headerEnd = new TextDecoder().decode(bytes.subarray(0, Math.min(bytes.length, 20000))).indexOf("end_header");
-					if (headerEnd < 0) throw new Error("PLY header is missing");
-					if (!/^format binary_little_endian 1\.0/m.test(new TextDecoder().decode(bytes.subarray(0, headerEnd)))) {
-						throw new Error("Only binary little-endian PLY files are supported");
-					}
-					const dataStart = headerEnd + "end_header".length + (bytes[headerEnd + "end_header".length] === 13 ? 2 : 1);
-					const header = new TextDecoder().decode(bytes.subarray(0, dataStart));
-					const count = Number(header.match(/element vertex (\d+)/)?.[1] ?? 0);
-					const properties = [...header.matchAll(/property (float|float32|uchar|uint8) (\w+)/g)].map((match) => ({ type: match[1], name: match[2] }));
-					const offsets = new Map<string, { offset: number; type: string }>();
-					let stride = 0;
-					for (const property of properties) {
-						offsets.set(property.name, { offset: stride, type: property.type });
-						stride += property.type.startsWith("float") ? 4 : 1;
-					}
-					const positionOffset = [offsets.get("x"), offsets.get("y"), offsets.get("z")];
-					if (!count || stride === 0 || positionOffset.some((value) => !value)) throw new Error("PLY vertex properties are invalid");
-					if (dataStart + count * stride > buffer.byteLength) throw new Error("PLY vertex data is truncated");
-					const view = new DataView(buffer, dataStart);
-					positionData = new Float32Array(count * 3);
-					colorData = new Float32Array(count * 3);
-					const mins = [Infinity, Infinity, Infinity];
-					const maxs = [-Infinity, -Infinity, -Infinity];
-					for (let i = 0; i < count; i += 1) {
-						for (let axis = 0; axis < 3; axis += 1) {
-							const value = view.getFloat32(i * stride + positionOffset[axis]!.offset, true);
-							positionData[i * 3 + axis] = value;
-							mins[axis] = Math.min(mins[axis], value);
-							maxs[axis] = Math.max(maxs[axis], value);
-						}
-						for (const [index, channel] of ["red", "green", "blue"].entries()) {
-							const property = offsets.get(channel);
-							colorData[i * 3 + index] = property ? view.getUint8(i * stride + property.offset) / 255 : 0.5;
-						}
-					}
-					const center = mins.map((min, index) => (min + maxs[index]) / 2);
-					const scale = Math.max(...maxs.map((max, index) => max - mins[index])) || 1;
-					for (let i = 0; i < count; i += 1) {
-						for (let axis = 0; axis < 3; axis += 1) positionData[i * 3 + axis] = (positionData[i * 3 + axis] - center[axis]) / scale;
-					}
-					pointCount = count;
-					gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-					gl.bufferData(gl.ARRAY_BUFFER, positionData, gl.STATIC_DRAW);
-					gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-					gl.bufferData(gl.ARRAY_BUFFER, colorData, gl.STATIC_DRAW);
-					pointCloudLoaded = true;
-				};
-
-				const perspective = (fov: number, aspect: number, near: number, far: number) => {
-					const f = 1 / Math.tan(fov / 2);
-					const range = 1 / (near - far);
-					return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * range, -1, 0, 0, 2 * far * near * range, 0]);
-				};
-				const resize = () => {
-					const ratio = Math.min(window.devicePixelRatio, 2);
-					const width = Math.max(1, Math.floor(canvas.clientWidth * ratio));
-					const height = Math.max(1, Math.floor(canvas.clientHeight * ratio));
-					if (width === lastWidth && height === lastHeight) return;
-					lastWidth = width;
-					lastHeight = height;
-					canvas.width = width;
-					canvas.height = height;
-					gl.viewport(0, 0, width, height);
-					projection = perspective(0.9, width / height, 0.05, 50);
-				};
-				const draw = () => {
-					resize();
-					gl.clearColor(0, 0, 0, 0);
-					gl.clear(gl.COLOR_BUFFER_BIT);
-					if (pointCloudLoaded && pointCount) {
-						gl.useProgram(program);
-						gl.uniformMatrix4fv(projectionLocation, false, projection);
-						if (!reducedMotion.matches) {
-							pointerX += (targetX - pointerX) * 0.04;
-							pointerY += (targetY - pointerY) * 0.04;
-						}
-						gl.uniform2f(pointerLocation, pointerX, pointerY);
-						gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-						gl.enableVertexAttribArray(positionLocation);
-						gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, false, 0, 0);
-						gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-						gl.enableVertexAttribArray(colorLocation);
-						gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
-						gl.drawArrays(gl.POINTS, 0, pointCount);
-					}
-				};
-				const animate = () => {
-					frameId = 0;
-					if (document.hidden || !isIntersecting || reducedMotion.matches) return;
-					draw();
-					frameId = requestAnimationFrame(animate);
-				};
-				const schedule = () => {
-					if (!frameId && !document.hidden && isIntersecting && !reducedMotion.matches) frameId = requestAnimationFrame(animate);
-				};
-				const onPointerMove = (event: PointerEvent) => {
-					targetX = (event.clientX / window.innerWidth - 0.5) * 2;
-					targetY = (event.clientY / window.innerHeight - 0.5) * -2;
-				};
-				const onVisibilityChange = () => {
-					if (document.hidden) {
-						if (frameId) cancelAnimationFrame(frameId);
-						frameId = 0;
-					} else {
-						draw();
-						schedule();
-					}
-				};
-				const onContextLost = (event: Event) => {
-					event.preventDefault();
-					if (frameId) cancelAnimationFrame(frameId);
-					frameId = 0;
-					background.dataset.unsupported = "true";
-				};
-				const cleanup = () => {
-					if (frameId) cancelAnimationFrame(frameId);
-					window.removeEventListener("pointermove", onPointerMove);
-					document.removeEventListener("visibilitychange", onVisibilityChange);
-					canvas.removeEventListener("webglcontextlost", onContextLost);
-					observer.disconnect();
-					intersectionObserver.disconnect();
-				};
-				const observer = new ResizeObserver(() => { resize(); draw(); });
-				const intersectionObserver = new IntersectionObserver(([entry]) => {
-					isIntersecting = entry?.isIntersecting ?? true;
-					if (isIntersecting) { draw(); schedule(); } else if (frameId) { cancelAnimationFrame(frameId); frameId = 0; }
-				});
-				window.addEventListener("pointermove", onPointerMove, { passive: true });
-				document.addEventListener("visibilitychange", onVisibilityChange);
-				canvas.addEventListener("webglcontextlost", onContextLost);
-				document.addEventListener("astro:before-swap", cleanup, { once: true });
-				observer.observe(canvas);
-				intersectionObserver.observe(canvas);
-				loadPointCloud().then(() => { draw(); schedule(); }).catch(() => { background.dataset.unsupported = "true"; });
+			const draw = () => renderer.draw(pointerX, pointerY);
+			const animate = () => {
+				frameId = 0;
+				if (document.hidden || !isIntersecting || reducedMotion.matches || destroyed) return;
+				pointerX += (targetX - pointerX) * pointCloudConfig.interaction.smoothing;
+				pointerY += (targetY - pointerY) * pointCloudConfig.interaction.smoothing;
 				draw();
-			}
-			}
+				frameId = requestAnimationFrame(animate);
+			};
+			const schedule = () => {
+				if (!frameId && !document.hidden && isIntersecting && !reducedMotion.matches && !destroyed) {
+					frameId = requestAnimationFrame(animate);
+				}
+			};
+			const onPointerMove = (event: PointerEvent) => {
+				targetX = (event.clientX / window.innerWidth - 0.5) * 2;
+				targetY = (event.clientY / window.innerHeight - 0.5) * -2;
+			};
+			const onVisibilityChange = () => {
+				if (document.hidden) {
+					if (frameId) cancelAnimationFrame(frameId);
+					frameId = 0;
+				} else {
+					draw();
+					schedule();
+				}
+			};
+			const onContextLost = (event: Event) => {
+				event.preventDefault();
+				cleanup();
+				background.dataset.unsupported = "true";
+			};
+			const resizeObserver = new ResizeObserver(draw);
+			const intersectionObserver = new IntersectionObserver(([entry]) => {
+				isIntersecting = entry?.isIntersecting ?? true;
+				if (isIntersecting) {
+					draw();
+					schedule();
+				} else if (frameId) {
+					cancelAnimationFrame(frameId);
+					frameId = 0;
+				}
+			});
+			const cleanup = () => {
+				if (destroyed) return;
+				destroyed = true;
+				if (frameId) cancelAnimationFrame(frameId);
+				window.removeEventListener("pointermove", onPointerMove);
+				document.removeEventListener("visibilitychange", onVisibilityChange);
+				canvas.removeEventListener("webglcontextlost", onContextLost);
+				resizeObserver.disconnect();
+				intersectionObserver.disconnect();
+				renderer.destroy();
+			};
+
+			window.addEventListener("pointermove", onPointerMove, { passive: true });
+			document.addEventListener("visibilitychange", onVisibilityChange);
+			canvas.addEventListener("webglcontextlost", onContextLost);
+			document.addEventListener("astro:before-swap", cleanup, { once: true });
+			resizeObserver.observe(canvas);
+			intersectionObserver.observe(canvas);
+
+			loadPointCloud(pointCloudConfig.assetUrl)
+				.then((data) => {
+					if (destroyed) return;
+					renderer.upload(data);
+					draw();
+					schedule();
+				})
+				.catch((error: unknown) => {
+					console.warn("Point cloud failed to load:", error);
+					cleanup();
+					background.dataset.unsupported = "true";
+				});
+			draw();
+		} catch (error) {
+			console.warn("Point cloud is unavailable:", error);
+			background.dataset.unsupported = "true";
 		}
-	}
 	}
 </script>

@@ -1,0 +1,22 @@
+order: 31
+date: '2025'
+title: Raspberry - Practice Session
+background: "./31-artstation-raspberry-practice-session-01.jpg"
+link: https://www.artstation.com/artwork/erowD
+subtitle: 3D project
+type: 3D
+description: I recently shaded this Raspberry in Cycles for the ongoing challenge
+  over at shaders.xyz I learned a fair bit about working with Subsurface Scattering,
+  Translucency, and strand rendering. Three things I rarely work with while shading
+  most things. I also spent some time perfecting the final comp render to better match
+  the reference by tweaking the color and adding photographic phenomenon including
+  Chromatic aberration, Film Grain and vignetting. I also opted for a bit lighter
+  of a raspberry than in the reference per personal taste. Although the raw render
+  matches the reference a little closer.
+images:
+- "./31-artstation-raspberry-practice-session-01.jpg"
+- "./31-artstation-raspberry-practice-session-02.jpg"
+- "./31-artstation-raspberry-practice-session-03.jpg"
+- "./31-artstation-raspberry-practice-session-04.jpg"
+videos: []
+keywords: []

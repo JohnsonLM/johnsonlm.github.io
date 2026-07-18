@@ -1,0 +1,20 @@
+order: 13
+date: '2025'
+title: Mantis Shrimp (Squilla empusa)
+background: "./13-artstation-mantis-shrimp-squilla-empusa-01.jpg"
+link: https://www.artstation.com/artwork/oJWlrB
+subtitle: 3D project
+type: 3D
+description: This is a 3d reconstruction of an adult female Mantis Shrimp (Squilla
+  empusa) created by myself with assistance from Josh Medina. The model was created
+  in collaboration with Dr. Kate Feller from Union College and the Digital Life project
+  at Umass Amherst . The model was developed from a 3D photogrammetry scan of a preserved
+  specimen, as well as images and measurements from live animals.
+images:
+- "./13-artstation-mantis-shrimp-squilla-empusa-01.jpg"
+- "./13-artstation-mantis-shrimp-squilla-empusa-02.jpg"
+- "./13-artstation-mantis-shrimp-squilla-empusa-03.jpg"
+videos: []
+keywords: []
+sketchfabIds:
+- dc629244fd9a4a2fb2708d0498883500

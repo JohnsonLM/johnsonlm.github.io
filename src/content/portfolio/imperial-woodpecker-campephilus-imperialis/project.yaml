@@ -1,0 +1,24 @@
+order: 14
+date: '2025'
+title: Imperial Woodpecker (Campephilus imperialis)
+background: "./14-artstation-imperial-woodpecker-campephilus-imperialis-01.jpg"
+link: https://www.artstation.com/artwork/1NwAQe
+subtitle: 3D project
+type: 3D
+description: This project's goal was to create a 3d model of extinct Imperial Woodpecker
+  (Campephilus imperialis). The resulting renders and animations show the bird in
+  several flight patterns (fast-flapping, bounce-gliding and gliding). The 3D model,
+  rig, and animations were created by myself and Josh Medina in Blender using 3d scans
+  of preserved specimens of the bird as well as artist sketches, and references photos
+  of similar species.
+images:
+- "./14-artstation-imperial-woodpecker-campephilus-imperialis-01.jpg"
+- "./14-artstation-imperial-woodpecker-campephilus-imperialis-02.jpg"
+- "./14-artstation-imperial-woodpecker-campephilus-imperialis-03.jpg"
+- "./14-artstation-imperial-woodpecker-campephilus-imperialis-04.jpg"
+videos: []
+keywords: []
+sketchfabIds:
+- 987f423289784fb0a6a12f81d8e5e65c
+- 63e44e9ae8b644f7a240ca57b25d4179
+- '059e2b4403b74d6b9c85356a6d3ed0dc'

@@ -1,0 +1,18 @@
+order: 15.5
+date: '2025'
+title: Whale Shark (Rhincodon typus)
+link: https://www.artstation.com/artwork/yD25D8
+subtitle: 3D project
+type: 3D
+description: A scientifically accurate 3D reconstruction of a whale shark created in partnership with the Digital Life Project and the Save Our Seas Foundation.
+background: "./whale-shark.jpg"
+images:
+  - "./whale-shark.jpg"
+videos: []
+keywords:
+  - whale shark
+  - Rhincodon typus
+  - scientific visualization
+  - 3d
+sketchfabIds:
+  - dbf13551c99948d09968b898e973e7be

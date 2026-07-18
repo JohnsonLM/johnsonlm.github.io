@@ -4,7 +4,6 @@ import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
 	const articles = await getCollection("articles");
-
 	return articles.map((article) => ({
 		params: { slug: article.id },
 		props: { article },
@@ -14,6 +13,7 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await render(article);
 const articlePath = `/articles/${article.id}`;
+const publishedDate = new Date(article.data.date).toISOString().slice(0, 10);
 const articleJsonLd = {
 	"@context": "https://schema.org",
 	"@type": "Article",
@@ -29,6 +29,7 @@ const articleJsonLd = {
 ---
 
 <BaseLayout
+	activeNav="articles"
 	title={article.data.title}
 	description={article.data.description}
 	keywords={article.data.keywords}
@@ -36,24 +37,33 @@ const articleJsonLd = {
 	type="article"
 	jsonLd={articleJsonLd}
 >
-	<div class="page-content">
-		<div class="content-wrapper">
-			<div class="flex h-full m-0 pt-[120px] lg:block lg:pt-[90px]">
-				<div class="pt-[68px] pr-[50px] w-[40px] h-[40px] lg:pt-0 lg:pr-0">
-					<a href="/articles">
-						<img src="/back-button.png" alt="back" class="w-[50px] rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.25)]" />
-					</a>
+	<main class="article-page">
+		<article class="page-container max-w-190">
+			<a href="/articles" class="back-link">← <span>Back</span></a>
+
+			<header class="mt-4 border-y border-primary py-4 max-[760px]:mt-9">
+				<div class="flex items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-[0.12em] text-secondary">
+					<span>Johnson Martin</span>
+					<time datetime={publishedDate}>{article.data.date}</time>
 				</div>
-				<div class="w-[80%] pt-[30px] lg:w-full">
-					<div class="border-l-2 border-[var(--color-quaternary)] text-[var(--color-tertiary)] text-base items-center h-[22px]">
-						<div class="font-primary pl-[15px]">{article.data.date}</div>
-					</div>
-					<div class="title read-article-title pt-[50px] pb-[50px] w-full [&_.portfolio-type-icon]:text-[var(--color-primary)] [&_.portfolio-type-icon]:mr-3 [&_.portfolio-type-icon]:align-[3px]">{article.data.title}</div>
-					<div class="pb-[50px] text-base leading-[30px] font-sans text-[var(--color-secondary)]">
-						<Content />
-					</div>
-				</div>
+			</header>
+
+			<div class="py-12 max-[760px]:py-9">
+				<h1 class="m-0 max-w-180 font-secondary text-[clamp(38px,6vw,48px)] leading-none tracking-[-0.04em] text-primary">
+					{article.data.title}
+				</h1>
+				<p class="mt-6 mb-0 max-w-145 font-serif text-lg leading-relaxed text-secondary max-[760px]:text-base">
+					{article.data.description}
+				</p>
 			</div>
-					</div>
-	</div>
+
+			<div class="article-divider" aria-hidden="true"><span></span></div>
+
+			<div class="article-prose mx-auto max-w-165 py-12 max-[760px]:py-9">
+				<Content />
+			</div>
+
+			<footer class="gap-5 border-t border-primary"></footer>
+		</article>
+	</main>
 </BaseLayout>

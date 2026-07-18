@@ -1,0 +1,24 @@
+order: 26
+date: '2025'
+title: Topology Studies
+link: https://www.artstation.com/artwork/5XBw58
+subtitle: Hands and feet | 3D studies
+type: 3D
+description: A collection of animation-ready hand and foot topology studies, including a rigged hand and downloadable CC-0 models.
+background: "./26-artstation-hand-topology-study-01.jpg"
+images:
+  - "./26-artstation-hand-topology-study-01.jpg"
+  - "./26-artstation-hand-topology-study-02.gif"
+  - "./26-artstation-hand-topology-study-03.jpg"
+  - "./38-sketchfab-foot-topology-study-01.jpeg"
+  - "./40-sketchfab-hand-topology-study-01.jpeg"
+videos: []
+keywords:
+  - topology
+  - anatomy
+  - modeling
+  - education
+  - 3d
+sketchfabIds:
+  - 4aa96c9b0a9b4cb1b3740f8e0558ffbc
+  - de4f151a05494152b4c213ccafc4f646

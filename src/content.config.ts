@@ -14,20 +14,22 @@ const articles = defineCollection({
 });
 
 const portfolio = defineCollection({
-	loader: glob({ base: "./src/content/portfolio", pattern: "**/*.json" }),
-	schema: z.object({
-		order: z.number(),
-		date: z.string(),
-		title: z.string(),
-		background: z.string(),
-		link: z.string().default("#"),
-		subtitle: z.string(),
-		type: z.enum(["3D", "Design", "Web"]),
-		description: z.string(),
-		images: z.array(z.string()).default([]),
-		videos: z.array(z.string()).default([]),
-		keywords: z.array(z.string()).default([]),
-	}),
+	loader: glob({ base: "./src/content/portfolio", pattern: "**/project.yaml" }),
+	schema: ({ image }) =>
+		z.object({
+			order: z.number(),
+			date: z.string(),
+			title: z.string(),
+			background: image(),
+			link: z.string().default("#"),
+			subtitle: z.string(),
+			type: z.enum(["3D", "Design", "Web"]),
+			description: z.string(),
+			images: z.array(image()).default([]),
+			videos: z.array(z.string()).default([]),
+			sketchfabIds: z.array(z.string()).default([]),
+			keywords: z.array(z.string()).default([]),
+			}),
 });
 
 export const collections = { articles, portfolio };

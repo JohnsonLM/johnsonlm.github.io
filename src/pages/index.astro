@@ -1,313 +1,89 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import PointCloudBackground from "../components/PointCloudBackground.astro";
-import INFO from "../data/user";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import site from "../data/site";
+import projects from "../data/projects";
 import pages from "../data/pages";
 import { getCollection } from "astro:content";
+import socials from "../data/socials";
 
-const page = pages.home;
 const articles = (await getCollection("articles")).sort((a, b) => a.data.order - b.data.order);
 const portfolio = (await getCollection("portfolio")).sort((a, b) => a.data.order - b.data.order);
-const featuredWork = portfolio.filter((item) => item.data.background).slice(-4).reverse();
-const iconFor = (type: "3D" | "Design" | "Web") => {
-	if (type === "3D") return "lucide:cuboid";
-	if (type === "Design") return "lucide:pen-tool";
-	return "lucide:globe";
-};
+const featuredWork = portfolio.slice(0, 3);
+const compactSocials = socials.filter((link) => link.compactLabel);
+
 ---
 
-<BaseLayout activeNav="home" {...page}>
-	<div class="w-full pt-0 relative z-2">
-		<!-- Hero Section -->
-		<section class="relative w-screen ml-[calc(50%-50vw)] min-h-[700px] overflow-hidden rounded-none bg-[#111] text-white dark:bg-[var(--color-background)] sm:min-h-[620px]">
+<BaseLayout activeNav="home" {...pages.home}>
+	<main class="overflow-hidden bg-secondary-bg text-primary">
+		<section class="relative min-h-155 bg-[#101312] text-white">
 			<PointCloudBackground />
-			<div
-				class="relative z-2 flex flex-col justify-end items-start box-border w-full max-w-[50%] mx-auto min-h-[575px] p-[42px] sm:min-h-[500px] sm:p-[28px_20px] sm:max-w-[90%]"
-			>
-				<div
-					id="homepage-profile"
-					class="relative z-2 flex items-center font-secondary text-sm font-bold mb-[22px] transition-all duration-250 [&.is-compact]:fixed [&.is-compact]:top-[22px] [&.is-compact]:left-[28px] [&.is-compact]:mb-0"
-				>
-					<img
-						id="homepage-profile-image"
-						src={INFO.main.logo}
-						alt={`${INFO.main.name} profile`}
-						class="w-[78px] h-[78px] border border-white/60 rounded-full mr-5 object-cover shadow-[0_8px_24px_rgba(0,0,0,0.28)] transition-[width,height,box-shadow] duration-250 ease [&.is-compact]:w-[42px] [&.is-compact]:h-[42px] [&.is-compact]:shadow-[0_4px_12px_rgba(0,0,0,0.3)] dark:border-[rgba(28,28,30,0.35)]"
-					/>
-					<span
-						id="homepage-profile-name"
-						class="text-white dark:text-primary"
-						>{INFO.main.name}</span
-					>
+			<div class="relative z-2 box-border flex min-h-155 w-[90%] max-w-250 mx-auto flex-col justify-end pt-30 pb-15 max-[760px]:min-h-155 max-[760px]:pt-28 max-[760px]:pb-12">
+				<div class="hero-identity mb-6 flex items-center gap-3.5">
+					<img src={site.main.logo} alt="" class="size-14.5 rounded-full border border-white/50 object-cover" />
+					<strong class="font-secondary text-base">{site.main.name}</strong>
 				</div>
-				<div
-					class="max-w-[680px] text-shadow-[0_2px_18px_rgba(0,0,0,0.28)] dark:text-shadow-[0_2px_18px_rgba(255,255,255,0.7)]"
-				>
-					<h1
-						class="mt-3 font-secondary text-[clamp(42px,6vw,78px)] leading-[0.98] text-white dark:text-[var(--color-primary)]"
-					>
-						{INFO.homepage.title}
+				<div class="max-w-172.5">
+					<h1 class="m-0 font-secondary text-[clamp(46px,6vw,68px)] leading-none tracking-[-0.035em] max-[760px]:text-[44px]">
+						{site.homepage.title}
 					</h1>
-					<p
-						class="max-w-[650px] text-[#d6e7e2] text-base leading-relaxed dark:text-[var(--color-secondary)]"
-					>
-						{INFO.homepage.description}
+					<p class="my-4.5 max-w-162.5 text-base leading-[1.58] text-[#d6e7e2] max-[760px]:text-[15px] max-[760px]:leading-[1.55]">
+						{site.homepage.description}
 					</p>
-					<div
-						class="flex flex-wrap gap-[14px] mt-5"
-						aria-label="Social links"
-					>
-						<a
-							href={INFO.socials.mastodon}
-							target="_blank"
-							rel="noreferrer"
-							aria-label="Mastodon"
-							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
-							><Icon
-								name="simple-icons:mastodon"
-								aria-hidden="true"
-							/></a
-						>
-						<a
-							href={INFO.socials.twitter}
-							target="_blank"
-							rel="noreferrer"
-							aria-label="Twitter"
-							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
-							><Icon
-								name="simple-icons:twitter"
-								aria-hidden="true"
-							/></a
-						>
-						<a
-							href={INFO.socials.github}
-							target="_blank"
-							rel="noreferrer"
-							aria-label="GitHub"
-							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
-							><Icon
-								name="simple-icons:github"
-								aria-hidden="true"
-							/></a
-						>
-						<a
-							href={INFO.socials.instagram}
-							target="_blank"
-							rel="noreferrer"
-							aria-label="Instagram"
-							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
-							><Icon
-								name="simple-icons:instagram"
-								aria-hidden="true"
-							/></a
-						>
-						<a
-							href={`mailto:${INFO.main.email}`}
-							aria-label="Email"
-							class="grid place-items-center w-[25px] h-[25px] text-[#d6e7e2] no-underline hover:text-white hover:underline dark:text-[var(--color-primary)]"
-							><Icon name="lucide:mail" aria-hidden="true" /></a
-						>
+					<div class="flex items-center gap-4" aria-label="Social links">
+						{compactSocials.map((link) => <a href={link.href} target="_blank" rel="noreferrer" aria-label={link.compactLabel} class="social-link"><Icon name={link.compactIcon ?? link.icon} class="size-4 fill-current" /></a>)}
+						<a href={`mailto:${site.main.email}`} aria-label="Email" class="social-link"><Icon name="lucide:mail" class="size-4" /></a>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Portfolio Section -->
-		<section
-			class="max-w-[1000px] mx-auto py-[72px_0_80px] sm:py-[56px_18px_64px]"
-			aria-labelledby="homepage-portfolio-title"
-		>
-			<header
-				class="flex items-end justify-between sm:flex-col sm:items-start"
-			>
-				<div>
-					<a
-						href="/portfolio"
-						class="text-[var(--color-link)] font-secondary text-sm font-bold no-underline [&>span]:pl-[6px] [&>span]:text-base"
-						>View all portfolio <span>↗</span></a
-					>
-					<h2
-						id="homepage-portfolio-title"
-						class="text-[var(--color-primary)] font-secondary text-[clamp(34px,4vw,52px)] leading-none"
-					>
-						Portfolio
-					</h2>
-				</div>
-			</header>
-			<div class="grid grid-cols-2 gap-[22px] sm:grid-cols-1">
-				{
-					featuredWork.map((item) => (
-						<a
-							href={`/portfolio/${item.id}`}
-							class="no-underline group"
-						>
-							<div
-								class="rounded-lg bg-cover bg-center overflow-hidden shadow-[inset_0_-160px_120px_rgba(0,0,0,0.35)] mt-[1.2em] min-h-[230px] animate-[cardrotationin_1s_forwards] hover:animate-[cardrotationout_1s_forwards]"
-								style={`background-image: url(${item.data.background})`}
-							>
-								<div class="flex items-start gap-[10px] w-full text-white p-[2em] font-extrabold text-[1.3em] font-secondary text-shadow-[0_0_5px_rgba(39,39,39,1)] box-border">
-									<Icon
-										class="w-[18px] h-[18px] mt-[2px] drop-shadow-[0_0_3px_rgba(39,39,39,0.8)] flex-none"
-										name={iconFor(item.data.type)}
-										aria-hidden="true"
-									/>
-									{item.data.title}
-								</div>
-								<div class="text-white pl-[2em] pb-[1em] text-[1em] font-primary text-shadow-[0_0_2px_black]">
-									{item.data.subtitle}
-								</div>
-							</div>
+		<div class="w-[90%] max-w-250 mx-auto">
+			<section class="py-8 max-[760px]:py-14">
+				<header class="section-header">
+					<div><p class="section-kicker">What I’m building</p><h2 class="section-title">Projects</h2></div>
+				</header>
+				<div class="grid grid-cols-3 gap-3.5 max-[900px]:grid-cols-2 max-[760px]:grid-cols-1">
+					{projects.map((project, index) => (
+						<a href={project.link} class:list={["tilt-card flex min-h-40 flex-col rounded-lg border border-border bg-card p-6 text-inherit no-underline", index % 2 ? "tilt-left" : "tilt-right"]}>
+							<img src={project.logo.replace(/^\.\//, "/")} alt="" class="size-7.5 object-contain" />
+							<h3 class="mt-5.5 mb-2.5 font-secondary text-[17px]">{project.title}</h3>
+							<p class="m-0 text-sm leading-relaxed text-secondary">{project.description}</p>
+							<small class="mt-auto pt-5 font-bold text-secondary">{project.linkText} ↗</small>
 						</a>
-					))
-				}
-			</div>
-		</section>
-
-		<!-- Projects Section -->
-		<section class="max-w-[1000px] mx-auto mb-[70px] py-[64px_0_72px]">
-			<header
-				class="flex items-end justify-between gap-6 pb-6 sm:items-start sm:flex-col sm:gap-[14px]"
-			>
-				<div>
-					<p
-						class="m-0 text-[var(--link-color)] font-secondary text-xs font-bold tracking-widest uppercase"
-					>
-						What I'm building
-					</p>
-					<h2
-						class="mt-[10px] text-[var(--color-primary)] font-secondary text-[clamp(34px,4vw,52px)] leading-none"
-					>
-						Projects
-					</h2>
+					))}
 				</div>
-			</header>
-			<div
-				class="grid grid-cols-3 gap-4 items-stretch py-[30px] lg:grid-cols-2 md:grid-cols-1"
-			>
-				{
-					INFO.projects.map((project) => (
-						<div class="box-border overflow-hidden">
-							<div class="mix-blend-normal rounded-lg opacity-100 h-full bg-[var(--color-card)] border border-[var(--color-border)] hover:bg-[var(--color-hover-bg)] hover:opacity-100 transition-colors duration-300 [&:hover_.project-link]:text-[var(--color-link)] [&:hover_.project-link]:transition-colors [&:hover_.project-link]:duration-300 sm:h-full">
-								<a href={project.link} class="no-underline">
-									<div class="flex flex-col min-h-[210px] p-6">
-										<div class="w-[30px]">
-											<img
-												src={project.logo.replace(
-													/^\.\//,
-													"/",
-												)}
-												alt=""
-												class="w-full"
-											/>
-										</div>
-										<div class="font-secondary text-[var(--color-primary)] text-base pt-[15px] mb-[1em] font-bold">
-											{project.title}
-										</div>
-										<div class="text-[var(--color-secondary)] leading-relaxed">
-											{project.description}
-										</div>
-										<div class="project-link flex items-center gap-[10px] text-[var(--color-secondary)] text-xs pt-5 mt-auto">
-											<Icon
-												class="w-[14px] h-[14px] flex-none"
-												name="lucide:link"
-												aria-hidden="true"
-											/>
-											<div class="font-bold">
-												{project.linkText}
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-					))
-				}
-			</div>
-		</section>
+			</section>
 
-		<!-- Articles Section -->
-		<section
-			class="max-w-[1000px] mx-auto py-[10px_0_80px] sm:px-[10px]"
-			aria-labelledby="homepage-articles-title"
-		>
-			<header
-				class="flex items-end justify-between gap-6 pb-[18px] sm:items-start sm:flex-col sm:gap-[14px]"
-			>
-				<div>
-					<p
-						class="m-0 text-[#d6e7e2] font-secondary text-xs font-bold tracking-widest uppercase dark:text-[var(--color-secondary)] sm:text-[#37605d] dark:sm:text-[#5a9e9b]"
-					>
-						Notes &amp; essays
-					</p>
-					<h2
-						id="homepage-articles-title"
-						class="mt-[10px] text-[var(--color-primary)] font-secondary text-[clamp(34px,4vw,52px)] leading-none"
-					>
-						Articles
-					</h2>
+			<section class="py-8 max-[760px]:py-14">
+				<header class="section-header">
+					<div><p class="section-kicker">Things I’ve made</p><h2 class="section-title">Portfolio</h2></div>
+					<a href="/portfolio" class="section-link">View everything <span aria-hidden="true">→</span></a>
+				</header>
+				<div class="grid grid-cols-[1.5fr_0.75fr] grid-rows-2 gap-6 max-[760px]:grid-cols-1 max-[760px]:grid-rows-none">
+					{featuredWork.map((item, index) => {
+						const iconName = { "3D": "lucide:cuboid", Design: "lucide:pen-tool", Web: "lucide:globe" }[item.data.type];
+						const slug = item.id.split("/")[0];
+						return <a href={`/portfolio/${slug}`} class:list={["group text-inherit no-underline", index === 0 ? "row-span-2 max-[760px]:row-auto" : "", index % 2 ? "tilt-left" : "tilt-right"]}>
+							<div class:list={["relative overflow-hidden rounded-lg bg-[#222] max-[760px]:h-65", index === 0 ? "h-120" : "h-48"]}><Image src={item.data.background} alt="" loading="lazy" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.025]" /><span class="absolute top-3.5 left-3.5 flex items-center gap-1.5 rounded-full bg-black/70 px-2.5 py-2 font-secondary text-[10px] font-bold text-white backdrop-blur-lg"><Icon name={iconName} />{item.data.type}</span></div>
+							<div class="px-0.5 py-4"><h3 class:list={["m-0 mb-1 font-secondary", index === 0 ? "text-2xl" : "text-lg"]}>{item.data.title}</h3><p class="m-0 text-[13px] text-secondary">{item.data.subtitle}</p></div>
+						</a>;
+					})}
 				</div>
-				<a
-					href="/articles"
-					class="text-[var(--color-link)] font-secondary text-sm font-bold no-underline [&>span]:pl-[6px] [&>span]:text-base"
-					>View all articles <span>↗</span></a
-				>
-			</header>
-			<div class="[&>a]:block [&>a]:text-inherit [&>a]:no-underline">
-				{
-					articles.map((article, index) => (
-						<a
-							href={`/articles/${article.id}`}
-							class="block text-inherit no-underline group"
-						>
-							<div class="flex items-center gap-6 min-h-[118px] py-[22px] border-t border-[var(--color-border)] transition-[padding,border-color] duration-200 hover:pr-[10px] hover:pl-[10px] hover:border-[var(--color-tertiary)] last:border-b sm:items-start sm:gap-[14px] sm:min-h-0 sm:py-5">
-								<div class="w-[34px] flex-none text-[var(--color-link)] font-secondary text-sm sm:w-[25px] sm:text-[11px]">
-									{String(index + 1).padStart(2, "0")}
-								</div>
-								<div class="min-w-0 flex-1">
-									<div class="text-[var(--color-secondary)] text-xs tracking-wider">
-										{article.data.date}
-									</div>
-									<div class="mt-[7px] mb-2 text-[var(--color-primary)] font-secondary text-[22px] leading-tight sm:text-[19px]">
-										{article.data.title}
-									</div>
-									<div class="text-[var(--color-secondary)] text-sm leading-relaxed sm:text-[13px]">
-										{article.data.description}
-									</div>
-								</div>
-								<div
-									class="grid place-items-center text-[var(--color-link)] text-[22px] flex-none"
-									aria-hidden="true"
-								>
-									<Icon
-										name="lucide:chevron-right"
-										class="w-[18px] h-[18px]"
-									/>
-								</div>
-							</div>
-						</a>
-					))
-				}
-			</div>
-		</section>
-	</div>
+			</section>
+
+			<section class="py-8 max-[760px]:py-14">
+				<header class="section-header">
+					<div><p class="section-kicker">Notes &amp; rabbit trails</p><h2 class="section-title">Articles</h2></div>
+					<a href="/articles" class="section-link">View all <span aria-hidden="true">→</span></a>
+				</header>
+				<div>
+					{articles.map((article) => <a href={`/articles/${article.id}`} class="group block border-t border-border py-7 text-inherit no-underline last:border-b max-[760px]:py-6"><div class="mb-2 flex items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-[0.12em] text-secondary"><time>{article.data.date}</time></div><div class="flex items-start justify-between gap-6"><div><h3 class="m-0 font-secondary text-lg leading-tight tracking-[-0.025em] transition-colors group-hover:text-link">{article.data.title}</h3><p class="mt-3 mb-0 max-w-145 font-serif text-base leading-relaxed text-secondary">{article.data.description}</p></div><Icon name="lucide:arrow-up-right" class="mt-1 size-4 flex-none text-secondary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-link" /></div></a>)}
+				</div>
+			</section>
+
+		</div>
+	</main>
 </BaseLayout>
-
-<script>
-	const profile = document.getElementById("homepage-profile");
-	const profileImage = document.getElementById(
-		"homepage-profile-image",
-	) as HTMLImageElement | null;
-	const profileName = document.getElementById("homepage-profile-name");
-
-	const updateProfile = () => {
-		if (!profile || !profileImage || !profileName) return;
-		const compact = window.scrollY > 80;
-		profile.classList.toggle("is-compact", compact);
-		profileImage.width = compact ? 42 : 78;
-		profileName.hidden = compact;
-	};
-
-	window.addEventListener("scroll", updateProfile, { passive: true });
-	updateProfile();
-</script>

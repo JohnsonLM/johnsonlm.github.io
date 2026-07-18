@@ -1,0 +1,29 @@
+order: 15
+date: '2025'
+title: The World of Sharks
+background: "./15-artstation-the-world-of-sharks-01.jpg"
+link: https://www.artstation.com/artwork/yD25D8
+subtitle: 3D project
+type: 3D
+description: These sharks were created in partnership with the Digital Life Project
+  at the University of Massachusetts Amherst (digitallife3d.org) and the Save our
+  Seas Foundation (saveourseas.com). I was the principle 3d artist on the project
+  with assistance from Josh Medina, Braedon Fedderson and Emma Hsiao. We used Blender
+  to recreate each species as accurately as possible from reference images and video
+  provided by collaborators. The models will be used as an education resource for
+  the Save Our Seas project. I also created 3d environments for the sharks using a
+  combination of 3d elements and custom underwater HDRIs.
+images:
+- "./15-artstation-the-world-of-sharks-01.jpg"
+- "./15-artstation-the-world-of-sharks-02.jpg"
+- "./15-artstation-the-world-of-sharks-03.jpg"
+- "./15-artstation-the-world-of-sharks-05.jpg"
+- "./15-artstation-the-world-of-sharks-06.jpg"
+videos: []
+keywords: []
+sketchfabIds:
+- 8893d07e44964a8a934521e06cf51854
+- 9e50430cc59348bbbe74331ce5c37a38
+- 50366be284d94ed6a9a4949dea60c347
+- 4bb0e687e77c4a0c9ee373dc70e8fd20
+- 6e84eb7b4a474271a96ec721c219e570
